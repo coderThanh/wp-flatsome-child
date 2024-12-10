@@ -1,0 +1,9 @@
+/* Footer - Gallery */
+.footer-gallery .button {
+  margin: 0;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}

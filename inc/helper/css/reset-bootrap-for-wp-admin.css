@@ -1,0 +1,43 @@
+/* Reset from bootstrap */
+.h1,
+.h2,
+.h3,
+.h4,
+h1,
+h2,
+h3,
+h4 {
+  font-size: 15px;
+}
+
+.h5,
+h5 {
+  font-size: .83em;
+}
+
+body {
+  font-size: 13px;
+  background-color: #f6f6f6;
+}
+
+ol,
+ul {
+  padding-left: 0;
+}
+
+a {
+  color: #2271b1;
+}
+
+legend {
+  font-size: 13px;
+}
+
+.customize-control-kirki-sortable ul.ui-sortable li.invisible {
+  visibility: visible !important;
+}
+
+.btn {
+  font-size: 13px;
+  line-height: 1.3;
+}

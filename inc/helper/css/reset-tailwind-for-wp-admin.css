@@ -1,0 +1,16 @@
+/* Reset from Tailwind */
+table.fixed {
+  position: relative;
+}
+
+.metabox-holder.columns-2 {
+  columns: unset;
+}
+
+.notice.inline {
+  display: block;
+}
+
+.notice.hidden {
+  display: none;
+}

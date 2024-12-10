@@ -1,0 +1,14 @@
+.next
+next-env.d.ts
+node_modules
+yarn.lock
+package.json
+package-lock.json
+public
+tsconfig.eslint.json
+tsconfig.json
+README.md
+.vscode
+next.config.js
+.prettierrc
+.eslintrc.js

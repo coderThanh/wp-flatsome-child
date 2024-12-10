@@ -1,0 +1,43 @@
+/* Ux - Mobile Bottom bar --- */
+.bottom-bar-area {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1000;
+  background: white;
+  box-shadow: -5px 0px 10px rgb(0 0 0 /10%);
+  padding: 7px 5px;
+
+  --ic-size: 20px;
+}
+
+.bottom-bar-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 7px;
+}
+
+.bottom-bar-item .icon {
+  width: var(--ic-size);
+  height: var(--ic-size);
+  margin: 0 auto 5px;
+}
+
+.bottom-bar-item *:is(svg, img) {
+  width: var(--ic-size);
+  height: var(--ic-size);
+  margin: 0;
+  padding: 0;
+  object-fit: contain;
+}
+
+.bottom-bar-item {
+  text-align: center;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  color: rgb(var(--color-text-title));
+}

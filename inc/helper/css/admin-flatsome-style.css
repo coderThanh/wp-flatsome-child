@@ -1,0 +1,305 @@
+:root {
+  --color-primary: 139, 23, 26;
+  --color-secondary: 236, 176, 79;
+  --color-alert: 236, 69, 60;
+  --color-sucess: 74, 159, 83;
+  --color-process: 63, 162, 246;
+  --color-warning: 255, 175, 0;
+  --color-border-1: 33, 35, 34;
+  --color-border-opposite: 255, 255, 255;
+  --bg: 255, 255, 255;
+  --bg-2nd: 247, 247, 247;
+  --bg-3nd: 254, 242, 216;
+  --bg-opposite: 33, 34, 38;
+  --color-text-sub: 110, 110, 115;
+  --color-text-title: 29, 29, 31;
+
+  --price-color: rgb(var(--color-text-title));
+  --price-sale-color: rgb(var(--color-text-title));
+
+  --ff-material-outline: 'Material Symbols Outlined';
+  --ff-material-round: 'Material Symbols Rounded';
+  --ff-body: "Montserrat", sans-serif;
+  --ff-decor: "SVN Monday", "Source Serif 4", sans-serif;
+
+  --blog-img-ratio: 75%;
+
+  --radius-small: 5px;
+  --radius-1: 8px;
+  --radius-2: 12px;
+  --radius-3: 16px;
+
+  --body-mw: 1200px;
+
+  --header-sticky-h: 44px;
+
+  --size-ratio: 1.15;
+  --size-small: calc(1rem - 1px);
+  --size-small-a: calc(var(--size-small) - 1px);
+  --size-2: calc(1rem * var(--size-ratio) - 1px);
+  --size-3: calc(var(--size-2) * var(--size-ratio));
+  --size-4: calc(var(--size-3) * var(--size-ratio));
+  --size-5: calc(var(--size-4) * var(--size-ratio));
+  --size-6: calc(var(--size-5) * var(--size-ratio));
+  --size-7: calc(var(--size-6) * var(--size-ratio));
+  --size-8: calc(var(--size-7) * var(--size-ratio));
+
+  --sketch-loading-bg: linear-gradient(90deg, #ececec 8%, #f7f7f7 18%, #ececec 33%);
+  --sketch-loading-bg-size: 200% 100%;
+  --sketch-loading-animetion: 1.5s sketchloading linear infinite;
+}
+
+
+/* Widget */
+
+.widget label {
+  display: inline-block;
+  margin: 0;
+}
+
+.widget .admin-btn__input {
+  cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.widget .btn__add_delete {
+  color: brown;
+  margin-top: 5px;
+}
+
+.widget .input__content {
+  background: #f4f4f4;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 7px 0;
+}
+
+.attachment_media-view {
+  margin: 10px 0;
+  position: relative;
+}
+
+.attachment_media-view .button_add-media {
+  cursor: pointer;
+  background-color: #edeff0;
+  color: #32373c;
+  width: 100%;
+  height: 70px;
+  position: relative;
+  text-align: center;
+  cursor: default;
+  border: 1px dashed #b4b9be;
+  box-sizing: border-box;
+  line-height: 1.6;
+  padding: 3px;
+}
+
+.attachment_media-view .button_add-media:hover {
+  background-color: #fbfbfc;
+  cursor: pointer;
+}
+
+.attachment_media-view .button_add-media:focus {
+  background-color: #fbfbfc;
+  border-color: #007cba;
+  border-style: solid;
+  box-shadow: 0 0 0 1px #007cba;
+  outline: 2px solid transparent;
+}
+
+.attachment_media-view img,
+.attachment_media-view .preview-img,
+.attachment_media-view svg {
+  -o-object-fit: contain;
+  object-fit: contain;
+  -o-object-position: center;
+  object-position: center;
+  width: 70px;
+  height: 60px;
+  margin: auto;
+}
+
+.attachment_media-view .actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.attachment_media-view .button_remove-media {
+  color: brown;
+  border-color: brown;
+  background: rgba(255, 255, 255, 0.9098039216);
+}
+
+/* Metabox */
+.meta-box_block {
+  width: 100%;
+}
+
+.meta-box_block th {
+  text-align: left;
+  width: 25%;
+  vertical-align: text-top;
+}
+
+.meta-box_block :is(input, textarea) {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.meta-box_block :is(select) {
+  margin-bottom: 14px;
+}
+
+.meta-box_block :is(input, textarea)::placeholder {
+  color: #bfbfbf;
+}
+
+
+
+/*
+* Customize Page Style
+*/
+.customize-control {
+  margin-bottom: 1.2rem;
+  border-top: 1px dashed #cacaca;
+  padding-top: 1rem;
+}
+
+.form-range_wrap {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+}
+
+.form-range_wrap input[type="range"] {
+  -webkit-appearance: none;
+  margin-bottom: 0;
+  background-color: #d7dcdf;
+  border-radius: 100px;
+  height: 10px;
+}
+
+.form-range_wrap input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #0085ba;
+  cursor: pointer;
+  -webkit-transition: background 0.15s ease-in-out;
+  transition: background 0.15s ease-in-out;
+}
+
+.form-range_wrap input[type="range"]::-webkit-slider-thumb:hover {
+  background: #0085ba;
+}
+
+.form-range_wrap input[type="range"]:active::-webkit-slider-thumb {
+  background: #0085ba;
+}
+
+.form-range_wrap input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 50%;
+  background: #0085ba;
+  cursor: pointer;
+  -moz-transition: background 0.15s ease-in-out;
+  transition: background 0.15s ease-in-out;
+}
+
+.form-range_wrap input[type="range"]::-moz-range-thumb:hover {
+  background: #0085ba;
+}
+
+.form-range_wrap label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2271b1;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 3px;
+  text-transform: capitalize;
+  margin-left: 15px;
+}
+
+.form-range_wrap .form-range_value {
+  margin-right: 5px;
+}
+
+.customize-control>label,
+.kirki-input-container>label {
+  width: 100%;
+}
+
+body .range-slider__value {
+  width: 75px;
+}
+
+.btn__add_more {
+  cursor: pointer;
+  padding: 10px 0px;
+  display: block;
+}
+
+.btn__add_delete {
+  color: red;
+  cursor: pointer;
+  -webkit-text-decoration: underline 1px;
+  text-decoration: underline 1px;
+}
+
+th .desc,
+tr .desc {
+  font-style: italic;
+  font-size: 0.9em;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Color - picker */
+
+.wp-picker-open+.wp-picker-input-wrap {
+  display: inline-flex;
+  min-width: max-content;
+}
+
+/* For Plugin TutorLMS */
+body .customize-control-kirki-sortable ul.ui-sortable li.invisible {
+  visibility: visible;
+}
+
+body .header-builder .hb-drop-mobile [data-id=nav-vertical] {
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* Loader */
+.loader {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgb(0 0 0/ 8%);
+  border-bottom-color: #FF3D00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

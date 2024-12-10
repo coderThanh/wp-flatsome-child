@@ -1,0 +1,33 @@
+/* Ux - Marquee --- */
+.marquee-wrap {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.marquee-inner {
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow: visible;
+}
+
+.marquee-inner .item {
+  padding: 0 30px;
+  animation: 5s marquee infinite linear;
+}
+
+.marquee-inner:hover .item {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
