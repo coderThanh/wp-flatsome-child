@@ -61,7 +61,7 @@ function pt_load_enqueue_scripts()
  * Enqueue styles and scripts for the child theme admin area.
  * Reuqire if has plugin woocommerce
  */
-// add_action( 'admin_enqueue_scripts', 'pt_child_admin_enqueue', 60 );
+add_action( 'admin_enqueue_scripts', 'pt_child_admin_enqueue', 60 );
 
 if( !function_exists( 'pt_child_admin_enqueue' ) ) {
 

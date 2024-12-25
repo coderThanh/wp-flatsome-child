@@ -1531,7 +1531,11 @@ button#place_order {
 }
 
 .woocommerce-checkout .checkout_coupon .button:not(.is-link) {
-    height: 56px;
+    height: var(--input-h);
+}
+
+.woocommerce-order-details a {
+    color: rgb(var(--color-text-title));
 }
 
 /* UX  - Slider infinity */

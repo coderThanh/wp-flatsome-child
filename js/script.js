@@ -254,4 +254,69 @@ function handleTabNavToSwiper() {
   })
 }
 
-handleTabNavToSwiper()
+// handleTabNavToSwiper()
+
+/**
+ * Handle click event for video controller.
+ *
+ * This function will add event listeners to video controller elements.
+ *
+ * @since 1.0.0
+ */
+function handleVideoController() {
+  jQuery(document).ready(function ($) {
+    $('.section-video-controll').each(function (indexInArray, parentEL) {
+      var video = $(parentEL).find('.video-bg')[0]
+
+      if (!video) return
+
+      $(parentEL)
+        .find('.el-icon-pause')
+        .on('click', function (event) {
+          event.preventDefault()
+
+          $(this).addClass('hidden')
+
+          $(parentEL).find('.el-icon-play').removeClass('hidden')
+
+          video.pause()
+        })
+
+      $(parentEL)
+        .find('.el-icon-play')
+        .on('click', function (event) {
+          event.preventDefault()
+
+          $(this).addClass('hidden')
+
+          $(parentEL).find('.el-icon-pause').removeClass('hidden')
+
+          video.play()
+        })
+
+      $(parentEL)
+        .find('.el-icon-music')
+        .on('click', function (event) {
+          event.preventDefault()
+
+          $(this).addClass('hidden')
+
+          $(parentEL).find('.el-icon-muted').removeClass('hidden')
+
+          video.muted = false
+        })
+
+      $(parentEL)
+        .find('.el-icon-muted')
+        .on('click', function (event) {
+          event.preventDefault()
+
+          $(this).addClass('hidden')
+
+          $(parentEL).find('.el-icon-music').removeClass('hidden')
+
+          video.muted = true
+        })
+    })
+  })
+}

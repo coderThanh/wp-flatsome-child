@@ -73,10 +73,6 @@ function runScrollRevealElement() {
   })
 }
 
-jQuery(document).ready(function ($) {
-  runScrollRevealElement()
-})
-
 function runAnimationFade() {
   jQuery(document).ready(function ($) {
     //
@@ -261,8 +257,6 @@ function runAnimationFade() {
   })
 }
 
-runAnimationFade()
-
 //
 function imgWrapFadeRight(fadeWrap) {
   jQuery(document).ready(function ($) {
@@ -374,7 +368,16 @@ function textFadeRote(fadeWrap) {
   })
 }
 
-// Script item parralax on mouse move
+/**
+ * Adds a mousemove event listener to elements with the class 'sect-move-paralax',
+ * causing child elements with classes 'parralax-left' and 'parralax-right' to
+ * translate based on the mouse cursor position, creating a parallax effect.
+ *
+ * The left elements move in a negative direction proportional to the cursor's
+ * horizontal and vertical position, while the right elements move in a positive
+ * direction, each with different transformation scales for a dynamic effect.
+ */
+
 function parralaxOnMouse() {
   jQuery(document).ready(function ($) {
     $('.sect-move-paralax').each(function (indexInArray, sectionElement) {
@@ -403,4 +406,27 @@ function parralaxOnMouse() {
   })
 }
 
-parralaxOnMouse()
+function parralax3dRotateY() {
+  jQuery(document).ready(function ($) {
+    const screenWidth = window.innerWidth
+    const screenHalf = screenWidth / 2
+
+    const max3dY = 8
+
+    $('.section-parrallax-3dy').each(function (indexInArray, sectionElement) {
+      //
+      $(sectionElement).mousemove(function (event) {
+        $(sectionElement)
+          .find('.el-3dy-content')
+          .each(function (indexInArray, colElement) {
+            var valueRotateY =
+              ((event.clientX - screenHalf) * max3dY) / screenHalf
+
+            $(colElement).css({
+              transform: `rotateY(${valueRotateY}deg)`,
+            })
+          })
+      })
+    })
+  })
+}
