@@ -497,7 +497,7 @@ header .menu-item-design-default .sub-menu li:hover>.sub-menu {
 
 /* Menu toggle ----- */
 /* Menu toggle ----- */
-.mfp-content .nav-sidebar li+li {
+/* .mfp-content .nav-sidebar li+li {
     border-top: 0;
 }
 
@@ -545,7 +545,7 @@ header .menu-item-design-default .sub-menu li:hover>.sub-menu {
 .off-canvas .mfp-content .nav .menu-item .menu-item {
     margin: 0;
     padding: 0;
-}
+} */
 
 /* Menu - Level */
 /* .mfp-content .nav.nav-sidebar .menu-item:hover {

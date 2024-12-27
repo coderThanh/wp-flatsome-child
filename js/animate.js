@@ -406,6 +406,13 @@ function parralaxOnMouse() {
   })
 }
 
+/**
+ * Adds a mousemove event listener to elements with the class 'section-parrallax-3dy',
+ * causing child elements with the class 'el-3dy-content' to rotate around the Y-axis
+ * based on the horizontal position of the mouse cursor. The rotation is proportional
+ * to the cursor's distance from the center of the screen, with a maximum rotation
+ * angle defined by 'max3dY'.
+ */
 function parralax3dRotateY() {
   jQuery(document).ready(function ($) {
     const screenWidth = window.innerWidth
