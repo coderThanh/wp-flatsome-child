@@ -1,8 +1,18 @@
 <?php
 // Only require this file
 require_once( THEME_CHILD_ROOT . '/shortcode/ux_portfolio_custom/shortcode_portfolio_custom.php' );
+
+// remove init
+remove_shortcode( "featured_items_slider" );
+remove_shortcode( "featured_items_grid" );
+remove_shortcode( "ux_portfolio" );
+
+add_shortcode( "featured_items_slider", "pt_portfolio_shortcode" );
+add_shortcode( "featured_items_grid", "pt_portfolio_shortcode" );
+add_shortcode( "ux_portfolio", "pt_portfolio_shortcode" );
+
 // 
-add_action( 'ux_builder_setup', 'pt_ux_builder_portfolio_custom' );
+// add_action( 'ux_builder_setup', 'pt_ux_builder_portfolio_custom' );
 
 function pt_ux_builder_portfolio_custom()
 {
@@ -152,6 +162,5 @@ function pt_ux_builder_portfolio_custom()
 		'thumbnail' => flatsome_ux_builder_thumbnail( 'portfolio' ),
 		'options'   => $options,
 	) );
-
 
 }
