@@ -10,8 +10,9 @@
     --bg: 255, 255, 255;
     --bg-2nd: 247, 247, 247;
     --bg-opposite: 33, 34, 38;
-    --color-text-sub: 33, 35, 34;
     --color-text-title: 33, 35, 34;
+
+    --opacity-text-sub: 0.7;
 
     --price-color: rgb(var(--color-text-title));
     --price-sale-color: rgb(var(--color-alert));
