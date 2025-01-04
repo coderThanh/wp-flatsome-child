@@ -73,6 +73,12 @@ function runScrollRevealElement() {
   })
 }
 
+jQuery(document).ready(function ($) {
+  runScrollRevealElement()
+})
+
+=======
+>>>>>>> 07f670f (init)
 function runAnimationFade() {
   jQuery(document).ready(function ($) {
     //
@@ -257,6 +263,10 @@ function runAnimationFade() {
   })
 }
 
+runAnimationFade()
+
+=======
+>>>>>>> 07f670f (init)
 //
 function imgWrapFadeRight(fadeWrap) {
   jQuery(document).ready(function ($) {
@@ -368,16 +378,7 @@ function textFadeRote(fadeWrap) {
   })
 }
 
-/**
- * Adds a mousemove event listener to elements with the class 'sect-move-paralax',
- * causing child elements with classes 'parralax-left' and 'parralax-right' to
- * translate based on the mouse cursor position, creating a parallax effect.
- *
- * The left elements move in a negative direction proportional to the cursor's
- * horizontal and vertical position, while the right elements move in a positive
- * direction, each with different transformation scales for a dynamic effect.
- */
-
+// Script item parralax on mouse move
 function parralaxOnMouse() {
   jQuery(document).ready(function ($) {
     $('.sect-move-paralax').each(function (indexInArray, sectionElement) {
@@ -406,34 +407,4 @@ function parralaxOnMouse() {
   })
 }
 
-/**
- * Adds a mousemove event listener to elements with the class 'section-parrallax-3dy',
- * causing child elements with the class 'el-3dy-content' to rotate around the Y-axis
- * based on the horizontal position of the mouse cursor. The rotation is proportional
- * to the cursor's distance from the center of the screen, with a maximum rotation
- * angle defined by 'max3dY'.
- */
-function parralax3dRotateY() {
-  jQuery(document).ready(function ($) {
-    const screenWidth = window.innerWidth
-    const screenHalf = screenWidth / 2
-
-    const max3dY = 8
-
-    $('.section-parrallax-3dy').each(function (indexInArray, sectionElement) {
-      //
-      $(sectionElement).mousemove(function (event) {
-        $(sectionElement)
-          .find('.el-3dy-content')
-          .each(function (indexInArray, colElement) {
-            var valueRotateY =
-              ((event.clientX - screenHalf) * max3dY) / screenHalf
-
-            $(colElement).css({
-              transform: `rotateY(${valueRotateY}deg)`,
-            })
-          })
-      })
-    })
-  })
-}
+parralaxOnMouse()

@@ -517,7 +517,11 @@ header .menu-item-design-default .sub-menu li:hover>.sub-menu {
 
 /* Menu toggle ----- */
 /* Menu toggle ----- */
+<<<<<<< HEAD
 /* .mfp-content .nav-sidebar li+li {
+=======
+/* .mfp-content .nav-sidebar li+li {
+>>>>>>> 07f670f (init)
     border-top: 0;
 }
 
@@ -565,7 +569,7 @@ header .menu-item-design-default .sub-menu li:hover>.sub-menu {
 .off-canvas .mfp-content .nav .menu-item .menu-item {
     margin: 0;
     padding: 0;
-} */
+}
 
 /* Menu - Level */
 /* .mfp-content .nav.nav-sidebar .menu-item:hover {
@@ -1554,11 +1558,7 @@ button#place_order {
 }
 
 .woocommerce-checkout .checkout_coupon .button:not(.is-link) {
-    height: var(--input-h);
-}
-
-.woocommerce-order-details a {
-    color: rgb(var(--color-text-title));
+    height: 56px;
 }
 
 /* UX  - Slider infinity */
