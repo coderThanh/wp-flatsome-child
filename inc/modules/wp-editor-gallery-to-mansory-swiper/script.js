@@ -1,10 +1,43 @@
 function runWPEditorGalleryToMansorySwipper() {
   jQuery(document).ready(function ($) {
-    // run mansory lib
-    $('.entry-content .gallery, .portfolio-inner .gallery ').masonry({
-      itemSelector: '.gallery-item',
-      columnWidth: '.gallery-item',
-      percentPosition: true,
+    // cover full screen
+    $('.entry-content .gallery, .portfolio-inner .gallery ').each(function (
+      indexInArray,
+      parentEl,
+    ) {
+      const wrap = document.createElement('div')
+      const wrapInner = document.createElement('div')
+
+      wrap.style.position = 'relative'
+      wrap.classList.add('entry-gallery-full-screen')
+
+      wrapInner.classList.add('el-inner')
+
+      wrapInner.style.position = 'absolute'
+      wrapInner.style.width = '100vw'
+      wrapInner.style.top = '0'
+      wrapInner.style.left = '50%'
+      wrapInner.style.transform = 'translateX(-50%)'
+
+      wrap.appendChild(wrapInner)
+
+      $(parentEl).wrap(wrap)
+
+      // run mansory lib
+      $(parentEl).masonry({
+        itemSelector: '.gallery-item',
+        columnWidth: '.gallery-item',
+        percentPosition: true,
+      })
+    })
+
+    // set height for wrap
+    $(
+      '.entry-content .entry-gallery-full-screen, .portfolio-inner .entry-gallery-full-screen ',
+    ).each(function (indexInArray, valueOfElement) {
+      $(valueOfElement).height(
+        `${$(valueOfElement).find('.el-inner').height()}px`,
+      )
     })
 
     // run popup slider
