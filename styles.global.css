@@ -843,11 +843,12 @@ body .badge .badge-inner {
     border-color: rgb(var(--color-primary));
 }
 
+
 .product-small.box .add_to_cart_button:before , 
 .product-small.box .added_to_cart:before {
 	content: '\e54c';
     font-family: var(--ff-material-outline);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 300;
     display: inline-flex;
     background-color: rgb(var(--color-primary));
@@ -865,6 +866,14 @@ body .badge .badge-inner {
 .product-small.box .add_to_cart_button:after , 
 .product-small.box .added_to_cart:after {
 	border-color: rgb(var(--bg-opposite));
+}
+
+.product-small.box .added_to_cart:before {
+	content: '\e86c';
+}
+
+.product-small.box .product_type_variable:before {
+	content: '\e5d3';
 }
 
 .product-small.box .added_to_cart:after {
