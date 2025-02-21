@@ -1,0 +1,53 @@
+.float-nav-current-scroll {
+    position: relative;
+    z-index: 10;
+}
+
+.float-nav-current-scroll .el-sticky {
+    padding: 17px 0;
+    background: rgb(var(--bg));
+    overflow: hidden;
+    box-shadow: 0 4px 4px rgb(var(--bg-opposite), 0.12);
+}
+
+.float-nav-current-scroll.is-sticky .el-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500;
+}
+
+.float-nav-current-scroll .el-inner {
+    display: flex;
+    align-items: center;
+}
+
+.float-nav-current-scroll .el-logo {
+    height: 40px;
+    width: auto;
+    padding-right: 20px;
+}
+
+.float-nav-current-scroll .el-nav {
+    flex: 1 1;
+    overflow: hidden;
+}
+
+
+.float-nav-current-scroll .swiper-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.float-nav-current-scroll .el-nav-item {
+    width: max-content;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgb(var(--color-secondary));
+    padding: 0 20px;
+}
+
+.float-nav-current-scroll .swiper-slide {
+    width: max-content;
+}
