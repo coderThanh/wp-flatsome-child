@@ -111,7 +111,7 @@ function pt_ux_builder_float_nav_current_scroll_item()
 			),
 			'id'    => array(
 				'type'        => 'textfield',
-				'heading'     => 'Pause',
+				'heading'     => 'Id to scroll',
 				'placeholder' => __( 'idScrollTo' ),
 			),
 		],
