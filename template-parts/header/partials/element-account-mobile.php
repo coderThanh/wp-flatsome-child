@@ -4,17 +4,28 @@
  * Mobile account element.
  *
  * @package          Flatsome\Templates
- * @flatsome-version 3.16.0
+ * @flatsome-version 3.19.0
  */
 
-$icon_style = flatsome_option('account_icon_style');
+$icon_style = flatsome_option( 'account_icon_style' );
+$is_button  = $icon_style && $icon_style !== 'image' && $icon_style !== 'plain';
+
+$link_atts = [ 
+	'href'       => esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ),
+	'class'      => [ 'account-link-mobile', get_flatsome_icon_class( $icon_style, 'small' ) ],
+	'title'      => esc_attr__( 'My account', 'woocommerce' ),
+	'aria-label' => esc_attr__( 'My account', 'woocommerce' ),
+];
+
 ?>
 <li class="account-item has-icon">
-	<?php if ($icon_style && $icon_style !== 'image' && $icon_style !== 'plain') echo '<div class="header-button">'; ?>
-	<a href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" class="account-link-mobile <?php echo get_flatsome_icon_class($icon_style, 'small'); ?>" title="<?php _e('My account', 'woocommerce'); ?>">
+	<?php if( $is_button )
+		echo '<div class="header-button">'; ?>
+	<a <?php echo flatsome_html_atts( $link_atts ); ?>>
 		<?php
-		echo get_flatsome_icon('icon-user');
+		echo get_flatsome_icon( 'icon-user' );
 
+		// My custom code is add svg icon
 		echo '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="22"
     x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""
     fill="currentColor">
@@ -26,5 +37,6 @@ $icon_style = flatsome_option('account_icon_style');
 </svg>';
 		?>
 	</a>
-	<?php if ($icon_style && $icon_style !== 'image' && $icon_style !== 'plain') echo '</div>'; ?>
+	<?php if( $is_button )
+		echo '</div>'; ?>
 </li>
