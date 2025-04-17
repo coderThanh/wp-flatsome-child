@@ -1,5 +1,5 @@
 :root {
-  --color-primary: 139, 23, 26;
+  --color-primary: 13, 110, 253;
   --color-secondary: 236, 176, 79;
   --color-alert: 236, 69, 60;
   --color-sucess: 74, 159, 83;
@@ -19,21 +19,17 @@
 
   --ff-material-outline: 'Material Symbols Outlined';
   --ff-material-round: 'Material Symbols Rounded';
-  --ff-body: "Montserrat", sans-serif;
-  --ff-decor: "SVN Monday", "Source Serif 4", sans-serif;
 
-  --blog-img-ratio: 75%;
-
-  --radius-small: 5px;
-  --radius-1: 8px;
-  --radius-2: 12px;
-  --radius-3: 16px;
-
-  --body-mw: 1200px;
+  --radius-small: 4px;
+  --radius-1: 4px;
+  --radius-2: 8px;
+  --radius-3: 14px;
 
   --header-sticky-h: 44px;
 
-  --size-ratio: 1.15;
+  --action-h:36px;
+
+  --size-ratio: 1.12;
   --size-small: calc(1rem - 1px);
   --size-small-a: calc(var(--size-small) - 1px);
   --size-2: calc(1rem * var(--size-ratio) - 1px);
@@ -47,6 +43,46 @@
   --sketch-loading-bg: linear-gradient(90deg, #ececec 8%, #f7f7f7 18%, #ececec 33%);
   --sketch-loading-bg-size: 200% 100%;
   --sketch-loading-animetion: 1.5s sketchloading linear infinite;
+}
+
+/* Button admin */
+.pt-btn {
+  --btn-shadown: unset;
+  --btn-shadown-hover: unset;
+  --btn-bg: rgb(var(--color-primary));
+  --btn-bg-hover: rgb(var(--bg));
+  --btn-color: rgb(var(--bg));
+  --btn-color-hover: rgb(var(--color-text-title));
+  --btn-border: none;
+  --btn-border-hover: none;
+
+  box-shadow: var(--btn-shadown) !important;
+  background-color: var(--btn-bg) !important;
+  color: var(--btn-color) !important;
+  border: var(--btn-border) !important;
+}
+
+.pt-btn:hover {
+  box-shadow: var(--btn-shadown-hover) !important;
+  background-color: var(--btn-bg-hover) !important;
+  color: var(--btn-color-hover) !important;
+  border: var(--btn-border-hover) !important;
+}
+
+.pt-btn:not(.is-link) {
+  font-size: 14px;
+  letter-spacing: 0;
+  min-height: var(--action-h);
+  line-height: 1.2;
+  padding: 8px 18px;
+  border-radius: var(--radius-1);
+}
+
+.pt-btn.primary:not(.is-link) {
+  --btn-bg: rgb(var(--color-primary));
+  --btn-bg-hover: rgb(var(--color-primary), 0.8);
+  --btn-color: rgb(var(--bg));
+  --btn-color-hover: rgb(var(--bg));
 }
 
 
@@ -281,6 +317,36 @@ body .header-builder .hb-drop-mobile [data-id=nav-vertical] {
   display: inline-block !important;
   visibility: visible !important;
 }
+
+#customize-theme-controls .accordion-section-title button.accordion-trigger {
+  height: unset;
+}
+
+#menu-settings-column .inside {
+  height: fit-content;
+}
+
+/* Fields --- */
+.field-search-ajax .el-option {
+  transition: all 0.3s;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.field-search-ajax .el-option:hover {
+  background-color: rgb(var(--bg-opposite), 0.1);
+}
+
+.field-search-ajax .el-result-wrap {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.field-search-ajax.active .el-result-wrap {
+  pointer-events: all;
+  opacity: 1;
+}
+
 
 /* Loader */
 .loader {
