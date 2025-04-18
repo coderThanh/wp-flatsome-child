@@ -416,3 +416,16 @@ function format_number($number, $locale = 'vi_VN')
 
 	return $number;
 }
+
+// Get Shortcode Inline CSS
+function pt_get_shortcode_inline_css($args)
+{
+	$style = '';
+	foreach( $args as $key => $value ) {
+		$unit = array_key_exists( 'unit', $value ) ? $value['unit'] : null;
+		if( $value['value'] )
+			$style .= $value['attribute'] . ':' . $value['value'] . $unit . ';';
+	}
+	if( $style )
+		return 'style="' . esc_attr( $style ) . '"';
+}
