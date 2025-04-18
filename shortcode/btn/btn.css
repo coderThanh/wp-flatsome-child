@@ -33,7 +33,8 @@
 
 .pt-btn i {
     font-size: 1.3em;
-    line-height: inherit;
+    line-height: 1;
+    vertical-align: middle;
 }
 
 .pt-btn--expand {
@@ -69,21 +70,23 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 7px;
 }
 
 .pt-btn-kind--text-only,
 .pt-btn-kind--underline {
     font-size: var(--btn-font-size);
     line-height: var(--btn-line-height);
+    display: inline-flex;
+    gap: 7px;
 }
 
-.pt-btn-kind--underline {
+.pt-btn-kind--underline .pt-btn__text {
     text-decoration: underline;
     text-decoration-color: transparent;
 }
 
-.pt-btn-kind--underline:hover {
+.pt-btn-kind--underline:hover .pt-btn__text {
     text-decoration-color: currentColor;
 }
 
