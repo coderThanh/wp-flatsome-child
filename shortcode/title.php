@@ -14,6 +14,11 @@ function pt_ux_builder_title()
 				'type'       => 'textfield',
 				'heading'    => 'Title',
 			),
+			'url'              => array(
+				'full_width' => true,
+				'type'       => 'textfield',
+				'heading'    => 'Url',
+			),
 			'tag'              => array(
 				'type'    => 'select',
 				'heading' => 'Tag',
@@ -62,19 +67,41 @@ function pt_shortcode_title_simple($atts, $content = null)
 		'size'       => '',
 		'color'      => '',
 		'class'      => '',
+		'url'        => '',
 		'visibility' => '',
 	), $atts ) );
-
-
 	ob_start();
-	?>
-	<div
-		class="title-simple <?php if( !empty( $size ) )
-			echo esc_attr( $size ); ?> <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
-		<<?php echo $tag; ?> 	<?php if( !empty( $color ) )
-					echo 'data-text-color="' . $color . '"'; ?>><?php echo esc_attr( $title ); ?></<?php echo $tag; ?>>
-	</div>
-	<?php
+
+	$className = 'title-simple';
+
+	if( !empty( $size ) ) {
+		$className .= ' ' . $size;
+	}
+
+	if( !empty( $class ) ) {
+		$className .= ' ' . $class;
+	}
+
+	if( !empty( $visibility ) ) {
+		$className .= ' ' . $visibility;
+	}
+
+	echo '<' . $tag . ' ';
+	echo ' class="' . $className . '"';
+
+	if( !empty( $color ) ) {
+		echo ' data-text-color="' . $color . '"';
+	}
+
+	echo ' >';
+
+	if( !empty( $url ) ) {
+		echo '<a class="el-text" href="' . esc_url( $url ) . '">' . esc_attr( $title ) . '</a>';
+	} else {
+		echo '<span class="el-text" >'.esc_attr( $title ) . '</span>';
+	}
+	
+	echo '</' . $tag . '>';
 
 	return ob_get_clean();
 }
