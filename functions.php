@@ -27,6 +27,9 @@ function pt_theme_setup()
 add_action( 'after_setup_theme', 'pt_after_theme_setup' );
 function pt_after_theme_setup()
 {
+	require_once( THEME_CHILD_ROOT . '/shortcode/title.php' );
+	require_once( THEME_CHILD_ROOT . '/shortcode/btn/index.php' );
+	require_once( THEME_CHILD_ROOT . '/shortcode/image-svg.php' ); // require for btn
 	require_once( THEME_CHILD_ROOT . '/shortcode/breakcrums.php' );
 	require_once( THEME_CHILD_ROOT . '/shortcode/single-cat-title.php' );
 	require_once( THEME_CHILD_ROOT . '/shortcode/wrap.php' );

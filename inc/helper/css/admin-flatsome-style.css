@@ -1,3 +1,4 @@
+/* Verison: 1.0.0 */
 :root {
   --color-primary: 13, 110, 253;
   --color-secondary: 236, 176, 79;
@@ -27,7 +28,7 @@
 
   --header-sticky-h: 44px;
 
-  --action-h:36px;
+  --action-h: 36px;
 
   --size-ratio: 1.12;
   --size-small: calc(1rem - 1px);
