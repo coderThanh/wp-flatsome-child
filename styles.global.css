@@ -14,8 +14,8 @@
 
     --opacity-text-sub: 0.7;
 
-    --price-color: rgb(var(--color-text-title));
-    --price-sale-color: rgb(var(--color-alert));
+    --price-color: var(--color-text-title);
+    --price-sale-color: var(--color-alert);
 
     --ff-material-outline: 'Material Symbols Outlined';
     --ff-material-round: 'Material Symbols Rounded';
@@ -782,20 +782,20 @@ body .mfp-bg.mfp-ready {
 
 span.woocommerce-Price-amount.amount bdi {
     font-size: 1rem;
-    color: var(--price-color);
+    color: rgb(var(--price-color));
     font-weight: 400;
     line-height: 1.3;
 }
 
 ins span.woocommerce-Price-amount.amount bdi {
-    color: var(--price-sale-color);
+    color: rgb(var(--price-sale-color));
 }
 
-body .price del,
+body div .price del,
 body .product_list_widget del,
 body del .woocommerce-Price-amount,
 del span.woocommerce-Price-amount.amount bdi {
-    color: var(--price-color);
+    color: rgb(var(--price-color));
 }
 
 

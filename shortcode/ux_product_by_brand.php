@@ -12,7 +12,7 @@ function pt_ux_builder_product_by_brand()
 
     if (!isset($repeater_posts)) $repeater_posts = 'posts';
     if (!isset($repeater_post_type)) $repeater_post_type = 'product';
-    if (!isset($repeater_post_cat)) $repeater_post_cat = 'pa_thuong-hieu';
+    if (!isset($repeater_post_cat)) $repeater_post_cat = 'product_brand';
 
     add_ux_builder_shortcode('pt-product-by-brand', array(
         'name'      => __('Pt sản phẩm bởi thương hiệu'),
