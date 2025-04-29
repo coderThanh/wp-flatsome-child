@@ -16,7 +16,7 @@ function pt_ux_builder_product_detail_attr_shortocde()
         'name'      => __('Pt Product Atrribute'),
         'category'  => __('PRODUCT PAGE'),
         'priority'  => 10,
-        'type' => 'container',
+        // 'type' => 'container',
         'wrap'   => false,
         'inline' => true,
         'nested' => true,
