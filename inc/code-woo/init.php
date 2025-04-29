@@ -1,5 +1,7 @@
 <?php
-require_once ( THEME_CHILD_ROOT . '/inc/code-woo/order/order.php' );
+require_once( THEME_CHILD_ROOT . '/inc/code-woo/order/order.php' );
+require_once( THEME_CHILD_ROOT . '/inc/code-woo/walkers/class-wc-product-brand-list-walker.php' );
+require_once( THEME_CHILD_ROOT . '/inc/code-woo/widget/class-wc-widget-product-brands.php' );
 
 // Setup theme init
 add_action( 'init', 'pt_woo_setup' );
@@ -33,27 +35,26 @@ if( !function_exists( 'pt_header_add_to_cart_custom_icon_fragment_count_label' )
 		ob_start();
 		?>
 		<span class="image-icon header-cart-icon"
-			  data-icon-label="<?php echo WC()->cart->cart_contents_count; ?>">
+			data-icon-label="<?php echo WC()->cart->cart_contents_count; ?>">
 			<img class="cart-img-icon"
-				 alt="<?php _e( 'Cart', 'woocommerce' ); ?>"
-				 src="<?php echo do_shortcode( get_theme_mod( 'custom_cart_icon' ) ); ?>" />
-
+				alt="<?php _e( 'Cart', 'woocommerce' ); ?>"
+				src="<?php echo do_shortcode( get_theme_mod( 'custom_cart_icon' ) ); ?>" />
 			<svg xmlns:xlink="http://www.w3.org/1999/xlink"
-				 xmlns="http://www.w3.org/2000/svg"
-				 width="24"
-				 height="24"
-				 viewBox="0 0 24 24"
-				 fill="none"
-				 stroke="currentColor"
-				 stroke-width="1.5"
-				 stroke-linecap="round"
-				 stroke-linejoin="round">
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round">
 				<circle cx="9"
-						cy="21"
-						r="1" />
+					cy="21"
+					r="1" />
 				<circle cx="20"
-						cy="21"
-						r="1" />
+					cy="21"
+					r="1" />
 				<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
 			</svg>
 		</span>
@@ -80,3 +81,12 @@ function pt_wc_custom_get_price_html_empty($price)
 	return $price;
 }
 add_filter( 'woocommerce_empty_price_html', 'pt_wc_custom_get_price_html_empty' );
+
+
+// 
+function pt_wc_register_widgets()
+{
+	register_widget( 'WC_Widget_Product_Brand' );
+}
+
+add_action( 'widgets_init', 'pt_wc_register_widgets' );
