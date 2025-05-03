@@ -1986,6 +1986,34 @@ div#ez-toc-container .ez-toc-heading-level-2 > a {
 }
 
 
+/* Ux - According footer ------- */
+/* .according-footer .accordion-title .toggle {
+    width: 26px;
+	height: 26px; 
+}
+
+.according-footer.accordion .accordion-title {
+    color: rgb(var(--color-text-title), 90%);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 12px;	
+	pointer-events: none;
+}
+
+.according-footer.accordion .accordion-inner {
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+@media (min-width: 550px) {
+	.according-footer .accordion-inner {
+		display: block!important;
+	}
+	.according-footer .accordion-title .toggle{
+		display: none;
+	}
+} */
 
 /* Responsive ---------------- */
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {}
