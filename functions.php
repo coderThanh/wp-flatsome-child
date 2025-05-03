@@ -4,6 +4,7 @@ define( 'WEBSITE_CHILD_URL', get_stylesheet_directory_uri() );
 define( 'THEME_CHILD_ROOT', dirname( __FILE__ ) );
 
 // Required file
+require_once( THEME_CHILD_ROOT . '/inc/helper/function.php' );
 require_once( THEME_CHILD_ROOT . '/inc/code-post/init.php' );
 require_once( THEME_CHILD_ROOT . '/inc/code-woo/init.php' );
 
