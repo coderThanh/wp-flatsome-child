@@ -1,8 +1,4 @@
 <?php
-require_once( THEME_CHILD_ROOT . '/inc/code-woo/order/order.php' );
-require_once( THEME_CHILD_ROOT . '/inc/code-woo/walkers/class-wc-product-brand-list-walker.php' );
-require_once( THEME_CHILD_ROOT . '/inc/code-woo/widget/class-wc-widget-product-brands.php' );
-
 // Setup theme init
 add_action( 'init', 'pt_woo_setup' );
 
@@ -83,10 +79,3 @@ function pt_wc_custom_get_price_html_empty($price)
 add_filter( 'woocommerce_empty_price_html', 'pt_wc_custom_get_price_html_empty' );
 
 
-// 
-function pt_wc_register_widgets()
-{
-	register_widget( 'WC_Widget_Product_Brand' );
-}
-
-add_action( 'widgets_init', 'pt_wc_register_widgets' );
