@@ -56,6 +56,15 @@ body {
     min-height: 100vh;
     background-color: rgb(var(--bg));
     overflow: visible !important;
+    line-height: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.4;
+}
+
+p, li, td, th {
+	line-height: 1.6;
 }
 
 .button span {
