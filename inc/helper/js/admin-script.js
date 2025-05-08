@@ -268,6 +268,17 @@ function deleteInputWrap(event) {
 }
 
 //
+// Popup script
+function openPopup(event, idPopup, idCallback = '') {
+  event.preventDefault()
+
+  var popupWrap = document.getElementById(idPopup)
+
+  popupWrap.classList.add('show')
+  popupWrap.dataset.callbackId = idCallback
+}
+
+//
 function ptSearchPostAjax(event) {
   jQuery(document).ready(function ($) {
     var wrap = event.target.closest('.field-search-ajax')
@@ -322,9 +333,10 @@ function ptSearchPostAjax(event) {
 
         document.addEventListener('click', ptSearchPostAjaxAutoCloseBoxOptions)
 
-        if (data.length === 0 || !data) {
-          wrap.addClass('active')
+        wrap.addClass('active')
+        wrap.find('.el-result-wrap').css('display', 'block')
 
+        if (data.length === 0 || !data) {
           wrap.find('.el-result').css('display', 'none')
           wrap.find('.el-no-result').css('display', 'block')
 
@@ -332,14 +344,12 @@ function ptSearchPostAjax(event) {
         }
 
         const options = data.map((item) => {
-          return `<div onclick="ptSearchPostAjaxChoiced(event)" class="el-option" data-value="${item.ID}">${item.post_title}</div>`
+          return `<div onclick="ptSearchPostAjaxChoiced(event, '${item.ID}')" class="tw-p-[12px] tw-cursor-pointer hover:tw-bg-gray-100" data-value="${item.ID}">${item.post_title}</div>`
         })
 
         wrap.find('.el-result').html(options)
         wrap.find('.el-result').css('display', 'block')
         wrap.find('.el-no-result').css('display', 'none')
-
-        wrap.addClass('active')
       },
       complete: function () {
         hookBeforeExit()
@@ -348,32 +358,29 @@ function ptSearchPostAjax(event) {
   })
 }
 
-function ptSearchPostAjaxChoiced(event) {
+function ptSearchPostAjaxChoiced(event, id) {
   jQuery(document).ready(function ($) {
-    const option = $(event.target)
-    const wrap = $(event.target).closest('.field-search-ajax')
+    var wrap = $(event.target.closest('.popup-wrap'))
+    const idOfRenderItemsCurrent = wrap.attr('data-callback-Id')
+    const postTitle = event.target.innerText
+    const postID = $(event.target).attr('data-value')
 
-    const value = option.attr('data-value')
-    const label = option.text()
+    if (!idOfRenderItemsCurrent) return
+    var currentItems = $(`#${idOfRenderItemsCurrent}`)
+    const fieldName = currentItems.attr('data-field-name') ?? ''
 
-    const valueCurrent = wrap.attr('data-value')
+    currentItems.append(
+      `<div
+					class="input__content tw-border-0 !tw-border-b tw-border-gray-300 tw-border-solid tw-pb-[14px]  tw-flex tw-gap-[14px] tw-items-center">
+          <span class="tw-flex-1">${postTitle}</span>
+					<div class=" tw-cursor-pointer text-danger" onclick="deleteInputWrap(event)">Xóa item</div>
+					<input type="hidden" name="${fieldName}"
+						value="${postID}"
+						class="tw-hidden">
+				</div>`,
+    )
 
-    if (valueCurrent == value) {
-      wrap.attr('data-value', '')
-      wrap.attr('data-label', '')
-      wrap.find('input').val('')
-
-      wrap.removeClass('active')
-      document.removeEventListener('click', ptSearchPostAjaxAutoCloseBoxOptions)
-
-      return
-    }
-
-    wrap.attr('data-value', value)
-    wrap.attr('data-label', label)
-    wrap.find('input').val(label)
-    wrap.removeClass('active')
-    document.removeEventListener('click', ptSearchPostAjaxAutoCloseBoxOptions)
+    $(event.target).addClass('tw-opacity-50')
   })
 }
 
@@ -383,23 +390,4 @@ function ptSearchPostAjaxAutoCloseBoxOptions(event) {
     'field-search-ajax',
     ptSearchPostAjaxAutoCloseBoxOptions,
   )
-}
-
-const ptHandleCloseBoxOptions = (
-  event,
-  classWrap,
-  fnRemove,
-  classRemove = 'active',
-) => {
-  var wrapEl = event.target.closest(`.${classWrap}`)
-
-  if (event.target.classList.contains(classWrap) || wrapEl) {
-    return
-  }
-
-  document
-    .querySelectorAll(`.${classWrap}.${classRemove}`)
-    .forEach((item) => item.classList.remove(classRemove))
-
-  document.removeEventListener('click', fnRemove)
 }
