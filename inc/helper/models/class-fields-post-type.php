@@ -1,15 +1,17 @@
 <?php
-class FieldPostType {
+class FieldsPostType {
 	public $name_field;
 	public $post_type;
 
 	public $id;
+	public $is_multiple;
 
-	public function __construct($name_field, $post_type)
+	public function __construct($name_field, $post_type, $is_multiple = false)
 	{
-		$this->name_field = $name_field;
-		$this->post_type  = $post_type;
-		$this->id         = generateRandomString( 10 );
+		$this->name_field  = $name_field;
+		$this->post_type   = $post_type;
+		$this->id          = generateRandomString( 10 );
+		$this->is_multiple = $is_multiple;
 	}
 
 	/**
@@ -20,14 +22,14 @@ class FieldPostType {
 	 */
 	public function get_render_items($items, $id, $name_field)
 	{
-		$name = $name_field . '[' . $id . '][]';
+		$name = $this->is_multiple ? $name_field . '[' . $id . '][]' : $name_field . '[]';
 		ob_start();
 		?>
 		<div id="<?php echo esc_attr( $id ); ?>" class="tw-space-y-[14px]"
 			data-field-name="<?php echo esc_attr( $name ); ?>">
 			<?php foreach( $items as $key => $value ) : ?>
 				<?php
-				$post = get_post();
+				$post = get_post($value);
 				?>
 				<div
 					class="input__content tw-border-0 !tw-border-b tw-border-gray-300 tw-border-solid tw-pb-[14px] tw-flex tw-gap-[14px] tw-items-center">
@@ -49,7 +51,7 @@ class FieldPostType {
 		ob_start();
 		?>
 		<button type="button" class="btn btn-outline-primary"
-			onclick="openPopup(event, '<?php echo esc_attr( $this->id ); ?>', '<?php echo esc_attr( $idCurrentRenter ); ?>')"><?php _e( 'Thêm item' ); ?>
+			onclick="openPopupSearchPostType(event, '<?php echo esc_attr( $this->id ); ?>', '<?php echo esc_attr( $idCurrentRenter ); ?>')"><?php _e( 'Thêm item' ); ?>
 		</button>
 		<?php
 
@@ -72,7 +74,7 @@ class FieldPostType {
 				<div class="field-search-ajax tw-flex tw-gap-[12px] tw-items-start"
 					data-id="<?php echo esc_attr( $this->id ); ?>"
 					data-query="<?php echo esc_attr( json_encode( $query ) ); ?>"
-					data-ajax-url="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>" data-value="" data-label=""
+					data-ajax-url="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>"
 					data-isloading="false">
 					<div class="tw-relative tw-flex-1">
 						<input type="text" placeholder="Tìm kiếm" class="tw-w-full tw-h-[34px]">
@@ -85,7 +87,8 @@ class FieldPostType {
 							<div class="el-no-result tw-px-[12px]" style="display:none;">Không có kết quả</div>
 						</div>
 					</div>
-					<button type="button" onclick="ptSearchPostAjax(event)" class="btn btn-outline-primary !tw-m-0 tw-h-[34px]">Tìm kiếm</button>
+					<button type="button" onclick="ptSearchPostAjax(event)"
+						class="btn btn-outline-primary !tw-m-0 tw-h-[34px]">Tìm kiếm</button>
 				</div>
 				<div class="popup-actions tw-mt-[20px]">
 					<button type="button" class=" btn btn-outline-danger !tw-m-0"

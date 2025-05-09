@@ -278,6 +278,28 @@ function openPopup(event, idPopup, idCallback = '') {
   popupWrap.dataset.callbackId = idCallback
 }
 
+function openPopupSearchPostType(
+  event,
+  idPopup,
+  idCallback = '',
+  callbackOnChoiced = null,
+) {
+  event.preventDefault()
+
+  var popupWrap = document.getElementById(idPopup)
+
+  popupWrap.classList.add('show')
+  popupWrap.dataset.callbackId = idCallback
+
+  jQuery(document).ready(function ($) {
+    if (callbackOnChoiced) {
+      $(popupWrap)
+        .find('.field-search-ajax')
+        .attr('data-handle-on-choiced', callbackOnChoiced)
+    }
+  })
+}
+
 //
 function ptSearchPostAjax(event) {
   jQuery(document).ready(function ($) {
@@ -310,7 +332,7 @@ function ptSearchPostAjax(event) {
 
     // fetch data
     const ajaxUrl = wrap.attr('data-ajax-url')
-
+    const handleOnChoiced = wrap.attr('data-handle-on-choiced')
     const searchValue = wrap.find('input').val()
 
     var query = wrap.attr('data-query')
@@ -344,7 +366,13 @@ function ptSearchPostAjax(event) {
         }
 
         const options = data.map((item) => {
-          return `<div onclick="ptSearchPostAjaxChoiced(event, '${item.ID}')" class="tw-p-[12px] tw-cursor-pointer hover:tw-bg-gray-100" data-value="${item.ID}">${item.post_title}</div>`
+          return `<div onclick="${
+            handleOnChoiced
+              ? `${handleOnChoiced}(event)`
+              : 'ptSearchPostAjaxChoiced(event)'
+          }" class="tw-p-[12px] tw-cursor-pointer hover:tw-bg-gray-100" data-value="${
+            item.ID
+          }">${item.post_title}</div>`
         })
 
         wrap.find('.el-result').html(options)
@@ -358,7 +386,7 @@ function ptSearchPostAjax(event) {
   })
 }
 
-function ptSearchPostAjaxChoiced(event, id) {
+function ptSearchPostAjaxChoiced(event) {
   jQuery(document).ready(function ($) {
     var wrap = $(event.target.closest('.popup-wrap'))
     const idOfRenderItemsCurrent = wrap.attr('data-callback-Id')
