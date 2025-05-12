@@ -292,10 +292,56 @@ function openPopupSearchPostType(
   popupWrap.dataset.callbackId = idCallback
 
   jQuery(document).ready(function ($) {
+    $(popupWrap)
+      .find('.field-search-ajax')
+      .attr('data-handle-on-choiced', callbackOnChoiced)
+
+    // reset event choiced if item rendered
+    if (callbackOnChoiced) {
+      $(popupWrap)
+        .find('.el-result-item')
+        .attr('onclick', `${callbackOnChoiced}(event)`)
+    } else {
+      $(popupWrap)
+        .find('.el-result-item')
+        .attr('onclick', `ptSearchPostAjaxChoiced(event)`)
+    }
+  })
+}
+
+function openPopupSearchPostTypeToSelectOther(
+  event,
+  idPopup,
+  idCallback = '',
+  callbackOnChoiced = null,
+) {
+  event.preventDefault()
+
+  event.target
+    .closest('.input__content')
+    .classList.add('input__content-current-change')
+
+  var popupWrap = document.getElementById(idPopup)
+
+  popupWrap.classList.add('show')
+  popupWrap.dataset.callbackId = idCallback
+
+  jQuery(document).ready(function ($) {
     if (callbackOnChoiced) {
       $(popupWrap)
         .find('.field-search-ajax')
         .attr('data-handle-on-choiced', callbackOnChoiced)
+    }
+
+    // reset event choiced if item rendered
+    if (callbackOnChoiced) {
+      $(popupWrap)
+        .find('.el-result-item')
+        .attr('onclick', `${callbackOnChoiced}(event)`)
+    } else {
+      $(popupWrap)
+        .find('.el-result-item')
+        .attr('onclick', `ptSearchPostAjaxChoiced(event)`)
     }
   })
 }
@@ -370,7 +416,7 @@ function ptSearchPostAjax(event) {
             handleOnChoiced
               ? `${handleOnChoiced}(event)`
               : 'ptSearchPostAjaxChoiced(event)'
-          }" class="tw-p-[12px] tw-cursor-pointer hover:tw-bg-gray-100" data-value="${
+          }" class="tw-p-[12px] tw-cursor-pointer hover:tw-bg-gray-100 el-result-item" data-value="${
             item.ID
           }">${item.post_title}</div>`
         })
@@ -389,6 +435,7 @@ function ptSearchPostAjax(event) {
 function ptSearchPostAjaxChoiced(event) {
   jQuery(document).ready(function ($) {
     var wrap = $(event.target.closest('.popup-wrap'))
+    const idPopup = wrap.attr('id')
     const idOfRenderItemsCurrent = wrap.attr('data-callback-Id')
     const postTitle = event.target.innerText
     const postID = $(event.target).attr('data-value')
@@ -400,14 +447,42 @@ function ptSearchPostAjaxChoiced(event) {
     currentItems.append(
       `<div
 					class="input__content tw-border-0 !tw-border-b tw-border-gray-300 tw-border-solid tw-pb-[14px]  tw-flex tw-gap-[14px] tw-items-center">
-          <span class="tw-flex-1">${postTitle}</span>
+          <span class="tw-flex-1 el-post-title">${postTitle}</span>
+          <div class=" tw-cursor-pointer text-success"
+						onclick="openPopupSearchPostTypeToSelectOther(event, '${idPopup}', '${idOfRenderItemsCurrent}', 'ptSearchPostAjaxChoicedToChange')">Chọn</div>
 					<div class=" tw-cursor-pointer text-danger" onclick="deleteInputWrap(event)">Xóa item</div>
 					<input type="hidden" name="${fieldName}"
 						value="${postID}"
-						class="tw-hidden">
+						class="tw-hidden el-post-input">
 				</div>`,
     )
 
+    $(event.target).addClass('tw-opacity-50')
+  })
+}
+
+function ptSearchPostAjaxChoicedToChange(event) {
+  jQuery(document).ready(function ($) {
+    var wrap = $(event.target.closest('.popup-wrap'))
+    const idOfRenderItemsCurrent = wrap.attr('data-callback-Id')
+    const postTitle = event.target.innerText
+    const postID = $(event.target).attr('data-value')
+
+    if (!idOfRenderItemsCurrent) return
+    var currentItems = $(`#${idOfRenderItemsCurrent}`)
+
+    currentItems
+      .find('.input__content-current-change .el-post-title')
+      .text(postTitle)
+    currentItems
+      .find('.input__content-current-change .el-post-input')
+      .val(postID)
+
+    currentItems
+      .find('.input__content-current-change')
+      .removeClass('input__content-current-change')
+
+    wrap.removeClass('show')
     $(event.target).addClass('tw-opacity-50')
   })
 }

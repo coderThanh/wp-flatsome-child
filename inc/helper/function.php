@@ -429,3 +429,42 @@ function pt_get_shortcode_inline_css($args)
 	if( $style )
 		return 'style="' . esc_attr( $style ) . '"';
 }
+
+// 
+function parse_color_to_rgb_string($color)
+{
+	$color = trim( $color );
+
+	// Kiểm tra hex (#000 hoặc #000000)
+	if( preg_match( '/^#([a-fA-F0-9]{3}){1,2}$/', $color ) ) {
+		$hex = ltrim( $color, '#' );
+		if( strlen( $hex ) === 3 ) {
+			$hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+		}
+		$r = hexdec( substr( $hex, 0, 2 ) );
+		$g = hexdec( substr( $hex, 2, 2 ) );
+		$b = hexdec( substr( $hex, 4, 2 ) );
+		return "{$r} {$g} {$b}";
+	}
+
+	// Kiểm tra rgb hoặc rgba với dấu phẩy hoặc khoảng trắng
+	if( preg_match( '/^rgba?\(([^)]+)\)$/', $color, $matches ) ) {
+		$parts = preg_split( '/[\s,]+/', trim( $matches[1] ) );
+		if( count( $parts ) >= 3 ) {
+			$r = intval( $parts[0] );
+			$g = intval( $parts[1] );
+			$b = intval( $parts[2] );
+			return "{$r} {$g} {$b}";
+		}
+	}
+
+	// Kiểm tra rgb hoặc rgba với dấu cách (chuẩn CSS mới)
+	if( preg_match( '/^rgba?\s*\(\s*([0-9]+)\s+([0-9]+)\s+([0-9]+)(?:\s*[,\/]\s*([0-9.]+))?\s*\)$/', $color, $matches ) ) {
+		$r = intval( $matches[1] );
+		$g = intval( $matches[2] );
+		$b = intval( $matches[3] );
+		return "{$r} {$g} {$b}";
+	}
+
+	return false; // Không phải màu hợp lệ
+}

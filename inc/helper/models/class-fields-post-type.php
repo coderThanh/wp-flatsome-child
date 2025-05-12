@@ -29,15 +29,19 @@ class FieldsPostType {
 			data-field-name="<?php echo esc_attr( $name ); ?>">
 			<?php foreach( $items as $key => $value ) : ?>
 				<?php
-				$post = get_post($value);
+				$post = get_post( $value );
 				?>
 				<div
 					class="input__content tw-border-0 !tw-border-b tw-border-gray-300 tw-border-solid tw-pb-[14px] tw-flex tw-gap-[14px] tw-items-center">
-					<span class="tw-flex-1"><?php echo esc_attr( $post->post_title ); ?></span>
+					<span class="tw-flex-1 el-post-title"><?php echo esc_attr( $post->post_title ); ?></span>
+					<div class=" tw-cursor-pointer text-success"
+						onclick="openPopupSearchPostTypeToSelectOther(event, '<?php echo esc_attr( $this->id ); ?>', '<?php echo esc_attr( $id ); ?>', 'ptSearchPostAjaxChoicedToChange')">
+						<?php _e( 'Chọn' ); ?>
+					</div>
 					<div class=" tw-cursor-pointer text-danger" onclick="deleteInputWrap(event)">Xóa item</div>
 					<input type="hidden" name="<?php echo esc_attr( $name ); ?>"
 						value="<?php echo esc_attr( $value ); ?>"
-						class="tw-hidden">
+						class="tw-hidden el-post-input">
 				</div>
 			<?php endforeach; ?>
 		</div>
