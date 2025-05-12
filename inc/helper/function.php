@@ -468,3 +468,58 @@ function parse_color_to_rgb_string($color)
 
 	return false; // Không phải màu hợp lệ
 }
+
+
+/**
+ * Loại bỏ dấu tiếng Việt khỏi chuỗi
+ */
+function remove_vietnamese_accents($str)
+{
+	$str = preg_replace( [ 
+		'/[áàảãạăắằẳẵặâấầẩẫậ]/u',
+		'/[ÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬ]/u',
+		'/[éèẻẽẹêếềểễệ]/u',
+		'/[ÉÈẺẼẸÊẾỀỂỄỆ]/u',
+		'/[íìỉĩị]/u',
+		'/[ÍÌỈĨỊ]/u',
+		'/[óòỏõọôốồổỗộơớờởỡợ]/u',
+		'/[ÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢ]/u',
+		'/[úùủũụưứừửữự]/u',
+		'/[ÚÙỦŨỤƯỨỪỬỮỰ]/u',
+		'/[ýỳỷỹỵ]/u',
+		'/[ÝỲỶỸỴ]/u',
+		'/[đ]/u',
+		'/[Đ]/u',
+	], [ 
+		'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U', 'y', 'Y', 'd', 'D',
+	], $str );
+	return $str;
+}
+
+/**
+ * Summary of cover_string_to_slug
+ * @param string $title
+ * @return string
+ */
+function cover_string_to_slug($title)
+{
+	// Chuyển về chữ thường
+	$title = mb_strtolower( $title, 'UTF-8' );
+
+	// Loại bỏ dấu tiếng Việt
+	$title = remove_vietnamese_accents( $title );
+
+	// Loại bỏ ký tự đặc biệt
+	$title = preg_replace( '/[^a-z0-9\s-]/', '', $title );
+
+	// Thay thế khoảng trắng và dấu gạch ngang liên tiếp thành 1 dấu gạch ngang
+	$title = preg_replace( '/[\s-]+/', '-', $title );
+
+	// Thay thế dấu gạch ngang liên tiếp thành 1 dấu gạch ngang
+	$title = preg_replace( '/[--]+/', '-', $title );
+
+	// Loại bỏ dấu gạch ngang ở đầu và cuối
+	$title = trim( $title, '-' );
+
+	return $title;
+}

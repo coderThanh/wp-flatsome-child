@@ -18,14 +18,17 @@ class FieldsPostType {
 	 * Render danh sách các items
 	 *
 	 * @param array $items Mảng các items cần render
+	 * @param string $id ID của danh sách items
+	 * @param string $name_field Tên trường của danh sách items
+	 * @param string $id_current_render ID của trường hiện tại đang render
 	 * @return string HTML của danh sách items
 	 */
-	public function get_render_items($items, $id, $name_field)
+	public function get_render_items($items, $id, $name_field, $id_current_render = null)
 	{
 		$name = $this->is_multiple ? $name_field . '[' . $id . '][]' : $name_field . '[]';
 		ob_start();
 		?>
-		<div id="<?php echo esc_attr( $id ); ?>" class="tw-space-y-[14px]"
+		<div id="<?php echo esc_attr( $id_current_render ? $id_current_render : $id ); ?>" class="tw-space-y-[14px]"
 			data-field-name="<?php echo esc_attr( $name ); ?>">
 			<?php foreach( $items as $key => $value ) : ?>
 				<?php

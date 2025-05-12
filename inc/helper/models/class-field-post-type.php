@@ -7,7 +7,7 @@ class FieldPostType extends FieldsPostType {
 	 * @param string $itemId Mảng các items cần render
 	 * @return string HTML của danh sách items
 	 */
-	public function get_render_items($itemId, $id, $name_field)
+	public function get_render_items($itemId, $id, $name_field, $id_current_render = null)
 	{
 		$post = get_post( $itemId );
 
