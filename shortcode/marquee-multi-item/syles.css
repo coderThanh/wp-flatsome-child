@@ -15,11 +15,7 @@
 
 .marquee-inner .item {
   padding: 0 30px;
-<<<<<<< HEAD
-  animation: 5s marquee infinite linear;
-=======
   animation: var(--duration) marquee infinite linear;
->>>>>>> 07f670f (init)
 }
 
 .marquee-inner:hover .item {
@@ -35,8 +31,6 @@
     transform: translateX(-100%);
   }
 }
-<<<<<<< HEAD
-=======
 
 
 @media only screen and (max-width: 849px) {
@@ -50,4 +44,3 @@
     animation-duration: var(--duration-sm, var(--duration-md, var(--duration)));
   }
 }
->>>>>>> 07f670f (init)
