@@ -1,4 +1,4 @@
-.pt-btn {
+body .pt-btn {
     --btn-shadown: unset;
     --btn-shadown-hover: unset;
     --btn-bg: unset;
@@ -24,7 +24,7 @@
     font-weight: 400;
 }
 
-.pt-btn:hover {
+body .pt-btn:hover {
     box-shadow: var(--btn-shadown-hover);
     background-color: var(--btn-bg-hover);
     color: var(--btn-color-hover);

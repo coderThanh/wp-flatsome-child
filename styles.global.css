@@ -1653,23 +1653,33 @@ body .page-numbers>li {
 }
 
 /* Custom scroll bar */
-/* .wrap-scroll-bar::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
-  display: block;
-  -webkit-appearance: none;
+.scrollbar::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
 }
 
-.wrap-scroll-bar::-webkit-scrollbar-thumb {
-  background: rgb(var(--color-primary)) !important;
-  border-radius: 99px;
+.scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(var(--bg-opposite)/ 12%);
+    border-radius: 100px;
 }
 
-.wrap-scroll-bar::-webkit-scrollbar-track {
-  margin-left: 20vw;
-  margin-right: 20vw;
-  background: #ececec;
-} */
+.scrollbar::-webkit-scrollbar-track {
+    background: rgb(var(--bg-opposite)/ 8%);
+}
+
+.scrollbar-opposite::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+.scrollbar-opposite::-webkit-scrollbar-thumb {
+    background: rgb(var(--bg)/ 12%);
+    border-radius: 100px;
+}
+
+.scrollbar-opposite::-webkit-scrollbar-track {
+    background: rgb(var(--bg)/ 8%);
+}
 
 /* Plugin - Easy Table Content */
 /* div#ez-toc-container {
