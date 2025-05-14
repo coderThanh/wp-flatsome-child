@@ -1659,12 +1659,12 @@ body .page-numbers>li {
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-    background: rgb(var(--bg-opposite)/ 12%);
+    background: rgb(var(--bg-opposite), 12%);
     border-radius: 100px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
-    background: rgb(var(--bg-opposite)/ 8%);
+    background: rgb(var(--bg-opposite), 8%);
 }
 
 .scrollbar-opposite::-webkit-scrollbar {
@@ -1673,12 +1673,12 @@ body .page-numbers>li {
 }
 
 .scrollbar-opposite::-webkit-scrollbar-thumb {
-    background: rgb(var(--bg)/ 12%);
+    background: rgb(var(--bg), 12%);
     border-radius: 100px;
 }
 
 .scrollbar-opposite::-webkit-scrollbar-track {
-    background: rgb(var(--bg)/ 8%);
+    background: rgb(var(--bg), 8%);
 }
 
 /* Plugin - Easy Table Content */

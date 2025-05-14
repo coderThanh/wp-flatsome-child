@@ -320,3 +320,70 @@ function handleVideoController() {
     })
   })
 }
+
+//
+const handleToolTip = () => {
+  jQuery(document).ready(function ($) {
+    $('.tooltip_wrap').each(function (indexInArray, valueElement) {
+      const parentElement = $(valueElement)
+      const tooltipBoxRight = parentElement.find('.tooltip_box-right')
+      const tooltipBox = tooltipBoxRight.length
+        ? tooltipBoxRight
+        : parentElement.find('.tooltip_box')
+
+      parentElement.on('mouseenter', function (e) {
+        const windowWidth = $(window).width()
+        const windowHeight = $(window).height()
+        const parentOffset = parentElement.offset()
+        const parentWidth = parentElement.outerWidth()
+        const parentHeight = parentElement.outerHeight()
+        const tooltipWidth = tooltipBox.outerWidth()
+        const tooltipHeight = tooltipBox.outerHeight()
+
+        let left, top
+
+        if (tooltipBoxRight.length) {
+          // Center-right: tooltip nằm giữa bên phải phần tử cha, top theo vị trí chuột
+          left = parentOffset.left + parentWidth + 12
+          top = e.clientY - tooltipHeight / 2
+
+          // Nếu vượt phải màn hình thì đẩy sát mép phải
+          if (left + tooltipWidth > windowWidth) {
+            left = windowWidth - tooltipWidth - 8
+          }
+          // Nếu vượt trên/dưới thì căn lại
+          if (top < 0) top = 8
+          if (top + tooltipHeight > windowHeight)
+            top = windowHeight - tooltipHeight - 8
+        } else {
+          // Top-center: tooltip nằm phía trên, căn giữa phần tử cha, top theo vị trí chuột
+          left = parentOffset.left + parentWidth / 2 - tooltipWidth / 2
+          top = e.clientY - tooltipHeight - 12
+
+          // Nếu vượt trái/phải màn hình thì căn lại
+          if (left < 0) left = 8
+          if (left + tooltipWidth > windowWidth)
+            left = windowWidth - tooltipWidth - 8
+          // Nếu vượt trên màn hình thì đặt xuống dưới vị trí chuột
+          if (top < 0) top = e.clientY + 12
+          if (top + tooltipHeight > windowHeight)
+            top = windowHeight - tooltipHeight - 8
+        }
+
+        tooltipBox
+          .css({
+            position: 'fixed',
+            left: left + 'px',
+            top: top + 'px',
+            zIndex: 1000,
+            display: 'block',
+          })
+          .addClass('show')
+      })
+
+      parentElement.on('mouseleave', function () {
+        tooltipBox.css({ display: 'none' }).removeClass('show')
+      })
+    })
+  })
+}
