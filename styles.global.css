@@ -1363,6 +1363,10 @@ body .variations th {
     --bg-gray: rgb(var(--bg-2nd));
 }
 
+.woocommerce .shop_table a {
+	color: inherit;
+}
+
 .cart_item .product-name a {
     color: rgb(var(--color-text-sub));
     font-weight: 500;
@@ -1387,6 +1391,10 @@ body .variations th {
     border-radius: var(--radius-small);
     border-width: 1px;
     display: inline-flex;
+}
+
+.woocommerce .woocommerce-notices-wrapper .message-container .wc-forward {
+    display: none;
 }
 
 
@@ -1970,9 +1978,80 @@ div#ez-toc-container .ez-toc-heading-level-2 > a {
 
 
 /* Wishlist Page --- */
-.wishlist-title-container {
-    margin-top: 20px;
+.wishlist-title-container .wishlist-title .btn {
+	display: none;
 }
+
+.woocommerce .wishlist-title-container .wishlist-title {
+    margin-bottom: 20px;
+}
+
+.woocommerce .wishlist_table thead th {
+	border-color: var(--border-color);
+}
+
+.woocommerce .shop_table.wishlist_table tr td {
+	font-size: 14px;
+}
+
+body .wishlist_table .product-add-to-cart a {
+    margin: 0 0 5px !important;
+}
+
+body .wishlist_table.mobile li .additional-info-wrapper .product-remove {
+    text-align: center;
+}
+
+body .wishlist_table.mobile li table.additional-info td {
+    font-size: 14px;
+}
+
+
+/* Woocomerce - Acoount --- */
+.woocommerce-MyAccount-content .dashboard-links {
+	gap: 15px;
+}
+
+.woocommerce-MyAccount-content .dashboard-links li {
+	margin-left: 0;
+	margin-bottom: 0;
+}
+
+.woocommerce-MyAccount-content .dashboard-links a {
+	padding: 12px;
+    font-size: 1rem;
+    color: rgb(var(--color-text-title));
+    border: 1px solid rgb(var(--color-text-title), 0.15);
+	margin: 0;
+	background-color: transparent;
+}
+
+.woocommerce-MyAccount-content .dashboard-links a:hover {
+	border-color: rgb(var(--color-text-title));
+}
+
+.shop_table .button {
+	background-color: unset;
+    text-transform: unset;
+    letter-spacing: 0;
+}
+
+.woocommerce .touch-scroll-table {
+	box-shadow: none;
+}
+
+.woocommerce .touch-scroll-table .shop_table {
+	min-width: 600px;
+}
+
+.woocommerce-MyAccount-content .woocommerce-Address-title {
+	margin-bottom: 20px;
+}
+
+.woocommerce-MyAccount-content address {
+	line-height: 1.5;
+}
+
 
 /* Ux - Tab Nav To Slider ------ */
 /* .tab-nav-slider .swiper-tab-nav .tab {
