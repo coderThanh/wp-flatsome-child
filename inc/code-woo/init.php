@@ -10,6 +10,10 @@ function pt_woo_setup()
 	add_filter( 'woocommerce_add_to_cart_fragments', 'pt_header_add_to_cart_custom_icon_fragment_count_label' );
 
 	remove_filter( 'woocommerce_add_to_cart_fragments', 'flatsome_header_add_to_cart_fragment_count_label', 0 );
+
+	// change mobile filter button place
+	remove_action( 'flatsome_category_title', 'flatsome_add_category_filter_button', 20 );
+	add_action( 'flatsome_category_title_alt', 'flatsome_add_category_filter_button', 10 );
 }
 
 

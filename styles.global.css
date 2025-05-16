@@ -2027,7 +2027,6 @@ div#ez-toc-container .ez-toc-heading-level-2 > a {
     font-weight: 600;
     line-height: 1.4;
     margin-bottom: 12px;	
-	pointer-events: none;
 }
 
 .according-footer.accordion .accordion-inner {
@@ -2042,6 +2041,9 @@ div#ez-toc-container .ez-toc-heading-level-2 > a {
 	.according-footer .accordion-title .toggle{
 		display: none;
 	}
+    .according-footer.accordion .accordion-title {
+    pointer-events: none;
+    cursor: default;
 } */
 
 /* Responsive ---------------- */
