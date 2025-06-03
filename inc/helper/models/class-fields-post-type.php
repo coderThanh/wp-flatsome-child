@@ -6,11 +6,11 @@ class FieldsPostType {
 	public $id;
 	public $is_multiple;
 
-	public function __construct($name_field, $post_type, $is_multiple = false)
+	public function __construct($name_field, $post_type, $is_multiple = false, $id = null)
 	{
 		$this->name_field  = $name_field;
 		$this->post_type   = $post_type;
-		$this->id          = generateRandomString( 10 );
+		$this->id          = $id ? $id : generateRandomString( 10 );
 		$this->is_multiple = $is_multiple;
 	}
 
@@ -26,19 +26,25 @@ class FieldsPostType {
 	public function get_render_items($items, $id, $name_field, $id_current_render = null)
 	{
 		$name = $this->is_multiple ? $name_field . '[' . $id . '][]' : $name_field . '[]';
+
+		$id_box = $id_current_render ? $id_current_render : $id;
 		ob_start();
 		?>
-		<div id="<?php echo esc_attr( $id_current_render ? $id_current_render : $id ); ?>" class="tw-space-y-[14px]"
+		<div id="<?php echo esc_attr( $id_box ); ?>" class="tw-space-y-[14px]"
 			data-field-name="<?php echo esc_attr( $name ); ?>">
 			<?php foreach( $items as $key => $value ) : ?>
 				<?php
 				$post = get_post( $value );
+
+				if( !$post ) {
+					continue;
+				}
 				?>
 				<div
 					class="input__content tw-border-0 !tw-border-b tw-border-gray-300 tw-border-solid tw-pb-[14px] tw-flex tw-gap-[14px] tw-items-center">
 					<span class="tw-flex-1 el-post-title"><?php echo esc_attr( $post->post_title ); ?></span>
 					<div class=" tw-cursor-pointer text-success"
-						onclick="openPopupSearchPostTypeToSelectOther(event, '<?php echo esc_attr( $this->id ); ?>', '<?php echo esc_attr( $id ); ?>', 'ptSearchPostAjaxChoicedToChange')">
+						onclick="openPopupSearchPostTypeToSelectOther(event, '<?php echo esc_attr( $this->id ); ?>', '<?php echo esc_attr( $id_box ); ?>', 'ptSearchPostAjaxChoicedToChange')">
 						<?php _e( 'Chọn' ); ?>
 					</div>
 					<div class=" tw-cursor-pointer text-danger" onclick="deleteInputWrap(event)">Xóa item</div>

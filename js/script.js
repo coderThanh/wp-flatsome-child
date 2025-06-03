@@ -321,7 +321,6 @@ function handleVideoController() {
   })
 }
 
-
 //
 const handleToolTipOn = (event) => {
   jQuery(document).ready(function ($) {
@@ -388,3 +387,94 @@ const handleToolTipLeave = (event) => {
     tooltipBox.css({ display: 'none' }).removeClass('show')
   })
 }
+
+// Horizontal scroll animation for .can-scroll-vertical
+function addHorizontalScroll(el) {
+  var isDown = false
+  var startX
+  var scrollLeft
+  var lastScrollLeft
+  var rafId
+  var velocity = 0
+  var momentum = false
+
+  function animateMomentum(element) {
+    if (!momentum) return
+    velocity *= 0.95
+    if (Math.abs(velocity) > 0.5) {
+      element.scrollLeft += velocity
+      rafId = requestAnimationFrame(function () {
+        animateMomentum(element)
+      })
+    } else {
+      momentum = false
+      velocity = 0
+      cancelAnimationFrame(rafId)
+    }
+  }
+
+  el.addEventListener('mousedown', function (e) {
+    isDown = true
+    el.classList.add('scrolling')
+    startX = e.pageX - el.offsetLeft
+    scrollLeft = el.scrollLeft
+    lastScrollLeft = el.scrollLeft
+    velocity = 0
+    momentum = false
+  })
+  el.addEventListener('mouseleave', function () {
+    isDown = false
+    el.classList.remove('scrolling')
+    if (velocity !== 0) {
+      momentum = true
+      animateMomentum(el)
+    }
+  })
+  el.addEventListener('mouseup', function () {
+    isDown = false
+    el.classList.remove('scrolling')
+    if (velocity !== 0) {
+      momentum = true
+      animateMomentum(el)
+    }
+  })
+  el.addEventListener('mousemove', function (e) {
+    if (!isDown) return
+    e.preventDefault()
+    var x = e.pageX - el.offsetLeft
+    var walk = x - startX
+    el.scrollLeft = scrollLeft - walk
+    velocity = el.scrollLeft - lastScrollLeft
+    lastScrollLeft = el.scrollLeft
+  })
+  // Touch events
+  el.addEventListener('touchstart', function (e) {
+    isDown = true
+    startX = e.touches[0].pageX - el.offsetLeft
+    scrollLeft = el.scrollLeft
+    lastScrollLeft = el.scrollLeft
+    velocity = 0
+    momentum = false
+  })
+  el.addEventListener('touchend', function () {
+    isDown = false
+    if (velocity !== 0) {
+      momentum = true
+      animateMomentum(el)
+    }
+  })
+  el.addEventListener('touchmove', function (e) {
+    if (!isDown) return
+    var x = e.touches[0].pageX - el.offsetLeft
+    var walk = x - startX
+    el.scrollLeft = scrollLeft - walk
+    velocity = el.scrollLeft - lastScrollLeft
+    lastScrollLeft = el.scrollLeft
+  })
+}
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   document.querySelectorAll('.can-scroll-vertical').forEach(function (el) {
+//     addHorizontalScroll(el)
+//   })
+// })

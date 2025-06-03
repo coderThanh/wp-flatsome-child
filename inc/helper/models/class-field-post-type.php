@@ -11,6 +11,10 @@ class FieldPostType extends FieldsPostType {
 	{
 		$post = get_post( $itemId );
 
+		if( !$post ) {
+			return '';
+		}
+
 		ob_start();
 		?>
 		<div class="tw-flex tw-gap-[14px] tw-items-center field-post-by-type-wrap">

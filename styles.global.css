@@ -1363,7 +1363,7 @@ body .variations th {
     --bg-gray: rgb(var(--bg-2nd));
 }
 
-.woocommerce .shop_table a {
+.woocommerce .shop_table a:not(.button) {
 	color: inherit;
 }
 
@@ -2030,10 +2030,12 @@ body .wishlist_table.mobile li table.additional-info td {
 	border-color: rgb(var(--color-text-title));
 }
 
-.shop_table .button {
+.my_account_orders .button {
 	background-color: unset;
     text-transform: unset;
     letter-spacing: 0;
+    color: rgb(var(--color-text-title));
+    font-weight: 500;
 }
 
 .woocommerce .touch-scroll-table {

@@ -25,6 +25,10 @@ class FieldPostTypeWithOption extends FieldsPostType {
 			<?php foreach( $items as $key => $value ) : ?>
 				<?php
 				$post = get_post( $value );
+
+				if( !$post ) {
+					continue;
+				}
 				?>
 				<div
 					class="input__content tw-border-0 !tw-border-b tw-border-gray-300 tw-border-solid tw-pb-[14px] tw-space-y-[14px]">
