@@ -13,6 +13,7 @@ function pt_ux_builder_product_by_brand()
 
 	$repeater_columns = '4';
 	$repeater_type    = 'slider';
+	$repeater_col_spacing = 'small';
 
 	$default_text_align = 'center';
 
