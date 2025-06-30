@@ -523,3 +523,20 @@ function cover_string_to_slug($title)
 
 	return $title;
 }
+
+function get_style_responsive($name, $lg, $md, $sm) : string
+{
+	$style = '';
+
+	if( !empty( $lg ) ) {
+		$style .= '--' . $name . ': ' . $lg . ';';
+	}
+	if( !empty( $md ) ) {
+		$style .= '--' . $name . '-md: ' . $md . ';';
+	}
+	if( !empty( $sm ) ) {
+		$style .= '--' . $name . '-sm: ' . $sm . ';';
+	}
+
+	return $style;
+}

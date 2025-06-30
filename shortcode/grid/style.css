@@ -1,0 +1,23 @@
+.pt-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--col), 1fr);
+  align-items: var(--align);
+  gap: var(--gap);
+}
+
+/* Responsive */
+@media only screen and (max-width: 849px) {
+  .pt-grid {
+    grid-template-columns: repeat(var(--col-md, var(--col)), 1fr);
+    align-items: var(--align-md, var(--align));
+    gap: var(--gap-md, var(--gap));
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .pt-grid {
+    grid-template-columns: repeat(var(--col-sm, var(--col-md, var(--col))), 1fr);
+    align-items: var(--align-sm, var(--align-md, var(--align)));
+    gap: var(--gap-sm, var(--gap-md, var(--gap)));
+  }
+}
