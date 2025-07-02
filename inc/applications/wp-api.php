@@ -12,7 +12,7 @@ class WP_API {
 
 				return $responseBody;
 			}
-			
+
 			return $res;
 		} catch ( Exception $ex ) {
 			return $ex;
@@ -23,9 +23,20 @@ class WP_API {
 	public static function post(string $domain, string $body)
 	{
 		try {
+			$refer = '';
+
+			if( !empty( $_REQUEST['_wp_http_referer'] ) && is_string( $_REQUEST['_wp_http_referer'] ) ) {
+				$refer = $_REQUEST['_wp_http_referer'];
+			} elseif( !empty( $_SERVER['HTTP_REFERER'] ) ) {
+				$refer = $_SERVER['HTTP_REFERER'];
+			}
+
 			$res = wp_remote_post( $domain, [ 
 				'body'    => $body,
-				'headers' => [ 'Content-Type' => 'application/json' ],
+				'headers' => [ 
+					'Content-Type' => 'application/json',
+					'Referer'      => $refer,
+				],
 			] );
 
 			// return $res;
@@ -36,7 +47,7 @@ class WP_API {
 				return $responseBody;
 			}
 
-			return  $res;
+			return $res;
 		} catch ( Exception $ex ) {
 			return $ex;
 		}
