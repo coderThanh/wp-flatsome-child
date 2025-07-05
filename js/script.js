@@ -184,26 +184,7 @@ function handleNoTranslateGoogle() {
 // handleHeaderMenuItemOverLow()
 
 // window.addEventListener('resize', handleHeaderMenuItemOverLow)
-const ptHandleCloseBoxOptions = (
-  event,
-  classWrap,
-  fnRemove,
-  classRemove = 'active',
-) => {
-  // event.preventDefault()
 
-  var wrapEl = event.target.closest(`.${classWrap}`)
-
-  if (event.target.classList.contains(classWrap) || wrapEl) {
-    return
-  }
-
-  document
-    .querySelectorAll(`.${classWrap}.${classRemove}`)
-    .forEach((item) => item.classList.remove(classRemove))
-
-  document.removeEventListener('click', fnRemove)
-}
 
 /**
  * Init swiper for tab navigation.
