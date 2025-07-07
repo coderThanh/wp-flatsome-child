@@ -63,6 +63,9 @@ function pt_ux_builder_grid()
 
 //
 add_shortcode( 'pt-grid', 'pt_shortcode_grid' );
+add_shortcode( 'pt-grid_inner', 'pt_shortcode_grid' );
+add_shortcode( 'pt-grid_inner_inner', 'pt_shortcode_grid' );
+add_shortcode( 'pt-grid_inner_1', 'pt_shortcode_grid' );
 
 function pt_shortcode_grid($atts, $content = null)
 {

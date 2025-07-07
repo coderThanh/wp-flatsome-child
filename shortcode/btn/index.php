@@ -128,10 +128,9 @@ function pt_ux_builder_btn()
 						'options' => require( THEME_CHILD_ROOT . '/../flatsome/inc/builder/shortcodes/values/icons.php' ),
 					),
 					'icon_pos'  => array(
-						'conditions' => 'icon',
-						'type'       => 'select',
-						'heading'    => 'Position',
-						'options'    => array(
+						'type'    => 'select',
+						'heading' => 'Position',
+						'options' => array(
 							''     => 'Right',
 							'left' => 'Left',
 						),
@@ -211,6 +210,7 @@ function pt_shortcode_btn($atts, $content = null)
 	$svg_html = $svg ? shortcode_image_basic( [ 
 		'id'    => $svg,
 		'width' => $svg_width,
+		'height' => $svg_width,
 		'type'  => 'svg',
 		'class' => 'pt-btn__icon',
 	] ) : '';
@@ -222,32 +222,34 @@ function pt_shortcode_btn($atts, $content = null)
 			'<a href="%s" class="%s" target="%s" %s %s>
                 %s%s
                 <span class="pt-btn__text">%s</span>
-                %s
+                %s%s
             </a>',
 			esc_url( $link ),
 			esc_attr( $classes ),
 			esc_attr( $target ),
 			$rel_attr,
 			$style,
-			$icon_pos === 'left' ? $icon_left : '',
-			$svg_html,
+			$icon_left,
+			$icon_pos === 'left' ? $svg_html : '',
 			esc_html( $text ),
-			$icon_pos !== 'left' ? $icon_right : ''
+			$icon_right,
+			$icon_pos !== 'left' ? $svg_html : '',
 		);
 	} else {
 		printf(
 			'<button type="%s" class="%s" %s>
                 %s%s
                 <span class="pt-btn__text">%s</span>
-                %s
+                %s%s
             </button>',
 			esc_attr( $type ?: 'button' ),
 			esc_attr( $classes ),
 			$style,
-			$icon_pos === 'left' ? $icon_left : '',
-			$svg_html,
+			$icon_left,
+			$icon_pos === 'left' ? $svg_html : '',
 			esc_html( $text ),
-			$icon_pos !== 'left' ? $icon_right : ''
+			$icon_right,
+			$icon_pos !== 'left' ? $svg_html : '',
 		);
 	}
 
