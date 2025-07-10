@@ -3,7 +3,7 @@
  *  Add Fuction btn upload media
  *
  */
-function buttonAddMediaList(event) {
+function buttonAddMediaList(event, isSaveWidget = false) {
   event.preventDefault()
   var mediaUploader
 
@@ -30,14 +30,15 @@ function buttonAddMediaList(event) {
     var inputImage = mediaView.querySelector('.image-url ')
     var actions = mediaView.querySelector('.actions ')
 
-    saveWidgetInputChange(event)
+    isSaveWidget && saveWidgetInputChange(event)
 
     if (inputImage) {
       inputImage.value = attachment.id
     }
     if (actions) {
-      actions.innerHTML =
-        '<button type="button" onclick="buttonRemoveMediaList(event)" class="button button_remove-media">x</button>'
+      actions.innerHTML = `<button type="button" onclick="buttonRemoveMediaList(event,${
+        isSaveWidget ? 'true' : 'false'
+      })" class="button button_remove-media">x</button>`
     }
 
     var btnAddMedia = event.target.closest('.button_add-media')
@@ -56,7 +57,7 @@ function buttonAddMediaList(event) {
 }
 
 //remove image
-function buttonRemoveMediaList(event) {
+function buttonRemoveMediaList(event, isSaveWidget = false) {
   event.preventDefault()
 
   var mediaView = event.target.closest('.attachment_media-view')
@@ -70,7 +71,7 @@ function buttonRemoveMediaList(event) {
     inputImage.value = ''
   }
 
-  saveWidgetInputChange(event)
+  isSaveWidget && saveWidgetInputChange(event)
   event.target.remove()
 }
 

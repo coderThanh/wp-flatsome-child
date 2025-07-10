@@ -6,14 +6,15 @@
  * ===============================================================================
  */
 
-function button_upload_image($name = null, $value = null)
+function button_upload_image($name = null, $value = null, $is_save_widget = false)
 {
+	$echo_save_widget = $is_save_widget ? 'true' : 'false';
 	ob_start();
 	?>
 	<div class="attachment_media-view">
 		<button type="button"
 			class="button_add-media"
-			onclick="buttonAddMediaList(event)">
+			onclick="buttonAddMediaList(event, <?php echo esc_attr( $echo_save_widget ); ?>)">
 			<?php
 			if( $value ) {
 				echo do_shortcode( '[img class="preview-img" id="' . $value . '"]' );
@@ -25,7 +26,7 @@ function button_upload_image($name = null, $value = null)
 		<div class="actions">
 			<?php
 			if( $value ) {
-				echo '<button type="button" onclick="buttonRemoveMediaList(event)" class="button button_remove-media">x</button>';
+				echo '<button type="button" onclick="buttonRemoveMediaList(event,' . $echo_save_widget . ')" class="button button_remove-media">x</button>';
 			}
 			?>
 		</div>
