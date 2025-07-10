@@ -932,53 +932,53 @@ aside.widget .cat-item {
     font-size: 1rem;
     line-height: 1.4;
     color: rgb(var(--color-text-title), 0.8);
-	position: relative;
+    position: relative;
     padding-right: 24px;
 }
 
-aside.widget .cat-item + .cat-item {
-	margin-top: 12px;
+aside.widget .cat-item+.cat-item {
+    margin-top: 12px;
 }
 
 aside.widget .cat-item .count {
-	color: inherit;
+    color: inherit;
     font-size: inherit;
     line-height: inherit;
-	opacity: 1;
+    opacity: 1;
 }
 
 aside.widget .cat-item a {
     font-size: inherit;
-    color: inherit;	
-	text-decoration: underline 1px;
-	text-underline-offset: 4px;
+    color: inherit;
+    text-decoration: underline 1px;
+    text-underline-offset: 4px;
     text-decoration-color: transparent;
     transition: 200ms all;
-	padding: 0;
+    padding: 0;
 }
 
 
 aside.widget .cat-item a:hover {
-	text-decoration-color: inherit;
-	color: rgb(var(--color-text-title));
+    text-decoration-color: inherit;
+    color: rgb(var(--color-text-title));
 }
 
 aside.widget .cat-item .children {
-	border-left: 0;
+    border-left: 0;
     margin-top: 12px;
     margin-left: 16px;
-    padding-left: 0;	
+    padding-left: 0;
 }
 
 aside.widget .cat-item .toggle {
-	position: absolute;
+    position: absolute;
     right: 0;
     top: 0;
     margin: 0;
     border: 0;
     font-size: 15px;
     line-height: 1;
-	opacity: 1;
+    opacity: 1;
     color: inherit;
 }
 
@@ -1311,12 +1311,12 @@ body .ux-swatches {
     align-items: flex-start;
     gap: 8px 10px;
 
-    --color-border: #d5d5d5;
-    --color-text: #111;
-    --color-border-hover: #999;
-    --color-text-hover: #111;
-    --color-border-selected: #ee0b0b;
-    --color-text-selected: #ee0b0b;
+    --color-border: rgb(var(--color-border-1), 15%);
+    --color-text: rgb(var(--color-text-title));
+    --color-border-hover: rgb(var(--color-border-1));
+    --color-text-hover: rgb(var(--color-text-title));
+    --color-border-selected: rgb(var(--color-alert));
+    --color-text-selected: rgb(var(--color-alert));
 }
 
 body .ux-swatches .ux-swatch {
@@ -1373,7 +1373,7 @@ body .variations th {
 }
 
 .woocommerce .shop_table a:not(.button) {
-	color: inherit;
+    color: inherit;
 }
 
 .cart_item .product-name a {
@@ -1988,7 +1988,7 @@ div#ez-toc-container .ez-toc-heading-level-2 > a {
 
 /* Wishlist Page --- */
 .wishlist-title-container .wishlist-title .btn {
-	display: none;
+    display: none;
 }
 
 .woocommerce .wishlist-title-container .wishlist-title {
@@ -1996,11 +1996,11 @@ div#ez-toc-container .ez-toc-heading-level-2 > a {
 }
 
 .woocommerce .wishlist_table thead th {
-	border-color: var(--border-color);
+    border-color: var(--border-color);
 }
 
 .woocommerce .shop_table.wishlist_table tr td {
-	font-size: 14px;
+    font-size: 14px;
 }
 
 body .wishlist_table .product-add-to-cart a {
@@ -2018,29 +2018,29 @@ body .wishlist_table.mobile li table.additional-info td {
 
 /* Woocomerce - Acoount --- */
 .woocommerce-MyAccount-content .dashboard-links {
-	gap: 15px;
+    gap: 15px;
 }
 
 .woocommerce-MyAccount-content .dashboard-links li {
-	margin-left: 0;
-	margin-bottom: 0;
+    margin-left: 0;
+    margin-bottom: 0;
 }
 
 .woocommerce-MyAccount-content .dashboard-links a {
-	padding: 12px;
+    padding: 12px;
     font-size: 1rem;
     color: rgb(var(--color-text-title));
     border: 1px solid rgb(var(--color-text-title), 0.15);
-	margin: 0;
-	background-color: transparent;
+    margin: 0;
+    background-color: transparent;
 }
 
 .woocommerce-MyAccount-content .dashboard-links a:hover {
-	border-color: rgb(var(--color-text-title));
+    border-color: rgb(var(--color-text-title));
 }
 
 .my_account_orders .button {
-	background-color: unset;
+    background-color: unset;
     text-transform: unset;
     letter-spacing: 0;
     color: rgb(var(--color-text-title));
@@ -2048,19 +2048,19 @@ body .wishlist_table.mobile li table.additional-info td {
 }
 
 .woocommerce .touch-scroll-table {
-	box-shadow: none;
+    box-shadow: none;
 }
 
 .woocommerce .touch-scroll-table .shop_table {
-	min-width: 600px;
+    min-width: 600px;
 }
 
 .woocommerce-MyAccount-content .woocommerce-Address-title {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .woocommerce-MyAccount-content address {
-	line-height: 1.5;
+    line-height: 1.5;
 }
 
 
