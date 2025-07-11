@@ -1166,6 +1166,10 @@ body .col.product-info {
     margin-bottom: 12px;
 }
 
+.product-info .product-short-description p {
+    margin-bottom: 12px;
+}
+
 .product-info del>span.amount {
     font-size: unset;
 }
@@ -1411,7 +1415,7 @@ body .variations th {
 body.woocommerce-checkout,
 .shop_table {
     --border-color: rgb(var(--color-border-1), 15%);
-    --border-title-color: rgb(var(--color-primary));
+    --border-title-color: rgb(var(--color-border-1));
     --bg-gray: rgb(var(--bg-2nd));
     --input-h: 50px;
 }
