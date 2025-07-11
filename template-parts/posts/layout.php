@@ -67,42 +67,44 @@ if( is_single() ) {
 <!-- Relate posts -->
 <?php if( is_single() && !empty( $ids ) ) :
 	; ?>
-	<div class="row">
-		<div class="col">
-			<div class="col-inner">
-				<div class="single-blog_release">
-					<h3> <?php _e( 'Recent Posts' ); ?></h3>
-					<?php
-					echo flatsome_apply_shortcode( 'blog_posts', array(
-						'type'           => 'row',
-						'style'          => 'normal',
-						'col_spacing'    => "normal",
-						'class'          => "make-box-equal",
-						'depth'          => get_theme_mod( 'blog_posts_depth', 0 ),
-						'depth_hover'    => get_theme_mod( 'blog_posts_depth_hover', 0 ),
-						'text_align'     => get_theme_mod( 'blog_posts_title_align', 'left' ),
-						'columns'        => '3',
-						"columns__md"    => '2',
-						"columns__sm"    => '1',
-						'excerpt'        => 'false',
-						'excerpt_length' => 0,
-						'show_date'      => 'text',
-						'comments'       => 'false',
-						'show_category'  => 'label',
-						'ids'            => $ids,
-						'image_height'   => '75%',
-						'image_size'     => "medium",
-						'image_overlay'  => "rgb(0 0 0 / 0)",
-						"image_hover"    => "",
-						'readmore'       => '',
-						'readmore_color' => 'secondary',
-						'readmore_style' => 'bevel',
-						// 'readmore_size' => 'small',
-					) );
-					?>
+	<section class="single-post-relate">
+		<div class="row">
+			<div class="col">
+				<div class="col-inner">
+					<div class="single-blog_release">
+						<h3> <?php _e( 'Recent Posts' ); ?></h3>
+						<?php
+						echo flatsome_apply_shortcode( 'blog_posts', array(
+							'type'           => 'row',
+							'style'          => 'normal',
+							'col_spacing'    => "normal",
+							'class'          => "make-box-equal",
+							'depth'          => get_theme_mod( 'blog_posts_depth', 0 ),
+							'depth_hover'    => get_theme_mod( 'blog_posts_depth_hover', 0 ),
+							'text_align'     => get_theme_mod( 'blog_posts_title_align', 'left' ),
+							'columns'        => '3',
+							"columns__md"    => '2',
+							"columns__sm"    => '1',
+							'excerpt'        => 'false',
+							'excerpt_length' => 0,
+							'show_date'      => 'text',
+							'comments'       => 'false',
+							'show_category'  => 'label',
+							'ids'            => $ids,
+							'image_height'   => '75%',
+							'image_size'     => "medium",
+							'image_overlay'  => "rgb(0 0 0 / 0)",
+							"image_hover"    => "",
+							'readmore'       => '',
+							'readmore_color' => 'secondary',
+							'readmore_style' => 'bevel',
+							// 'readmore_size' => 'small',
+						) );
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 <?php endif; ?>
 <?php do_action( 'flatsome_after_blog' );
