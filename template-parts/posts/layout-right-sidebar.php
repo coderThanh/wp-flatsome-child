@@ -76,7 +76,7 @@ if( is_single() ) {
 			<div class="col">
 				<div class="col-inner">
 					<div class="single-blog_release">
-						<h3> <?php _e( 'Recent Posts' ); ?></h3>
+						<h3 class="single-post-relate_title"> <?php _e( 'Recent Posts' ); ?></h3>
 						<?php
 						echo flatsome_apply_shortcode( 'blog_posts', array(
 							'type'           => 'row',
