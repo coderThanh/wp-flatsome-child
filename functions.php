@@ -36,6 +36,7 @@ function pt_after_theme_setup()
 	require_once( THEME_CHILD_ROOT . '/shortcode/wrap.php' );
 	require_once( THEME_CHILD_ROOT . '/shortcode/logo.php' );
 	require_once( THEME_CHILD_ROOT . '/shortcode/grid/index.php' );
+	require_once( THEME_CHILD_ROOT . '/shortcode/ux-img-svg.php' );
 }
 
 

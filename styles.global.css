@@ -29,7 +29,7 @@
     --radius-sm: 4px;
 
     --size-ratio: 1.175;
-    --size-small: calc(1rem - 1px);
+    --size-small: 14px;
     --size-small-a: 13px;
     --size-2: calc(1rem * var(--size-ratio) - 1px);
     --size-3: calc(var(--size-2) * var(--size-ratio));
@@ -39,7 +39,7 @@
     --size-7: calc(var(--size-6) * var(--size-ratio));
     --size-8: calc(var(--size-7) * var(--size-ratio));
 
-    --sketch-loading-bg: linear-gradient(90deg, #ececec 8%, #f7f7f7 18%, #ececec 33%);
+    --sketch-loading-bg: linear-gradient(90deg, rgb(var(--bg-opposite), 5%) 8%, rgb(var(--bg)) 18%, rgb(var(--bg-opposite), 5%) 33%);
     --sketch-loading-bg-size: 200% 100%;
     --sketch-loading-animetion: 1.5s sketchloading linear infinite;
 }
@@ -108,9 +108,16 @@ ul {
     z-index: var(--z-index);
 }
 
-.decor-ball {
+.decor-ball,
+.pt-svg {
     width: var(--width);
 }
+
+.pt-svg svg,
+.pt-svg img {
+    width: 100%;
+}
+
 
 /* Ux - Button -- */
 #wrapper .button.btn {
@@ -2238,7 +2245,8 @@ body .wishlist_table.mobile li table.additional-info td {
         bottom: var(--bottom-md, var(--bottom));
     }
 
-    .decor-ball {
+    .decor-ball,
+    .pt-svg {
         width: var(--width-md, var(--width));
     }
 
@@ -2301,8 +2309,8 @@ body .wishlist_table.mobile li table.additional-info td {
         bottom: var(--bottom-sm, var(--bottom-md, var(--bottom)));
     }
 
-    .decor-ball {
+    .decor-ball,
+    .pt-svg {
         width: var(--width-sm, var(--width-md, var(--width)));
     }
-
 }

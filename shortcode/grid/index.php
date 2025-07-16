@@ -71,14 +71,14 @@ function pt_shortcode_grid($atts, $content = null)
 {
 	extract( shortcode_atts( array(
 		'col'        => 1,
-		'col__md'    => 1,
-		'col__sm'    => 1,
-		'gap'        => 0,
-		'gap__md'    => 0,
-		'gap__sm'    => 0,
+		'col__md'    => '',
+		'col__sm'    => '',
+		'gap'        => '',
+		'gap__md'    => '',
+		'gap__sm'    => '',
 		'align'      => 'stretch',
-		'align__md'  => 'stretch',
-		'align__sm'  => 'stretch',
+		'align__md'  => '',
+		'align__sm'  => '',
 		'class'      => '',
 		'visibility' => '',
 	), $atts ) );
