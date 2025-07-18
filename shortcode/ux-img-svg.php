@@ -66,20 +66,20 @@ function pt_svg_shortocde($atts, $content = null)
 	$style .= 'color: ' . $color . ';';
 	$style .= 'fill: ' . $color . ';';
 
-	ob_start();
-
 	if( !is_numeric( $id ) && $inline_svg != 'true' ) {
-		echo '<div  class="pt-svg ' . $class . '" style="' . $style . '"><img src="' . $id . '" alt="img" /></div>';
-	} elseif( !is_numeric( $id ) && $inline_svg == 'true' ) {
-		echo '<div  class="pt-svg ' . $class . '" style="' . $style . '">' . wp_remote_fopen( $id ) . '</div>';
+		return '<div  class="pt-svg ' . $class . '" style="' . $style . '"><img src="' . $id . '" alt="img" /></div>';
 	} else {
 		if( $inline_svg == 'true' ) {
-			$source = wp_get_attachment_image_src( $id );
-			echo '<div  class="pt-svg ' . $class . '" style="' . $style . '">' . wp_remote_fopen( $source[0] ) . '</div>';
+			$file = get_attached_file( $id );
+			if( $file && file_exists( $file ) ) {
+				return preg_replace(
+					'#<script(.*?)>(.*?)</script>#is',
+					'',
+					'<div  class="pt-svg ' . $class . '" style="' . $style . '">' . file_get_contents( $file ) . '</div>'
+				);
+			}
 		} else {
-			echo '<div  class="pt-svg ' . $class . '" style="' . $style . '">' . wp_get_attachment_image( $id, 'full', false ) . '</div>';
+			return '<div  class="pt-svg ' . $class . '" style="' . $style . '">' . wp_get_attachment_image( $id, 'full', false ) . '</div>';
 		}
 	}
-
-	return ob_get_clean();
 }
