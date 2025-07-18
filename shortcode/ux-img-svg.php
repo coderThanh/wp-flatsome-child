@@ -73,7 +73,6 @@ function pt_svg_shortocde($atts, $content = null)
 	} elseif( !is_numeric( $id ) && $inline_svg == 'true' ) {
 		echo '<div  class="pt-svg ' . $class . '" style="' . $style . '">' . wp_remote_fopen( $id ) . '</div>';
 	} else {
-		$meta = get_post_mime_type( $id );
 		if( $inline_svg == 'true' ) {
 			$source = wp_get_attachment_image_src( $id );
 			echo '<div  class="pt-svg ' . $class . '" style="' . $style . '">' . wp_remote_fopen( $source[0] ) . '</div>';
