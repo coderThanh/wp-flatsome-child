@@ -70,7 +70,6 @@ function pt_shortcode_title_simple($atts, $content = null)
 		'url'        => '',
 		'visibility' => '',
 	), $atts ) );
-	ob_start();
 
 	$className = 'title-simple';
 
@@ -103,6 +102,5 @@ function pt_shortcode_title_simple($atts, $content = null)
 	
 	echo '</' . $tag . '>';
 
-	return ob_get_clean();
 }
 

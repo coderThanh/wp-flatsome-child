@@ -170,7 +170,6 @@ function pt_shortcode_btn($atts, $content = null)
 		'visibility' => '',
 	), $atts ) );
 
-	ob_start();
 
 	// Build CSS classes
 	$classes = array( 'pt-btn' );
@@ -253,6 +252,5 @@ function pt_shortcode_btn($atts, $content = null)
 		);
 	}
 
-	return ob_get_clean();
 }
 

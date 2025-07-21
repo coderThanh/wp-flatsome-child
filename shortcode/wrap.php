@@ -171,7 +171,7 @@ function pt_get_wrap_shortocde($atts, $content = null)
 
 
 
-	ob_start();
+	// ob_start();
 
 	?>
 	<div class="wrap <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>"
@@ -188,5 +188,5 @@ function pt_get_wrap_shortocde($atts, $content = null)
 	</div>
 	<?php
 
-	return ob_get_clean();
+	// return ob_get_clean();
 }

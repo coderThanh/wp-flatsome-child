@@ -202,7 +202,6 @@ function pt_get_decor_ball_shortocde($atts, $content = null)
 	$style .= 'border-radius: 50%;';
 	$style .= 'background: radial-gradient(' . $color_start . ', ' . $color_end . ' 70%);';
 
-	ob_start();
 
 	?>
 	<div class="wrap decor-ball <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>"
@@ -210,6 +209,4 @@ function pt_get_decor_ball_shortocde($atts, $content = null)
 		<div style="padding-top: 100%;"></div>
 	</div>
 	<?php
-
-	return ob_get_clean();
 }
