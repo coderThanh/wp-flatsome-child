@@ -53,7 +53,6 @@ function pt_shortcode_popup_item($atts, $content = null)
 		'visibility'    => '',
 	), $atts ) );
 
-	ob_start();
 
 	?>
 	<div class="pt-popup-btn-open <?php echo esc_attr( $class ); ?>  <?php echo esc_attr( $visibility ); ?>"
@@ -66,5 +65,4 @@ function pt_shortcode_popup_item($atts, $content = null)
 	</div>
 	<?php
 
-	return ob_get_clean();
 }

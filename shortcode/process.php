@@ -53,7 +53,6 @@ function pt_get_process_shortocde($atts, $content = null)
 		'count'           => '90',
 	), $atts ) );
 
-	ob_start();
 
 	?>
 	<div class="process-line <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
@@ -70,7 +69,6 @@ function pt_get_process_shortocde($atts, $content = null)
 	</div>
 	<?php
 
-	return ob_get_clean();
 }
 
 // style here

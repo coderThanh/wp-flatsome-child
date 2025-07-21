@@ -15,7 +15,6 @@ function pt_get_single_cat_title($atts, $content = null)
 	), $atts ) );
 
 
-	ob_start();
 	echo '<' . $type_tag . ' class="cat-title page-title">';
 
 	if( is_page() || is_single() ) :
@@ -60,7 +59,6 @@ function pt_get_single_cat_title($atts, $content = null)
 	endif;
 
 	echo '</' . $type_tag . '>';
-	return ob_get_clean();
 }
 
 add_action( 'ux_builder_setup', 'pt_ux_builder_single_cat_title' );

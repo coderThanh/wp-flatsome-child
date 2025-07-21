@@ -52,7 +52,6 @@ function pt_get_tab_has_icon_shortocde($atts, $content = null)
 	$content = do_shortcode( $content );// run funtion child
 
 
-	ob_start();
 	?>
 	<div class="tab-area <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
 		<?php if( is_array( $GLOBALS['pt_tabs'] ) ) :
@@ -86,8 +85,6 @@ function pt_get_tab_has_icon_shortocde($atts, $content = null)
 		<?php echo $content; ?>
 	</div>
 	<?php
-
-	return ob_get_clean();
 }
 
 
@@ -235,3 +232,4 @@ function pt_get_tab_has_icon_item_shortocde($atts, $content = null)
 // .tab-area-content-item.active {
 // 	display: block;
 // }
+

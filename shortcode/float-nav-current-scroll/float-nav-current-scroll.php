@@ -57,7 +57,6 @@ function pt_get_float_nav_current_scroll($atts, $content = null)
 	}
 
 
-	ob_start();
 	?>
 	<div class="float-nav-current-scroll <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
 		<div class="el-sticky">
@@ -88,9 +87,8 @@ function pt_get_float_nav_current_scroll($atts, $content = null)
 	</div>
 	<!-- reuire for UX builder -->
 	<?php echo $content; ?>
-	<?php
+<?php
 
-	return ob_get_clean();
 }
 
 //  item

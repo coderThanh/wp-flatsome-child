@@ -64,20 +64,25 @@ function shortcode_icon_box_basic($args, $content)
 		'type'  => 'img',
 	], $args ) );
 
-	ob_start();
 	?>
 	<div class="icon-box <?php echo $class . ' ' . $kind; ?>">
 		<div class="icon-box-img" style="width: <?php echo $width; ?>; fill: <?php echo $color; ?>;">
 			<?php
-			if( !is_numeric( $img ) && $type != 'svg' ) {
+			if( !is_numeric( $img ) ) {
 				echo '<img src="' . $img . '" alt="' . $alt . '" />';
-			} elseif( !is_numeric( $img ) && $type == 'svg' ) {
-				echo wp_remote_fopen( $img );
 			} else {
 				$meta = get_post_mime_type( $img );
 				if( $meta == 'image/svg+xml' ) {
-					$source = wp_get_attachment_image_src( $img );
-					echo wp_remote_fopen( $source[0] );
+					$file = get_attached_file( $img );
+
+					if( $file && file_exists( $file ) ) {
+						echo preg_replace(
+							'#<script(.*?)>(.*?)</script>#is',
+							'',
+							file_get_contents( $file )
+						);
+					}
+
 				} else {
 					echo wp_get_attachment_image( $img, $size );
 				}
@@ -89,5 +94,4 @@ function shortcode_icon_box_basic($args, $content)
 		</div>
 	</div>
 	<?php
-	return ob_get_clean();
 }

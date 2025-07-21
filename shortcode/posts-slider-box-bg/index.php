@@ -98,11 +98,7 @@ function pt_post_slider_box_bg_shotcode($atts,  $content = null)
     ), $atts);
 
     extract($new_atts);
-
-    ob_start();
-
 ?>
-
     <section class="post-slider-box">
         <div class="section-content relative container">
             <div class="box-wrap">
@@ -120,5 +116,4 @@ function pt_post_slider_box_bg_shotcode($atts,  $content = null)
     </section>
 
 <?php
-    return ob_get_clean();
 }

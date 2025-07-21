@@ -35,7 +35,7 @@ function pt_ux_builder_mobile_bottom_bar()
 		'thumbnail' => WEBSITE_CHILD_URL . '/shortcode/mobile-bottom-bar/thumbnail.png',
 		'info'      => '{{ label }}',
 		'options'   => array(
-			'advanced_options' => require ( THEME_CHILD_ROOT . '/../flatsome/inc/builder/shortcodes/commons/advanced.php' ),
+			'advanced_options' => require( THEME_CHILD_ROOT . '/../flatsome/inc/builder/shortcodes/commons/advanced.php' ),
 		),
 	) );
 }
@@ -50,17 +50,14 @@ function pt_shortcode_mobile_bottom_bar($atts, $content = null)
 	), $atts ) );
 
 
-	ob_start();
 	?>
 	<div class="bottom-bar-area <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
 		<div class="bottom-bar-inner">
 			<?php echo do_shortcode( $content ); ?>
 		</div>
 	</div>
-
 	<?php
 
-	return ob_get_clean();
 }
 
 /**
@@ -163,13 +160,12 @@ function pt_bottom_bar_item($atts, $content = null)
 		),
 	);
 
-	ob_start();
 	?>
 	<a href="<?php echo esc_attr( $url ); ?>"
-	   target="<?php echo esc_attr( $target ); ?>"
-	   rel="<?php echo esc_attr( $rel ); ?>"
-	   class="bottom-bar-item"
-   	<?php echo get_shortcode_inline_css( $css_args ); ?>>
+		target="<?php echo esc_attr( $target ); ?>"
+		rel="<?php echo esc_attr( $rel ); ?>"
+		class="bottom-bar-item"
+		<?php echo get_shortcode_inline_css( $css_args ); ?>>
 		<div class="icon">
 			<div class="icon-inner">
 				<?php echo flatsome_get_image( $img, $size = 'full', $alt = $title, $inline_svg ); ?>
@@ -178,7 +174,6 @@ function pt_bottom_bar_item($atts, $content = null)
 		<span class="bottom-bar-item-title"><?php echo $title; ?></span>
 	</a>
 	<?php
-	return ob_get_clean();
 }
 
 
@@ -253,18 +248,17 @@ function pt_bottom_bar_open_menu_item($atts, $content = null)
 		),
 	);
 
-	ob_start();
 	?>
 	<a href="#"
-	   data-open="#main-menu"
-	   data-pos="left"
-	   data-bg="main-menu-overlay"
-	   data-color=""
-	   class="bottom-bar-item"
-	   aria-label="Menu"
-	   aria-controls="main-menu"
-	   aria-expanded="false"
-   	<?php echo get_shortcode_inline_css( $css_args ); ?>>
+		data-open="#main-menu"
+		data-pos="left"
+		data-bg="main-menu-overlay"
+		data-color=""
+		class="bottom-bar-item"
+		aria-label="Menu"
+		aria-controls="main-menu"
+		aria-expanded="false"
+		<?php echo get_shortcode_inline_css( $css_args ); ?>>
 		<div class="icon">
 			<div class="icon-inner">
 				<?php echo flatsome_get_image( $img, $size = 'full', $alt = $title, $inline_svg ); ?>
@@ -272,7 +266,5 @@ function pt_bottom_bar_open_menu_item($atts, $content = null)
 		</div>
 		<span class="bottom-bar-item-title"><?php echo $title; ?></span>
 	</a>
-
 	<?php
-	return ob_get_clean();
 }

@@ -50,9 +50,6 @@ function pt_get_the_content_shortcode($atts, $content = null)
 
 	), $atts ) );
 
-
-	ob_start();
-
 	?>
 	<div class="content-box <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>"
 		style="<?php echo esc_attr( $style ); ?>">
@@ -68,5 +65,4 @@ function pt_get_the_content_shortcode($atts, $content = null)
 	</div>
 	<?php
 
-	return ob_get_clean();
 }

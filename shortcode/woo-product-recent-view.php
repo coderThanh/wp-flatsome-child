@@ -33,9 +33,9 @@ if( !function_exists( 'pt_woo_product_recent_view_set_ids' ) ) {
 
 		$ids = array_unique( $ids );
 
-        if(count($ids) > 12) {
-            $ids = array_slice($ids, 0, 12);
-        }
+		if( count( $ids ) > 12 ) {
+			$ids = array_slice( $ids, 0, 12 );
+		}
 
 		$stringIDs = implode( ',', $ids );
 
@@ -113,13 +113,11 @@ if( !function_exists( 'pt_woo_product_recent_view_shortcode' ) ) {
 			'text_align'   => "left",
 		];
 
-		ob_start();
 
 		echo $title ? '<div class="prd-recently-view-title">' . $title . '</div>' : '';
 
 		echo ux_products( $attr );
 
-		echo ob_get_clean();
 
 	}
 }

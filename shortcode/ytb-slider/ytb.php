@@ -41,10 +41,8 @@ add_shortcode( 'pt-youtube-slider', 'pt_youtube_slider' );
 function pt_youtube_slider($atts, $content = null)
 {
 
-	ob_start();
 
 	$list_content = parse_ytb_shortcode_to_list_attr( $content );
-
 
 	?>
 	<div class="ytb-slider-area">
@@ -82,8 +80,6 @@ function pt_youtube_slider($atts, $content = null)
 		</div>
 	</div>
 	<?php
-
-	return ob_get_clean();
 }
 
 /**
@@ -102,7 +98,7 @@ function pt_ux_builder_youtube_item()
 		'inline'   => true,
 		'nested'   => true,
 		'require'  => array( 'pt-youtube-slider' ),
-		'info'    => '{{ title }}',
+		'info'     => '{{ title }}',
 		'options'  => array(
 			'title' => array(
 				'type'        => 'textfield',
@@ -147,8 +143,8 @@ function parse_ytb_shortcode_to_list_attr($shortcode)
 			// var_dump($kvp);
 			// echo "<div style='padding-top:10px'></div>";
 
-			$kvp                    = str_replace( '"', '', $kvp );
-			$pair                   = explode( '=', $kvp );
+			$kvp                      = str_replace( '"', '', $kvp );
+			$pair                     = explode( '=', $kvp );
 			$attributes[ $pair[0] ][] = $pair[1];
 		}
 	}

@@ -75,8 +75,6 @@ function pt_get_marquee_milti_item($atts, $content = null)
 		$style_item .= 'animation-play-state: paused;';
 	}
 
-	ob_start();
-
 	?>
 	<div class="marquee-wrap <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>"
 		style="<?php echo esc_attr( $style ); ?>">
@@ -109,5 +107,4 @@ function pt_get_marquee_milti_item($atts, $content = null)
 	</div>
 	<?php
 
-	return ob_get_clean();
 }

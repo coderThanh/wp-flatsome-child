@@ -59,7 +59,6 @@ function pt_popup_place_in_footer($atts, $content = null)
 		'visibility' => '',
 	), $atts ) );
 
-	ob_start();
 
 	?>
 	<div id="<?php echo esc_attr( $id ); ?>"
@@ -76,5 +75,4 @@ function pt_popup_place_in_footer($atts, $content = null)
 	</div>
 	<?php
 
-	return ob_get_clean();
 }

@@ -7,9 +7,6 @@ function pt_ux_builder_img_shortocde()
 		'category' => __( 'Content' ),
 		'priority' => 10,
 		'type'     => 'Content',
-		'wrap'     => false,
-		'inline'   => true,
-		'nested'   => true,
 		'options'  => array(
 			'id'               => array(
 				'type'    => 'image',

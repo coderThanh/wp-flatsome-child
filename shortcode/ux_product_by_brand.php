@@ -186,12 +186,6 @@ function pt_shortcode_product_by_brand($atts, $content)
         return;
     }
 
-
-
-
-
-
-    ob_start();
 ?>
 <?php
     echo flatsome_apply_shortcode('ux_products', array(
@@ -228,5 +222,4 @@ function pt_shortcode_product_by_brand($atts, $content)
     // Reset Post Data
     wp_reset_postdata();
 
-    return ob_get_clean();
 }

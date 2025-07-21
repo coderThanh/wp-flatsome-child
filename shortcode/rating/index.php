@@ -81,7 +81,6 @@ function shortcode_pt_rating($args, $content)
 
 	$id_edited = generateRandomString();
 
-	ob_start();
 	?>
 	<span onclick="((e)=>document.getElementById('<?php echo esc_attr( $id_edited ); ?>').click())()"
 		for="<?php echo esc_attr( $id_edited ); ?>"
@@ -147,5 +146,4 @@ function shortcode_pt_rating($args, $content)
 			id="<?php echo esc_attr( $id_edited ); ?>">
 	</span>
 	<?php
-	return ob_get_clean();
 }
