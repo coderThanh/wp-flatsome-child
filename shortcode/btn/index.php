@@ -217,7 +217,7 @@ function pt_shortcode_btn($atts, $content = null)
 	// Build button/link HTML
 	if( $link ) {
 		$rel_attr = $rel ? 'rel="' . $rel . '"' : '';
-		printf(
+		return sprintf(
 			'<a href="%s" class="%s" target="%s" %s %s>
                 %s%s
                 <span class="pt-btn__text">%s</span>
@@ -235,7 +235,7 @@ function pt_shortcode_btn($atts, $content = null)
 			$icon_pos !== 'left' ? $svg_html : '',
 		);
 	} else {
-		printf(
+		return sprintf(
 			'<button type="%s" class="%s" %s>
                 %s%s
                 <span class="pt-btn__text">%s</span>
