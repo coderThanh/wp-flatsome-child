@@ -57,6 +57,10 @@ function pt_svg_shortocde($atts, $content = null)
 		'color'      => '',
 	), $atts ) );
 
+	if( empty( $id ) ) {
+		return;
+	}
+
 	$class .= ' ' . $visibility;
 
 	$style = get_style_responsive( 'width', $width . '%', $width__md ? $width__md . '%' : '', $width__sm ? $width__sm . '%' : '' );
@@ -65,18 +69,19 @@ function pt_svg_shortocde($atts, $content = null)
 
 	if( !is_numeric( $id ) && $inline_svg != 'true' ) {
 		return '<div  class="pt-svg ' . $class . '" style="' . $style . '"><img src="' . $id . '" alt="img" /></div>';
-	} else {
-		if( $inline_svg == 'true' ) {
-			$file = get_attached_file( $id );
-			if( $file && file_exists( $file ) ) {
-				return preg_replace(
-					'#<script(.*?)>(.*?)</script>#is',
-					'',
-					'<div  class="pt-svg ' . $class . '" style="' . $style . '">' . file_get_contents( $file ) . '</div>'
-				);
-			}
-		} else {
-			return '<div  class="pt-svg ' . $class . '" style="' . $style . '">' . wp_get_attachment_image( $id, 'full', false ) . '</div>';
+	}
+
+
+	if( $inline_svg == 'true' ) {
+		$file = get_attached_file( $id );
+		if( $file && file_exists( $file ) ) {
+			return preg_replace(
+				'#<script(.*?)>(.*?)</script>#is',
+				'',
+				'<div  class="pt-svg ' . $class . '" style="' . $style . '">' . file_get_contents( $file ) . '</div>'
+			);
 		}
+	} else {
+		return '<div  class="pt-svg ' . $class . '" style="' . $style . '"><img src="' . wp_get_attachment_image_url( $id, 'full', false ) . '" alt="img" /></div>';
 	}
 }
