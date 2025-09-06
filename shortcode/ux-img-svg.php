@@ -7,7 +7,14 @@ function pt_ux_builder_img_shortocde()
 		'category' => __( 'Content' ),
 		'priority' => 10,
 		'type'     => 'Content',
+		'info'     => '{{ label }}',
 		'options'  => array(
+			'label'            => array(
+				'full_width'  => true,
+				'type'        => 'textfield',
+				'heading'     => 'Label',
+				'placeholder' => 'Enter admin label here..',
+			),
 			'id'               => array(
 				'type'    => 'image',
 				'heading' => 'Image',
