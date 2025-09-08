@@ -103,7 +103,7 @@ function pt_get_float_contact_group($atts, $content)
             position: fixed;
             bottom: 10px;
             right: 3px;
-            z-index: 9999999;
+            z-index: 200;
         }
 
         .vka-checkbox {
