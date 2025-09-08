@@ -59,20 +59,19 @@ function pt_popup_place_in_footer($atts, $content = null)
 		'visibility' => '',
 	), $atts ) );
 
+	$html = '<div id="' . esc_attr( $id ) . '"';
+	$html .= ' class="pt-popup-wrap ' . esc_attr( $class ) . ' ' . esc_attr( $visibility ) . '">';
+	$html .= '  <div class="pt-popup-inner">';
+	$html .= '    <div class="pt-popup-content">';
+	$html .= do_shortcode( $content );
+	$html .= '    </div>';
+	$html .= '    <div class="pt-popup-bg" onclick="ptPopUpClose(event)"></div>';
+	$html .= '    <div class="pt-popup-btn-close" onclick="ptPopUpClose(event)">';
+	$html .= '      <span class="material-symbols-outlined">close</span>';
+	$html .= '    </div>';
+	$html .= '  </div>';
+	$html .= '</div>';
 
-	?>
-	<div id="<?php echo esc_attr( $id ); ?>"
-		class="pt-popup-wrap  <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
-		<div class="pt-popup-inner">
-			<div class="pt-popup-content">
-				<?php echo do_shortcode( $content ); ?>
-			</div>
-			<div class="pt-popup-bg" onclick="ptPopUpClose(event)"></div>
-			<div class="pt-popup-btn-close" onclick="ptPopUpClose(event)">
-				<span class="material-symbols-outlined"> close </span>
-			</div>
-		</div>
-	</div>
-	<?php
-
+	return $html;
 }
+

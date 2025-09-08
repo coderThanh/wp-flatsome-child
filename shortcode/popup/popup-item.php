@@ -43,26 +43,24 @@ function pt_ux_builder_popup_item_sliders()
 
 add_shortcode( 'pt-popup-item', 'pt_shortcode_popup_item' );
 
-function pt_shortcode_popup_item($atts, $content = null)
-{
+function pt_shortcode_popup_item($atts, $content = null) {
+    extract( shortcode_atts( array(
+        'text'          => '',
+        'id_popup_show' => '',
+        'class'         => '',
+        'visibility'    => '',
+    ), $atts ) );
 
-	extract( shortcode_atts( array(
-		'text'          => '',
-		'id_popup_show' => '',
-		'class'         => '',
-		'visibility'    => '',
-	), $atts ) );
+    $html  = '<div class="pt-popup-btn-open ' . esc_attr($class) . ' ' . esc_attr($visibility) . '" ';
+    $html .= 'onclick="ptPopUpOpen(event)" data-id-popup-show="' . esc_attr($id_popup_show) . '">';
 
+    if ( !empty($text) ) {
+        $html .= '<span>' . esc_html($text) . '</span>';
+    }
 
-	?>
-	<div class="pt-popup-btn-open <?php echo esc_attr( $class ); ?>  <?php echo esc_attr( $visibility ); ?>"
-		onclick="ptPopUpOpen(event)" data-id-popup-show="<?php echo esc_attr( $id_popup_show ); ?>">
-		<?php if( !empty( $text ) ) :
-			; ?>
-			<span><?php echo $text; ?></span>
-		<?php endif; ?>
-        <?php echo do_shortcode( $content);?>
-	</div>
-	<?php
+    $html .= do_shortcode($content);
+    $html .= '</div>';
 
+    return $html;
 }
+
