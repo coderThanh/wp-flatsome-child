@@ -31,13 +31,13 @@ body .pt-btn:hover {
     border: var(--btn-border-hover);
 }
 
-.pt-btn i {
+body .pt-btn i {
     font-size: 1.3em;
     line-height: 1;
     vertical-align: middle;
 }
 
-.pt-btn--expand {
+body .pt-btn--expand {
     width: 100%;
 }
 
@@ -50,7 +50,7 @@ body .pt-btn:hover {
     display: none;
 }
 
-.pt-btn__icon {
+body .pt-btn__icon {
     line-height: 1;
     display: flex;
     align-items: center;
@@ -90,35 +90,35 @@ body .pt-btn:hover {
     text-decoration-color: currentColor;
 }
 
-.pt-btn-size--lg {
+body .pt-btn-size--lg {
     --btn-padding: 5px 28px;
     --btn-size: 45px;
     --btn-font-size: var(--size-2);
     --btn-line-height: 1.4;
 }
 
-.pt-btn-size--md {
+body .pt-btn-size--md {
     --btn-padding: 5px 22px;
     --btn-size: 40px;
     --btn-font-size: 1rem;
     --btn-line-height: 1.4;
 }
 
-.pt-btn-size--sm {
+body .pt-btn-size--sm {
     --btn-padding: 5px 16px;
     --btn-size: 34px;
     --btn-font-size: var(--size-small);
     --btn-line-height: 1.3;
 }
 
-.pt-btn-size--xs {
+body .pt-btn-size--xs {
     --btn-padding: 4px 8px;
     --btn-size: 26px;
     --btn-font-size: var(--size-small-a);
     --btn-line-height: 1.3;
 }
 
-.pt-btn-size--no {
+body .pt-btn-size--no {
     --btn-font-size: 1rem;
     --btn-line-height: 1.4;
 }
