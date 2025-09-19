@@ -85,22 +85,24 @@ function pt_shortcode_title_simple($atts, $content = null)
 		$className .= ' ' . $visibility;
 	}
 
-	echo '<' . $tag . ' ';
-	echo ' class="' . $className . '"';
-
-	if( !empty( $color ) ) {
-		echo ' data-text-color="' . $color . '"';
-	}
-
-	echo ' >';
-
-	if( !empty( $url ) ) {
-		echo '<a class="el-text" href="' . esc_url( $url ) . '">' . esc_attr( $title ) . '</a>';
-	} else {
-		echo '<span class="el-text" >'.esc_attr( $title ) . '</span>';
-	}
-	
-	echo '</' . $tag . '>';
+    $html = '<' . $tag;
+    $html .= ' class="' . $className . '"';
+    
+    if (!empty($color)) {
+        $html .= ' data-text-color="' . $color . '"';
+    }
+    
+    $html .= '>';
+    
+    if (!empty($url)) {
+        $html .= '<a class="el-text" href="' . esc_url($url) . '">' . esc_attr($title) . '</a>';
+    } else {
+        $html .= '<span class="el-text">' . esc_attr($title) . '</span>';
+    }
+    
+    $html .= '</' . $tag . '>';
+    
+    return $html;
 
 }
 
