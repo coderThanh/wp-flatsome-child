@@ -169,14 +169,14 @@ function pt_get_wrap_shortocde($atts, $content = null)
 		$style .= 'position: absolute; width: 100%;';
 	}
 
-	$html = '<div class="wrap ' . esc_attr( $atts['class'] ) . ' ' . esc_attr( $atts['visibility'] ) . '" style="' . esc_attr( $style ) . '">';
-	if( $atts['has_inner'] === 'true' ) {
+	$html = '<div class="wrap ' . esc_attr( $class ) . ' ' . esc_attr( $visibility ) . '" style="' . esc_attr( $style ) . '">';
+	if( $has_inner === 'true' ) {
 		$html .= '<div class="wrap-inner">';
 	}
 
 	$html .= do_shortcode( $content );
 
-	if( $atts['has_inner'] === 'true' ) {
+	if( $has_inner === 'true' ) {
 		$html .= '</div>';
 	}
 	$html .= '</div>';
