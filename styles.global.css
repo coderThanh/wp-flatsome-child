@@ -2192,6 +2192,179 @@ body .wishlist_table.mobile li table.additional-info td {
 }
 
 
+
+/* Plugin - Husky Filter --------- */
+/* .woof_redraw_zone .woof_container_inner h4 {
+	margin-bottom: 9px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: var(--size-2);
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.woof_redraw_zone .woof_list label {
+    display: inline-block !important;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(var(--color-text-title));
+	line-height: 1.4;
+    padding-bottom: 0;
+	padding-right: 12px;
+}
+
+.woof_redraw_zone .icheckbox_square-blue:before {
+	content: '\e5ca';
+    font-family: var(--ff-material-round);
+    font-size: 18px;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(var(--color-primary));
+    transition: 220ms all;
+    opacity: 0;
+}
+
+.woof_redraw_zone .icheckbox_square-blue.checked:before {
+	opacity: 1;
+}
+
+.woof_redraw_zone .icheckbox_square-blue, .woof_redraw_zone .iradio_square-blue {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 19px;
+    height: 19px;
+    background: unset;
+    cursor: pointer;
+    border: 1px solid rgb(var(--color-text-title));
+}
+
+.woof_redraw_zone .icheckbox_square-blue.checked,
+.woof_redraw_zone .iradio_square-blue.checked {
+}
+
+.widget .woof_redraw_zone ul li {
+	margin-bottom: 6px;
+}
+
+.woof_redraw_zone .woof_container {
+    padding-bottom: 0;
+    margin-bottom: 24px;
+}
+
+.woof_redraw_zone .woof_submit_search_form_container {
+    justify-content: flex-start;
+    gap: 12px 20px;	
+}
+
+.woof_submit_search_form_container .button {
+    margin: 0;
+    min-height: unset;
+    line-height: 1.2;
+    font-size: 0;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: unset;
+    border-radius: var(--radius-1);
+    padding: 8px 24px;
+    background-color: rgb(var(--color-primary));
+    color: rgb(var(--bg));	
+	border: 0px;
+	
+}
+
+.woof_submit_search_form_container .woof_reset_search_form {
+	background-color: rgb(var(--color-text-title), 8%);
+    color: rgb(var(--color-text-title));
+}
+
+.woof_submit_search_form_container .button:before {
+	content: 'Áp dụng';
+	font-size: 14px;
+}
+
+.woof_submit_search_form_container .woof_reset_search_form:before {
+	content: 'Xoá lọc';
+}
+
+.woof_products_top_panel {
+	margin-bottom: 24px;
+}
+
+.woof_products_top_panel .woof_products_top_panel_ul {
+	display: flex;
+    gap: 12px 18px;
+    flex-wrap: wrap;	
+}
+
+.woof_products_top_panel li:has(.woof_reset_button_2) {
+	display: none;
+}
+
+.woof_products_top_panel > ul > li {
+    margin: 0 !important;	
+}
+
+.woof_products_top_panel li {
+	font-size: var(--size-small);
+    font-weight: 500;
+	color: rgb(var(--color-text-title));
+}
+
+.woof_products_top_panel li a {
+    text-decoration: none;
+    background: rgb(var(--color-text-title), 5%);
+    padding: 5px 10px;
+    border-radius: var(--radius-1);
+    color: rgb(var(--color-text-title));
+    display: inline-block;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+.woof_products_top_panel li a:hover {
+    background: rgb(var(--color-text-title), 10%);
+}
+
+.woof_products_top_panel ul ul  {
+	display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;	
+}
+
+.woof_products_top_panel_ul li ul li {
+	margin: 0 !important; 
+}
+
+.woof_products_top_panel li span, .woof_products_top_panel2 li span {
+	background: unset;
+	padding: 0;
+}
+
+.woof_products_top_panel li span:after, .woof_products_top_panel2 li span:after  {
+	content: '\e5cd';
+	font-family: var(--ff-material-round);
+    font-size: 1.4em;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 2px;
+    color: rgb(var(--color-alert));
+    font-weight: 300;
+}
+ */
+
+
 /* Ux - According footer ------- */
 /* .according-footer .accordion-title .toggle {
     width: 26px;
