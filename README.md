@@ -9,3 +9,6 @@ git pull theme main
 | Plugin Name | Description |
 |------------|-------------|
 | HUSKY WooCommerce Products Filter Professional | Filter product |
+| Vietnam Checkout for WooCommerce | checkout woo |
+
+

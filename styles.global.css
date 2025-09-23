@@ -1249,6 +1249,11 @@ body .col.product-info {
 
 .product-section .entry-content {
     padding-top: 0;
+    padding-bottom: 0;
+}
+
+.product-section:first-child .entry-content {
+    padding-top: 0;
 }
 
 .product-section .product-section-title,
@@ -1261,9 +1266,29 @@ body .col.product-info {
     margin-bottom: 20px;
 }
 
-.product-section:first-child .entry-content {
-    padding-top: 0;
+.shop_attributes .woocommerce-product-attributes-item__value a {
+    color: rgb(var(--color-text-title));
 }
+
+.shop_attributes .woocommerce-product-attributes-item__value a:hover {
+    text-decoration: underline 1px;
+}
+
+table.shop_attributes {
+    border: 1px solid rgb(var(--color-border-1), 10%);
+    border-bottom: 0;
+    border-right: 0;
+}
+
+table.shop_attributes td,
+table.shop_attributes th {
+    border: 1px solid rgb(var(--color-border-1), 10%);
+    border-top: 0;
+    border-left: 0;
+    padding: 8px 10px;
+}
+
+
 
 /* Product thumbnails ------ */
 
@@ -1420,6 +1445,7 @@ body .variations th {
 
 /* Checkout Page ----- */
 body.woocommerce-checkout,
+body.woocommerce-account,
 .shop_table {
     --border-color: rgb(var(--color-border-1), 15%);
     --border-title-color: rgb(var(--color-border-1));
@@ -1427,7 +1453,8 @@ body.woocommerce-checkout,
     --input-h: 50px;
 }
 
-body.woocommerce-checkout .input-text {
+body.woocommerce-checkout .input-text,
+body.woocommerce-account .input-text {
     height: var(--input-h);
     font-size: 16px;
     box-shadow: none;
@@ -1435,8 +1462,22 @@ body.woocommerce-checkout .input-text {
     padding: 12px 15px;
 }
 
-body.woocommerce-checkout .woocommerce-invalid .input-text {
+body.woocommerce-checkout .woocommerce-invalid .input-text,
+body.woocommerce-account .woocommerce-invalid .input-text {
     border-color: var(--fs-color-alert);
+}
+
+body.woocommerce-page .select2-container .select2-selection--single {
+    height: var(--input-h);
+    align-items: center;
+    display: flex;
+    box-shadow: unset;
+    border: 1px solid var(--border-color);
+}
+
+body.woocommerce-page .select2-search--dropdown .select2-search__field {
+    height: 40px;
+    font-size: 16px;
 }
 
 body.woocommerce-checkout #ship-to-different-address {
@@ -1458,6 +1499,8 @@ body.woocommerce-checkout .checkout_coupon .button {
 .woocommerce .shop_table th,
 .woocommerce .shop_table thead th {
     border-width: 1px;
+    font-size: var(--size-small);
+    color: rgb(var(--color-text-title));
 }
 
 .woocommerce .shop_table thead th,
@@ -1616,6 +1659,12 @@ button#place_order {
 
 .woocommerce-invoice-fields #invoice_require_field {
     display: none;
+}
+
+.checkout-inline-error-message {
+    color: rgb(var(--color-alert));
+    margin-top: -5px;
+    margin-bottom: 15px;
 }
 
 
@@ -2227,7 +2276,7 @@ body .wishlist_table.mobile li table.additional-info td {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: rgb(var(--color-primary));
+    color: rgb(var(--color-alert));
     transition: 220ms all;
     opacity: 0;
 }
