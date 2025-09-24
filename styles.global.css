@@ -2446,6 +2446,38 @@ body .wishlist_table.mobile li table.additional-info td {
     }
 } */
 
+
+/* Plugn - Gtranslate --- */
+/* .gtranslate_wrapper .gt_switcher-popup span:nth-child(2){
+	display: none;
+}
+
+.gtranslate_wrapper .gt_white_content {
+    border-radius: var(--radius-1);
+    padding: 10px 22px;
+    height: fit-content;
+    max-height: 50vh;
+}
+
+.gtranslate_wrapper  .gt_white_content a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(var(--color-text-title));
+    border: 0;
+}
+
+.gtranslate_wrapper .gt_black_overlay {
+    width: 100vw;
+	height: 100vh; 
+}
+
+.gtranslate_wrapper a.glink.gt-current-lang {
+    font-weight: 600;
+} */
+
+
+
 /* Responsive ---------------- */
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {}
 
