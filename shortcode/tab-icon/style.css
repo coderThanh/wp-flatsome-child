@@ -1,0 +1,61 @@
+ .tab-area-titles {
+     max-width: 100%;
+     overflow: hidden;
+ }
+
+ .tab-area-titles::-webkit-scrollbar-track {
+     background: transparent;
+ }
+
+ .tab-area-titles-inner {
+     display: flex;
+     min-width: max-content;
+     gap: 16px;
+     align-items: stretch;
+     justify-content: center;
+ }
+
+ .tab-area-title-item {
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     cursor: pointer;
+     background-color: rgb(var(--color-primary), 8%);
+     border-radius: 100px;
+     padding: 12px 17px;
+     transition: 320ms all;
+     line-height: 1.2;
+     font-weight: 500;
+     font-size: 1rem;
+ }
+
+ .tab-area-title-item:hover {
+     background-color: rgb(var(--color-primary), 15%);
+ }
+
+ .tab-area-title-item.active {
+     background: rgb(var(--color-primary));
+     color: rgb(var(--bg));
+ }
+
+ .tab-area-title-item :is(svg, img) {
+     width: 20px;
+     height: 20px;
+     object-fit: contain;
+ }
+
+ .tab-area-title {
+     width: max-content;
+ }
+
+ .tab-area-contents {
+     padding-top: 24px;
+ }
+
+ .tab-area-content-item {
+     display: none;
+ }
+
+ .tab-area-content-item.active {
+     display: block;
+ }

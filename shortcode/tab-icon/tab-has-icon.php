@@ -3,7 +3,16 @@
 /**
  * add shortcode
  * syntax: [pt-tab-has-icon]
+ * required: /js/tab.js
  */
+
+// Setup 
+add_action( 'wp_enqueue_scripts', 'pt_shortcode_tab_has_icon_setup', 1500 );
+
+function pt_shortcode_tab_has_icon_setup()
+{
+	wp_enqueue_style( 'pt-tab-has-icon-shortcode', get_stylesheet_directory_uri() . '/shortcode/tab-icon/style.css', [], '1.0');
+}
 
 //
 add_action( 'ux_builder_setup', 'pt_ux_builder_tab_has_icon_shortocde' );
@@ -56,7 +65,7 @@ function pt_get_tab_has_icon_shortocde($atts, $content = null)
 	<div class="tab-area <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
 		<?php if( is_array( $GLOBALS['pt_tabs'] ) ) :
 			; ?>
-			<div class="tab-area-titles">
+			<div class="tab-area-titles can-scroll-vertical">
 				<div class="tab-area-titles-inner">
 					<?php foreach( $GLOBALS['pt_tabs'] as $key => $item ) :
 						; ?>
@@ -157,79 +166,4 @@ function pt_get_tab_has_icon_item_shortocde($atts, $content = null)
 	return '<span style="display:none">' . do_shortcode( $content ) . '</span>';
 }
 
-
-// css default
-// -------------------
-// .tab-area-titles {
-// 	max-width: 100%;
-// 	overflow-y: hidden;
-//     overflow-x: auto;	
-// }
-
-// .tab-area-titles::-webkit-scrollbar {
-//   height: 5px;
-//   width: 5px;
-//   display: block;
-// }
-
-// .tab-area-titles::-webkit-scrollbar-thumb {
-//   background: rgb(var(--bg-opposite), 30%) !important;
-//   border-radius: 99px;
-// }
-
-// .tab-area-titles::-webkit-scrollbar-track {
-//   background: transparent;
-// } 
-
-// .tab-area-titles-inner {
-//     display: flex;
-// 	min-width: max-content;
-//     gap: 16px;
-//     align-items: stretch;
-//     justify-content: flex-start;
-// 	padding: 10px;
-// 	background-color: rgb(var(--bg-opposite), 4%);
-//     border-radius: 100px;
-// }
-
-// .tab-area-title-item {
-//     display: flex;
-//     align-items: center;
-//     gap: 6px;
-//     cursor: pointer;
-//     background-color: rgb(var(--bg));
-//     border-radius: 100px;
-//     padding: 12px 17px;
-//     transition: 320ms all;
-//     line-height: 1.2;
-//     font-weight: 500;
-// 	font-size: var(--size-small);
-// }
-
-// .tab-area-title-item.active  {
-//     background: linear-gradient(90deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
-//     color: rgb(var(--bg));
-// }
-
-// .tab-area-title-item  :is(svg, img ) {
-//     width: 20px;
-//     height: 20px;
-//     object-fit: contain;	
-// }
-
-// .tab-area-title  {
-//     width: max-content;	
-// }
-
-// .tab-area-contents {
-//        padding-top: 24px;	
-// }
-
-// .tab-area-content-item {
-// 	display: none;
-// }
-
-// .tab-area-content-item.active {
-// 	display: block;
-// }
 
