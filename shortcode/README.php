@@ -191,6 +191,13 @@ array(
 			'min'        => 0,
 			'max'        => 500,
 		),
+		'content'              => array( // only one field in shortcode
+			'heading'    => 'One Content',
+			'type'       => 'text-editor',
+			'full_width' => true,
+			'height'     => '200px',
+			'tinymce'    => false,
+		),
 		'layout_options_slider' => require( THEME_CHILD_ROOT . '/../flatsome/inc/builder/shortcodes/commons/repeater-slider.php' ),
 
 		// 
