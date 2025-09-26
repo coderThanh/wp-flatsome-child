@@ -92,10 +92,10 @@ function pt_shortcode_grid($atts, $content = null)
 	$style .= $style_gap;
 	$style .= $style_align;
 
-	?>
-	<div class="pt-grid <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>"
-		style="<?php echo esc_attr( $style ); ?>">
-		<?php echo do_shortcode( $content ); ?>
-	</div>
-	<?php
+	$output = '<div class="pt-grid ' . esc_attr( $class ) . ' ' . esc_attr( $visibility ) . '"';
+	$output .= ' style="' . esc_attr( $style ) . '">';
+	$output .= do_shortcode( $content );
+	$output .= '</div>';
+
+	return $output;
 }
