@@ -459,6 +459,11 @@ body .pt-btn-size--no {
 }
 
 /* Text only Kind */
+body .pt-btn-kind--text-only {
+    padding: 0;
+    min-height: unset;
+}
+
 .pt-btn-kind--text-only.pt-btn-color--primary {
     --btn-color: rgb(var(--color-primary));
     --btn-color-hover: rgb(var(--color-primary), 0.75);
