@@ -58,53 +58,42 @@ function pt_get_marquee_milti_item($atts, $content = null)
 	$style      = '';
 	$style_item = '';
 
-	if( !empty( $duration ) ) {
-		$style .= '--duration: ' . $duration . ';';
-	}
-
-	if( !empty( $duration__md ) ) {
-		$style .= '--duration-md: ' . $duration__md . ';';
-	}
-
-	if( !empty( $duration__sm ) ) {
-		$style .= '--duration-sm: ' . $duration__sm . ';';
-	}
-
+	$style_duration = get_style_responsive( 'duration', $duration, $duration__md, $duration__sm );
+	$style .= $style_duration;
 
 	if( $is_pause == 'true' ) {
 		$style_item .= 'animation-play-state: paused;';
 	}
 
-	?>
-	<div class="marquee-wrap <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>"
-		style="<?php echo esc_attr( $style ); ?>">
+	$output = '<div class="marquee-wrap ' . esc_attr( $class ) . ' ' . esc_attr( $visibility ) . '"
+		style="' . esc_attr( $style ) . '">
 		<div class="marquee-inner marquee-animation">
-			<div class="item" style="<?php echo esc_attr( $style_item ); ?>">
-				<?php echo do_shortcode( $content ); ?>
+			<div class="item" style="' . esc_attr( $style_item ) . '">
+				' . do_shortcode( $content ) . '
 			</div>
-			<div class="item" style="<?php echo esc_attr( $style_item ); ?>">
-				<?php echo do_shortcode( $content ); ?>
+			<div class="item" style="' . esc_attr( $style_item ) . '">
+				' . do_shortcode( $content ) . '
 			</div>
-			<div class="item" style="<?php echo esc_attr( $style_item ); ?>">
-				<?php echo do_shortcode( $content ); ?>
+			<div class="item" style="' . esc_attr( $style_item ) . '">
+				' . do_shortcode( $content ) . '
 			</div>
-			<div class="item" style="<?php echo esc_attr( $style_item ); ?>">
-				<?php echo do_shortcode( $content ); ?>
+			<div class="item" style="' . esc_attr( $style_item ) . '">
+				' . do_shortcode( $content ) . '
 			</div>
-			<div class="item" style="<?php echo esc_attr( $style_item ); ?>">
-				<?php echo do_shortcode( $content ); ?>
+			<div class="item" style="' . esc_attr( $style_item ) . '">
+				' . do_shortcode( $content ) . '
 			</div>
-			<div class="item" style="<?php echo esc_attr( $style_item ); ?>">
-				<?php echo do_shortcode( $content ); ?>
+			<div class="item" style="' . esc_attr( $style_item ) . '">
+				' . do_shortcode( $content ) . '
 			</div>
-			<div class="item" style="<?php echo esc_attr( $style_item ); ?>">
-				<?php echo do_shortcode( $content ); ?>
+			<div class="item" style="' . esc_attr( $style_item ) . '">
+				' . do_shortcode( $content ) . '
 			</div>
-			<div class="item" style="<?php echo esc_attr( $style_item ); ?>">
-				<?php echo do_shortcode( $content ); ?>
+			<div class="item" style="' . esc_attr( $style_item ) . '">
+				' . do_shortcode( $content ) . '
 			</div>
 		</div>
-	</div>
-	<?php
+	</div>';
 
+	return $output;
 }
