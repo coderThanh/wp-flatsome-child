@@ -191,7 +191,7 @@ array(
 			'min'        => 0,
 			'max'        => 500,
 		),
-		'content'              => array( // only one field in shortcode
+		'$content'              => array( // only one field in shortcode // required 'type'     => 'container',
 			'heading'    => 'One Content',
 			'type'       => 'text-editor',
 			'full_width' => true,
