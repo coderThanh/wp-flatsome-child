@@ -178,7 +178,7 @@ function pt_shortcode_height($atts, $content = null)
 					</svg>
 				</button>
 			<?php endif; ?>
-			<?php if( $is_hidden_controls === 'true' ) :
+			<?php if( $is_hidden_controls === 'true' && $has_button_play === 'true' ) :
 				; ?>
 				<div class="el-controls">
 					<!-- Pause button -->
