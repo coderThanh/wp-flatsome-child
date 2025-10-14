@@ -90,7 +90,7 @@ function initTextAnimation(textEl) {
       .split('')
       .map(
         (ch) =>
-          `<span style="opacity: 0;transform-origin: center;display: inline-block;" class="letter">${ch}</span>`,
+          `<span style="opacity: 0;transform-origin: center;display: inline-block;${ch === ' ' ? 'width: 0.2em;' : ''}" class="letter">${ch === ' ' ? '&nbsp;' : ch}</span>`,
       )
       .join('')
   }
