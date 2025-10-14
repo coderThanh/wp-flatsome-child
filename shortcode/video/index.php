@@ -5,8 +5,8 @@ add_action( 'wp_enqueue_scripts', 'pt_shortcode_video_setup', 1500 );
 
 function pt_shortcode_video_setup()
 {
-	wp_enqueue_style( 'pt-video-shortcode', get_stylesheet_directory_uri() . '/shortcode/video/style.css', [], time() );
-	wp_enqueue_script( 'pt-video-shortcode', get_stylesheet_directory_uri() . '/shortcode/video/script.js', [ 'jquery' ], time(), true );
+	wp_enqueue_style( 'pt-video-shortcode', get_stylesheet_directory_uri() . '/shortcode/video/style.css', [], '1.0.1' );
+	wp_enqueue_script( 'pt-video-shortcode', get_stylesheet_directory_uri() . '/shortcode/video/script.js', [ 'jquery' ], '1.0.1', true );
 }
 
 //
