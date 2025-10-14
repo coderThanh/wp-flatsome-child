@@ -6,7 +6,7 @@ add_action( 'wp_enqueue_scripts', 'pt_shortcode_text_animation_setup', 1500 );
 function pt_shortcode_text_animation_setup()
 {
 	// wp_enqueue_style( 'pt-text-animate-shortcode', get_stylesheet_directory_uri() . '/shortcode/text-animation/style.css', [], time() );
-	wp_enqueue_script( 'pt-text-animate-shortcode', get_stylesheet_directory_uri() . '/shortcode/text-animation/script.js', [ 'jquery' ], time(), true );
+	wp_enqueue_script( 'pt-text-animate-shortcode', get_stylesheet_directory_uri() . '/shortcode/text-animation/script.js', [ 'jquery' ], '1.0.1', true );
 }
 
 //
