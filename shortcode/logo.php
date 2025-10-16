@@ -39,7 +39,6 @@ add_shortcode( 'pt-logo', 'pt_get_logo_shortocde' );
 
 function pt_get_logo_shortocde($atts, $content = null)
 {
-
 	extract( shortcode_atts( array(
 		'class'      => '',
 		'visibility' => '',
@@ -54,13 +53,11 @@ function pt_get_logo_shortocde($atts, $content = null)
 		$logo_url = wp_get_attachment_image_url( get_theme_mod( 'site_logo' ), 'full' );
 	}
 
-	?>
-	<?php if( !empty( $logo_url ) ) :
-		; ?>
-		<div class="<?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
-			<img src="<?php echo esc_attr( $logo_url ); ?>" alt="logo">
-		</div>
-	<?php endif; ?>
-<?php
+	if( !empty( $logo_url ) ) {
+		return '<div class="' . esc_attr( $class ) . ' ' . esc_attr( $visibility ) . '">
+			<img src="' . esc_attr( $logo_url ) . '" alt="logo">
+		</div>';
+	}
 
+	return '';
 }
