@@ -63,7 +63,7 @@ class PT_INPUT {
 
 	public static function get_field_box_img(array $args)
 	{
-		extract( wp_parse_args( $args, [ 
+		extract( wp_parse_args( $args, [
 			'img_name'       => '',
 			'img_value'      => '',
 			'link_name'      => '',
@@ -146,6 +146,30 @@ class PT_INPUT {
 		return ob_get_clean();
 	}
 
+
+	// 
+	public static function get_field_img_link(string $input_img_name, string $input_img_value, string $input_link_name, string $input_link_value)
+	{
+		ob_start();
+		?>
+		<div class="field-wraps">
+			<div class="field-content" style="max-width: 500px;">
+				<div class="card mb-3 input__content">
+					<?php echo button_upload_image( $input_img_name, $input_img_value ); ?>
+					<div class="input-group my-2">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Đường dẫn</span>
+						</div>
+						<input type="text" class="form-control m-0"
+							name="<?php echo esc_attr( $input_link_name ); ?>"
+							value="<?php echo esc_attr( $input_link_value ); ?>">
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
 
 	// 
 	public static function get_field_imgs_links(string $input_img_name, array $input_img_value, string $input_link_name, array $input_link_value)
