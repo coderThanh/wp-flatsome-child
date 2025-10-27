@@ -8,7 +8,6 @@ jQuery(document).ready(function ($) {
 
     // Function để update background image
     function updateBackgroundImage(activeIndex) {
-      console.log('activeIndex', activeIndex)
       wrapper.find('.el-bgs .el-bg').removeClass('active')
       wrapper.find('.el-bgs .el-bg').eq(activeIndex).addClass('active')
     }
