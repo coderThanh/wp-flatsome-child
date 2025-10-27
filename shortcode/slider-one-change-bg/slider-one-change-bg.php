@@ -55,6 +55,11 @@ function pt_ux_builder_slider_one_change_shortcode()
 				'heading' => 'Show PaginationProcess',
 				'default' => '',
 			),
+			'auto_height'      => array(
+				'type'    => 'checkbox',
+				'heading' => 'Auto Height',
+				'default' => '',
+			),
 			'auto_slide'       => array(
 				'type'    => 'select',
 				'heading' => 'Auto Slide',
@@ -88,6 +93,7 @@ function pt_slide_one_change_bg_shortcode($atts, $content = null)
 		'show_nav'        => 'true',
 		'show_pagination' => '',
 		'show_process'    => '',
+		'auto_height'     => '',
 		'class'           => '',
 		'visibility'      => '',
 
@@ -102,7 +108,7 @@ function pt_slide_one_change_bg_shortcode($atts, $content = null)
 	?>
 	<!-- Swiper -->
 	<div class="pt-slide-one-change-bg <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>"
-		data-auto-slide="<?php echo esc_attr( $auto_slide ); ?>">
+		data-auto-slide="<?php echo esc_attr( $auto_slide ); ?>" data-auto-height="<?php echo esc_attr( $auto_height ); ?>">
 		<div class="swiper ptSwiperOneChangeBg">
 			<div class="swiper-wrapper">
 				<?php $current_index = 0; ?>

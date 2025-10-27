@@ -4,6 +4,7 @@ jQuery(document).ready(function ($) {
   $('.pt-slide-one-change-bg').each(function (indexInArray, parent) {
     let wrapper = $(parent)
     let autoSlide = Number(wrapper.data('auto-slide'))
+    let autoHeight = Boolean(wrapper.data('auto-height'))
     let swipperEl = wrapper.find('.ptSwiperOneChangeBg')
 
     // Function để update background image
@@ -21,7 +22,6 @@ jQuery(document).ready(function ($) {
     if (Number.isNaN(autoSlide) || autoSlide === 0) {
       wrapper.find('.autoplay-progress').hide()
     }
-
     // required slide item have w= real px
     var swiper = new Swiper(swipperEl[0], {
       slidesPerView: 1,
@@ -30,6 +30,7 @@ jQuery(document).ready(function ($) {
       spaceBetween: 20,
       allowTouchMove: true,
       grabCursor: true,
+      autoHeight: autoHeight,
       speed: 500, // Tăng thời gian transition để mượt hơn
       pagination: {
         el: '.swiper-pagination',
@@ -58,6 +59,7 @@ jQuery(document).ready(function ($) {
           updateBackgroundImage(this.realIndex)
         },
         autoplayTimeLeft(s, time, progress) {
+          if (!progressCircle || !progressContent) return
           progressCircle.style.setProperty('--progress', 1 - progress)
           progressContent.textContent = `${Math.ceil(time / 1000)}s`
         },
