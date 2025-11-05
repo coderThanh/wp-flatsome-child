@@ -46,29 +46,26 @@ add_shortcode( 'pt-process', 'pt_get_process_shortocde' );
 
 function pt_get_process_shortocde($atts, $content = null)
 {
-	extract( shortcode_atts( array(
-		'is_hidden_value' => 'true',
-		'class'           => '',
-		'visibility'      => '',
-		'count'           => '90',
-	), $atts ) );
+    extract( shortcode_atts( array(
+        'is_hidden_value' => 'true',
+        'class'           => '',
+        'visibility'      => '',
+        'count'           => '90',
+    ), $atts ) );
 
+    $output  = '<div class="process-line ' . esc_attr( $class ) . ' ' . esc_attr( $visibility ) . '">';
+    $output .= '  <div class="el-inner">';
+    $output .= '    <div class="el-value" style="width: ' . esc_attr( $count ) . '%;">';
+    if ( $is_hidden_value != 'true' ) {
+        $output .= '      <span class="el-label value">' . esc_attr( $count ) . '%</span>';
+    }
+    $output .= '    </div>';
+    $output .= '    <div class="el-label start">0%</div>';
+    $output .= '    <div class="el-label end">100%</div>';
+    $output .= '  </div>';
+    $output .= '</div>';
 
-	?>
-	<div class="process-line <?php echo esc_attr( $class ); ?> <?php echo esc_attr( $visibility ); ?>">
-		<div class="el-inner">
-			<div class="el-value" style="width: <?php echo esc_attr( $count ); ?>%;">
-				<?php if( $is_hidden_value != 'true' ) :
-					; ?>
-					<span class="el-label value"><?php echo esc_attr( $count ); ?>%</span>
-				<?php endif; ?>
-			</div>
-			<div class="el-label start">0%</div>
-			<div class="el-label end">100%</div>
-		</div>
-	</div>
-	<?php
-
+    return $output;
 }
 
 // style here
