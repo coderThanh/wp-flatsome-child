@@ -126,17 +126,14 @@ function setEqualForBoxInSlider() {
               $(listChild[index]).css('height', '')
             }
             for (let index = 0; index < listChild.length; ++index) {
-              if (maxHeight <= $(listChild[index]).height()) {
-                maxHeight = $(listChild[index]).height()
+              if (maxHeight <= $(listChild[index]).outerHeight()) {
+                maxHeight = $(listChild[index]).outerHeight()
               }
             }
-            for (let index = 0; index < listChild.length; ++index) {
-              $(listChild[index]).height(maxHeight)
-            }
-
+            $(makeElement).find('.box').outerHeight(maxHeight)
             $(makeElement)
               ?.find('.flickity-viewport')
-              ?.css('min-height', maxHeight)
+              ?.css('min-height', maxHeight )
           }
         }
       }, 600)
@@ -157,13 +154,13 @@ function setEqualForBox() {
         }
 
         for (let index = 0; index < listChild.length; ++index) {
-          if (maxHeight <= $(listChild[index]).height()) {
-            maxHeight = $(listChild[index]).height()
+          if (maxHeight <= $(listChild[index]).outerHeight()) {
+            maxHeight = $(listChild[index]).outerHeight()
           }
         }
 
         for (let index = 0; index < listChild.length; ++index) {
-          $(listChild[index]).height(maxHeight)
+          $(listChild[index]).outerHeight(maxHeight)
         }
       }
     })
