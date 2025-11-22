@@ -7,14 +7,7 @@ function pt_ux_builder_img_shortocde()
 		'category' => __( 'Content' ),
 		'priority' => 10,
 		'type'     => 'Content',
-		'info'     => '{{ label }}',
 		'options'  => array(
-			'label'            => array(
-				'full_width'  => true,
-				'type'        => 'textfield',
-				'heading'     => 'Label',
-				'placeholder' => 'Enter admin label here..',
-			),
 			'id'               => array(
 				'type'    => 'image',
 				'heading' => 'Image',
@@ -71,8 +64,9 @@ function pt_svg_shortocde($atts, $content = null)
 	$class .= ' ' . $visibility;
 
 	$style = get_style_responsive( 'width', $width . '%', $width__md ? $width__md . '%' : '', $width__sm ? $width__sm . '%' : '' );
-	$style .= 'color: ' . $color . ';';
-	$style .= 'fill: ' . $color . ';';
+	$style .= '--color: ' . $color . ';';
+	$style .= 'color: var(--color);';
+	$style .= 'fill: var(--color);';
 
 	if( !is_numeric( $id ) && $inline_svg != 'true' ) {
 		return '<div  class="pt-svg ' . $class . '" style="' . $style . '"><img src="' . $id . '" alt="img" /></div>';
