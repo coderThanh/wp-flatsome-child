@@ -366,6 +366,7 @@ const handleToolTipLeave = (event) => {
   })
 }
 
+
 // Horizontal scroll animation for .can-scroll-vertical
 function addHorizontalScroll(el) {
   var isDown = false
@@ -393,7 +394,6 @@ function addHorizontalScroll(el) {
 
   el.addEventListener('mousedown', function (e) {
     isDown = true
-    el.classList.add('scrolling')
     startX = e.pageX - el.offsetLeft
     scrollLeft = el.scrollLeft
     lastScrollLeft = el.scrollLeft
@@ -419,6 +419,8 @@ function addHorizontalScroll(el) {
   el.addEventListener('mousemove', function (e) {
     if (!isDown) return
     e.preventDefault()
+    e.stopPropagation()
+    el.classList.add('scrolling')
     var x = e.pageX - el.offsetLeft
     var walk = x - startX
     el.scrollLeft = scrollLeft - walk
@@ -436,6 +438,7 @@ function addHorizontalScroll(el) {
   })
   el.addEventListener('touchend', function () {
     isDown = false
+    el.classList.remove('scrolling')
     if (velocity !== 0) {
       momentum = true
       animateMomentum(el)
@@ -443,6 +446,9 @@ function addHorizontalScroll(el) {
   })
   el.addEventListener('touchmove', function (e) {
     if (!isDown) return
+    e.preventDefault()
+    e.stopPropagation()
+    el.classList.add('scrolling')
     var x = e.touches[0].pageX - el.offsetLeft
     var walk = x - startX
     el.scrollLeft = scrollLeft - walk
@@ -450,6 +456,7 @@ function addHorizontalScroll(el) {
     lastScrollLeft = el.scrollLeft
   })
 }
+
 
 // document.addEventListener('DOMContentLoaded', function () {
 //   document.querySelectorAll('.can-scroll-vertical').forEach(function (el) {
