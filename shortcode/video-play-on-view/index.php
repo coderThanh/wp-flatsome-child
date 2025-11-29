@@ -49,14 +49,14 @@ add_shortcode( 'pt-video-on-view', 'shortcode_pt_video_on_view' );
 
 function shortcode_pt_video_on_view($args, $content)
 {
-	extract( shortcode_atts( [ 
+	extract( shortcode_atts( [
 		'video'      => '',
 		'img'        => '',
 		'class'      => '',
 		'visibility' => '',
 	], $args ) );
 
-	if( empty( $video ) ) {
+	if( empty( $video ) && empty( $img ) ) {
 		return;
 	}
 
@@ -69,12 +69,15 @@ function shortcode_pt_video_on_view($args, $content)
 			; ?>
 			<div class="el-video-thumnb">
 				<img src="<?php echo esc_url( wp_get_attachment_image_url( $img, 'full' ) ); ?>" alt="video thumnail">
-				<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 32 32" xml:space="preserve"
-					class="el-play">
-					<path
-						d="M27.268 16.999 4.732 30.001C3.78 30.55 3 30.1 3 29V3c0-1.1.78-1.55 1.732-1.001L27.267 15c.953.55.953 1.45.001 1.999"
-						style="fill:#111918" />
-				</svg>
+				<?php if( !empty( $video ) ) :
+					; ?>
+					<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 32 32" xml:space="preserve"
+						class="el-play">
+						<path
+							d="M27.268 16.999 4.732 30.001C3.78 30.55 3 30.1 3 29V3c0-1.1.78-1.55 1.732-1.001L27.267 15c.953.55.953 1.45.001 1.999"
+							style="fill:#111918" />
+					</svg>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 	</div>
