@@ -73,15 +73,20 @@ if( !function_exists( 'pt_child_admin_enqueue' ) ) {
 
 	function pt_child_admin_enqueue()
 	{
-		// css
 		wp_enqueue_style( 'material-icon-outlined', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200', [], '1.1' );
 		wp_enqueue_style( 'material-icon-rounded', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200', [], '1.1' );
 
 		wp_enqueue_style( 'pt-admin', WEBSITE_CHILD_URL . '/inc/helper/css/admin-flatsome-style.css', [], time() );
 
+		// WordPress color picker & media uploader
+		// wp_enqueue_style( 'wp-color-picker' );
+		// wp_enqueue_media();
+
 		// js
 		// Reuqire if has plugin woocommerce
-		wp_enqueue_script( 'pt-admin-fe', WEBSITE_CHILD_URL . '/js/script.js', [], time(), true );
-		wp_enqueue_script( 'pt-admin-helper', WEBSITE_CHILD_URL . '/js/helper.js', [], time(), true );
+		wp_enqueue_script( 'pt-admin-fe', WEBSITE_CHILD_URL . '/js/script.js', [ 'jquery' ], time(), true );
+		wp_enqueue_script( 'pt-admin-helper', WEBSITE_CHILD_URL . '/js/helper.js', [ 'jquery' ], time(), true );
+		// wp_enqueue_script( 'pt-admin', WEBSITE_CHILD_URL . '/inc/helper/js/admin-script.js', [ 'jquery', 'wp-color-picker' ], time(), true );
+		// wp_enqueue_script( 'pt-admin-widget', WEBSITE_CHILD_URL . '/inc/helper/js/admin-widget.js', [ 'jquery' ], time(), true );
 	}
 }
