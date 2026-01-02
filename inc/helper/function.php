@@ -541,3 +541,68 @@ function get_style_responsive($name, $lg, $md, $sm) : string
 
 	return $style;
 }
+
+
+if( !function_exists( 'pt_get_content_by_shortcode_id' ) ) {
+	/**
+	 * Get content inside a shortcode by ID (tag name)
+	 *
+	 * @param string $tag     Shortcode tag name (e.g., 'pt-landi-program-section-title')
+	 * @param string $content Content to search in
+	 *
+	 * @return string Content inside the shortcode or empty string if not found
+	 */
+	function pt_get_content_by_shortcode_id($tag, $content)
+	{
+		if( empty( $content ) ) {
+			return '';
+		}
+
+		// get_shortcode_regex returns a regex that matches the specified shortcode tag
+		// It handles attributes and nested content correctly according to WP standards
+		$pattern = get_shortcode_regex( array( $tag ) );
+
+		if( preg_match( '/' . $pattern . '/s', $content, $matches ) ) {
+			// Index 0: Full match
+			// Index 1: An extra [ to allow for escaping shortcodes with double [[]]
+			// Index 2: The shortcode name
+			// Index 3: The shortcode argument list
+			// Index 4: The self closing /
+			// Index 5: The content of the shortcode
+			// Index 6: An extra ] to allow for escaping
+			return isset( $matches[5] ) ? $matches[5] : '';
+		}
+
+		return '';
+	}
+}
+
+if ( ! function_exists( 'pt_get_list_content_by_shortcode_id' ) ) {
+	/**
+	 * Get list of content inside a shortcode by ID (tag name)
+	 * Only gets the first level matches
+	 *
+	 * @param string $tag     Shortcode tag name
+	 * @param string $content Content to search in
+	 *
+	 * @return array List of content inside the shortcode
+	 */
+	function pt_get_list_content_by_shortcode_id( $tag, $content ) {
+		if ( empty( $content ) ) {
+			return array();
+		}
+
+		// get_shortcode_regex returns a regex that matches the specified shortcode tag
+		$pattern = get_shortcode_regex( array( $tag ) );
+		$results = array();
+
+		if ( preg_match_all( '/' . $pattern . '/s', $content, $matches, PREG_SET_ORDER ) ) {
+			foreach ( $matches as $match ) {
+				// Index 5: The content of the shortcode
+				$results[] = isset( $match[5] ) ? $match[5] : '';
+			}
+		}
+
+		return $results;
+	}
+}
