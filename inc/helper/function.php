@@ -577,6 +577,25 @@ if( !function_exists( 'pt_get_content_by_shortcode_id' ) ) {
 	}
 }
 
+// 
+if( !function_exists( 'pt_get_shortcode_by_shortcode_id' ) ) {
+	function pt_get_shortcode_by_shortcode_id($tag, $content)
+	{
+		if( empty( $content ) ) {
+			return '';
+		}
+
+		$pattern = get_shortcode_regex( array( $tag ) );
+
+		if( preg_match( '/' . $pattern . '/s', $content, $matches ) ) {
+			return isset( $matches[0] ) ? $matches[0] : '';
+		}
+
+		return '';
+	}
+}
+
+
 if ( ! function_exists( 'pt_get_list_content_by_shortcode_id' ) ) {
 	/**
 	 * Get list of content inside a shortcode by ID (tag name)
@@ -606,3 +625,23 @@ if ( ! function_exists( 'pt_get_list_content_by_shortcode_id' ) ) {
 		return $results;
 	}
 }
+
+if ( ! function_exists( 'pt_get_list_shortcode_by_shortcode_id' ) ) {
+	function pt_get_list_shortcode_by_shortcode_id( $tag, $content ) {
+		if ( empty( $content ) ) {
+			return array();
+		}
+
+		$pattern = get_shortcode_regex( array( $tag ) );
+		$results = array();
+
+		if ( preg_match_all( '/' . $pattern . '/s', $content, $matches, PREG_SET_ORDER ) ) {
+			foreach ( $matches as $match ) {
+				$results[] = isset( $match[0] ) ? $match[0] : '';
+			}
+		}
+
+		return $results;
+	}
+}
+
