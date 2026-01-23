@@ -1,4 +1,5 @@
 <?php
+// Return shortcode nên bọc thẻ div để có thẻo drag ở ux
 
 /** options example */
 if( !isset( $repeater_posts ) )
