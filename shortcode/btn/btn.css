@@ -57,10 +57,10 @@ body .pt-btn__icon {
     justify-content: center;
 }
 
-.pt-btn-kind--default,
-.pt-btn-kind--text,
-.pt-btn-kind--filled,
-.pt-btn-kind--outline {
+.pt-btn.pt-btn-kind--default,
+.pt-btn.pt-btn-kind--text,
+.pt-btn.pt-btn-kind--filled,
+.pt-btn.pt-btn-kind--outline {
     font-size: var(--btn-font-size);
     line-height: var(--btn-line-height);
     min-height: var(--btn-size);
@@ -73,8 +73,8 @@ body .pt-btn__icon {
     gap: 7px;
 }
 
-.pt-btn-kind--text-only,
-.pt-btn-kind--underline {
+.pt-btn.pt-btn-kind--text-only,
+.pt-btn.pt-btn-kind--underline {
     font-size: var(--btn-font-size);
     line-height: var(--btn-line-height);
     display: inline-flex;
