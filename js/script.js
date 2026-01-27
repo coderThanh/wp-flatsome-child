@@ -458,8 +458,8 @@ function addHorizontalScroll(el) {
 }
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   document.querySelectorAll('.can-scroll-vertical').forEach(function (el) {
-//     addHorizontalScroll(el)
-//   })
-// })
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.can-scroll-vertical').forEach(function (el) {
+    addHorizontalScroll(el)
+  })
+})
