@@ -14,6 +14,8 @@ function pt_get_single_cat_title($atts, $content = null)
 		'type_tag' => 'div',
 	), $atts ) );
 
+	ob_start();
+
 
 	echo '<' . $type_tag . ' class="cat-title page-title">';
 
@@ -59,6 +61,8 @@ function pt_get_single_cat_title($atts, $content = null)
 	endif;
 
 	echo '</' . $type_tag . '>';
+
+	return ob_get_clean();
 }
 
 add_action( 'ux_builder_setup', 'pt_ux_builder_single_cat_title' );
@@ -82,10 +86,10 @@ function pt_ux_builder_single_cat_title()
 				'heading' => 'Tag HTML',
 				'default' => 'div',
 				'options' => array(
-					'div'  => 'div',
-					'h1'   => 'h1',
-					'h2'   => 'h2',
-					'h3'   => 'h3',
+					'div' => 'div',
+					'h1'  => 'h1',
+					'h2'  => 'h2',
+					'h3'  => 'h3',
 				),
 			),
 		),
