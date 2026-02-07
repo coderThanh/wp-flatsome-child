@@ -65,27 +65,25 @@ class PT_INPUT {
 	{
 		ob_start();
 		?>
-		<div class="gallery_wrap">
-			<div class="gallery_container input__box" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 10px;">
+		<div class="imgs_wrap">
+			<div class="input__box">
 				<?php
-				if( ! empty( $input_value ) ) :
-					foreach( $input_value as $id ) :
-						$img = wp_get_attachment_image_src( $id, 'thumbnail' );
-						$src = $img ? $img[0] : '';
-						if( $src ) :
-							?>
-							<div class="gallery-item input__content" style="display:inline-block; margin:5px; position:relative; vertical-align: top;">
-								<img src="<?php echo esc_url( $src ); ?>" style="max-width:100px; height:auto; border: 1px solid #ccc;">
-								<input type="hidden" name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $id ); ?>">
-								<span class="remove-gallery-item" onclick="this.parentElement.remove()" style="position:absolute; top:-5px; right:-5px; background:red; color:white; cursor:pointer; width: 15px; height: 15px; text-align: center; line-height: 15px; font-size: 10px; border-radius: 50%;">x</span>
-							</div>
-							<?php
-						endif;
+				if( !empty( $input_value ) ) :
+					foreach( $input_value as $index => $id ) :
+						?>
+						<div class="input__content">
+							<?php echo button_upload_image( $input_name, $id ); ?>
+							<a class="btn__add_delete admin-btn__input" onclick="this.parentElement.remove()">
+								<?php _e( 'Xoá ảnh' ); ?>
+							</a>
+						</div>
+						<?php
 					endforeach;
 				endif;
 				?>
 			</div>
-			<button type="button" class="button" onclick="addImagesToGallery(event, '<?php echo esc_attr( $input_name ); ?>', '.gallery_container')">
+			<button type="button" class="button !tw-mt-5"
+				onclick="addImagesToGallery(event, '<?php echo esc_attr( $input_name ); ?>', '.input__box')">
 				<?php _e( 'Thêm ảnh' ); ?>
 			</button>
 		</div>
@@ -284,7 +282,7 @@ class PT_INPUT {
 		ob_start();
 		?>
 		<div class="field-wraps">
-			<div class="field-content" >
+			<div class="field-content">
 				<?php if( count( $input_title_value ) > 0 ) :
 					; ?>
 					<?php foreach( $input_title_value as $key => $value_title ) :
@@ -310,7 +308,7 @@ class PT_INPUT {
 										'textarea_rows' => 8,
 										'media_buttons' => true,
 										'teeny'         => false,
-										'quicktags'     => true
+										'quicktags'     => true,
 									]
 								);
 								?>
@@ -333,20 +331,20 @@ class PT_INPUT {
 						var editorId = 'pt_editor_' + id;
 
 						var html = `
-                        <div class="card mb-3 input__content !tw-max-w-[unset]">
-                            <div class="input-group my-2">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Tiêu đề</span>
-                                </div>
-                                <input type="text" class="form-control m-0" name="${titleName}[${id}]" value="">
-                            </div>
-                            <div class="my-2">
-                                <label class="form-label">Nội dung</label>
-                                <textarea id="${editorId}" name="${contentName}[${id}]" class="wp-editor-area" rows="8"></textarea>
-                            </div>
-                            <button type="button" class="btn btn-outline-danger my-1" onclick="deleteInputWrap(event)">Xóa item</button>
-                        </div>
-                    `;
+						<div class="card mb-3 input__content !tw-max-w-[unset]">
+							<div class="input-group my-2">
+								<div class="input-group-prepend">
+									<span class="input-group-text">Tiêu đề</span>
+								</div>
+								<input type="text" class="form-control m-0" name="${titleName}[${id}]" value="">
+							</div>
+							<div class="my-2">
+								<label class="form-label">Nội dung</label>
+								<textarea id="${editorId}" name="${contentName}[${id}]" class="wp-editor-area" rows="8"></textarea>
+							</div>
+							<button type="button" class="btn btn-outline-danger my-1" onclick="deleteInputWrap(event)">Xóa item</button>
+						</div>
+					`;
 
 						container.append(html);
 					}
@@ -356,7 +354,7 @@ class PT_INPUT {
 		<?php
 		return ob_get_clean();
 	}
-	
+
 	// 
 	public static function get_field_imgs_links_titles(string $input_img_name, array $input_img_value, string $input_link_name, array $input_link_value, $input_title_name, array $input_title_value)
 	{

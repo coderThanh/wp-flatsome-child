@@ -115,34 +115,54 @@ function addInputImageToMetaBox(event, nameValue, wrapQuery, appendToQuery) {
   }
 }
 
+function getAttacmentMediaView(
+  inputValue,
+  inputName,
+  imgUrl,
+  showDeleteBtn = true,
+) {
+  return `
+        <div class="attachment_media-view">
+          <button type="button" class="button_add-media" onclick="buttonAddMediaList(event, false)">
+            ${imgUrl ? `<div class="img preview-img" style=""><div class="img-inner" style=""><img width="1920" height="1920" src="${imgUrl}" class="attachment-full  size-full " alt="" decoding="async" loading="lazy"><div class="img-overlay"></div></div></div>` : ''}		
+            </button>
+          <div class="actions">
+            <button type="button" onclick="buttonRemoveMediaList(event,false)" class="button button_remove-media">x</button>		</div>
+          <input class="image-url widefat" type="hidden" name="${inputName}" value="${inputValue}">
+        </div>
+        ${showDeleteBtn ? `<a class="btn__add_delete admin-btn__input" onclick="this.parentElement.remove()">
+              Xoá ảnh							</a>` : ''}
+					`
+}
+
 function addImagesToGallery(event, inputName, containerSelector) {
-    event.preventDefault();
-    var frame = wp.media({
-        title: 'Select Images',
-        button: { text: 'Add to Gallery' },
-        multiple: true
-    });
+  event.preventDefault()
+  var frame = wp.media({
+    title: 'Select Images',
+    button: { text: 'Add to Gallery' },
+    multiple: true,
+  })
 
-    frame.on('select', function() {
-        var selection = frame.state().get('selection');
-        var container = event.target.closest('.gallery_wrap').querySelector(containerSelector);
+  frame.on('select', function () {
+    var selection = frame.state().get('selection')
+    var container = event.target
+      .closest('.imgs_wrap')
+      .querySelector(containerSelector)
 
-        selection.map(function(attachment) {
-            attachment = attachment.toJSON();
-            var imgUrl = attachment.sizes && attachment.sizes.thumbnail ? attachment.sizes.thumbnail.url : attachment.url;
-            
-            var html = `
-                <div class="gallery-item input__content" style="display:inline-block; margin:5px; position:relative; vertical-align: top;">
-                    <img src="${imgUrl}" style="max-width:100px; height:auto; border: 1px solid #ccc;">
-                    <input type="hidden" name="${inputName}" value="${attachment.id}">
-                    <span class="remove-gallery-item" onclick="this.parentElement.remove()" style="position:absolute; top:-5px; right:-5px; background:red; color:white; cursor:pointer; width: 15px; height: 15px; text-align: center; line-height: 15px; font-size: 10px; border-radius: 50%;">x</span>
-                </div>
-            `;
-            container.insertAdjacentHTML('beforeend', html);
-        });
-    });
+    selection.map(function (attachment) {
+      attachment = attachment.toJSON()
+      var imgUrl =
+        attachment.sizes && attachment.sizes.thumbnail
+          ? attachment.sizes.thumbnail.url
+          : attachment.url
 
-    frame.open();
+      var innerField = `<div class="input__content">${getAttacmentMediaView(attachment.id, inputName, imgUrl)}</div>
+    `
+      container.insertAdjacentHTML('beforeend', innerField)
+    })
+  })
+
+  frame.open()
 }
 
 /**
@@ -527,9 +547,9 @@ function ptSearchPostAjaxAutoCloseBoxOptions(event) {
 }
 
 function hidenPopup(event, idPopup) {
-  event.preventDefault();
+  event.preventDefault()
 
-  var popupWrap = document.getElementById(idPopup);
+  var popupWrap = document.getElementById(idPopup)
 
-  popupWrap.classList.remove("show");
+  popupWrap.classList.remove('show')
 }
