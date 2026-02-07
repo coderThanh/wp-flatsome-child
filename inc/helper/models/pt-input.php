@@ -22,6 +22,54 @@ class PT_INPUT {
 		<?php
 		return ob_get_clean();
 	}
+	public static function input_group($label, $type, $args = [])
+	{
+		$defaults = [
+			'id'              => '',
+			'name'            => '',
+			'value'           => '',
+			'class'           => 'form-control',
+			'editor_settings' => [],
+			'custom_html'     => '',
+		];
+		$args     = wp_parse_args( $args, $defaults );
+
+		$id = $args['id'] ?: $args['name'];
+
+		ob_start();
+		?>
+		<div class="input-group tw-gap-4">
+			<div class="input-group-prepend tw-w-[170px]">
+				<label for="<?php echo esc_attr( $id ); ?>"
+					class="input-group-text  tw-text-[14px] tw-text-left tw-whitespace-pre-wrap"><?php echo esc_html( $label ); ?></label>
+			</div>
+			<?php
+			switch( $type ) {
+				case 'editor':
+					echo '<div class="tw-flex-1">';
+					wp_editor( $args['value'], $args['name'], $args['editor_settings'] );
+					echo '</div>';
+					break;
+				case 'custom':
+					echo '<div class="tw-flex-1">';
+					echo $args['custom_html'];
+					echo '</div>';
+					break;
+				default:
+					?>
+					<div class="tw-flex-1">
+						<input type="<?php echo esc_attr( $type ); ?>" id="<?php echo esc_attr( $id ); ?>"
+							class="<?php echo esc_attr( $args['class'] ); ?>" name="<?php echo esc_attr( $args['name'] ); ?>"
+							value="<?php echo esc_attr( $args['value'] ); ?>">
+					</div>
+					<?php
+					break;
+			}
+			?>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
 
 	public static function get_field_imgs(string $input_name, array $input_value)
 	{
