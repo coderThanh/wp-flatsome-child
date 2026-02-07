@@ -115,6 +115,36 @@ function addInputImageToMetaBox(event, nameValue, wrapQuery, appendToQuery) {
   }
 }
 
+function addImagesToGallery(event, inputName, containerSelector) {
+    event.preventDefault();
+    var frame = wp.media({
+        title: 'Select Images',
+        button: { text: 'Add to Gallery' },
+        multiple: true
+    });
+
+    frame.on('select', function() {
+        var selection = frame.state().get('selection');
+        var container = event.target.closest('.gallery_wrap').querySelector(containerSelector);
+
+        selection.map(function(attachment) {
+            attachment = attachment.toJSON();
+            var imgUrl = attachment.sizes && attachment.sizes.thumbnail ? attachment.sizes.thumbnail.url : attachment.url;
+            
+            var html = `
+                <div class="gallery-item input__content" style="display:inline-block; margin:5px; position:relative; vertical-align: top;">
+                    <img src="${imgUrl}" style="max-width:100px; height:auto; border: 1px solid #ccc;">
+                    <input type="hidden" name="${inputName}" value="${attachment.id}">
+                    <span class="remove-gallery-item" onclick="this.parentElement.remove()" style="position:absolute; top:-5px; right:-5px; background:red; color:white; cursor:pointer; width: 15px; height: 15px; text-align: center; line-height: 15px; font-size: 10px; border-radius: 50%;">x</span>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        });
+    });
+
+    frame.open();
+}
+
 /**
  * Function metabox delete
  *
@@ -222,7 +252,7 @@ function addCardFieldHaveImgLinkTitle(event, nameImg, nameTitle, nameLink) {
     const id = makeid()
     const parrentWrap = $(event.target).closest('.field-wraps')
     const contentItem = `
-      <div class="card mb-3 input__content">
+      <div class="card mb-3 input__content !tw-max-w-[unset]">
         <div class="attachment_media-view">
             <button type="button" class="button_add-media" onclick="buttonAddMediaList(event)">Upload image</button>
             <div class="actions"></div>
@@ -494,4 +524,12 @@ function ptSearchPostAjaxAutoCloseBoxOptions(event) {
     'field-search-ajax',
     ptSearchPostAjaxAutoCloseBoxOptions,
   )
+}
+
+function hidenPopup(event, idPopup) {
+  event.preventDefault();
+
+  var popupWrap = document.getElementById(idPopup);
+
+  popupWrap.classList.remove("show");
 }

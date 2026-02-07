@@ -61,6 +61,38 @@ class PT_INPUT {
 		return ob_get_clean();
 	}
 
+	public static function get_field_list_imgs(string $input_name, array $input_value)
+	{
+		ob_start();
+		?>
+		<div class="gallery_wrap">
+			<div class="gallery_container input__box" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 10px;">
+				<?php
+				if( ! empty( $input_value ) ) :
+					foreach( $input_value as $id ) :
+						$img = wp_get_attachment_image_src( $id, 'thumbnail' );
+						$src = $img ? $img[0] : '';
+						if( $src ) :
+							?>
+							<div class="gallery-item input__content" style="display:inline-block; margin:5px; position:relative; vertical-align: top;">
+								<img src="<?php echo esc_url( $src ); ?>" style="max-width:100px; height:auto; border: 1px solid #ccc;">
+								<input type="hidden" name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $id ); ?>">
+								<span class="remove-gallery-item" onclick="this.parentElement.remove()" style="position:absolute; top:-5px; right:-5px; background:red; color:white; cursor:pointer; width: 15px; height: 15px; text-align: center; line-height: 15px; font-size: 10px; border-radius: 50%;">x</span>
+							</div>
+							<?php
+						endif;
+					endforeach;
+				endif;
+				?>
+			</div>
+			<button type="button" class="button" onclick="addImagesToGallery(event, '<?php echo esc_attr( $input_name ); ?>', '.gallery_container')">
+				<?php _e( 'Thêm ảnh' ); ?>
+			</button>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+
 	public static function get_field_box_img(array $args)
 	{
 		extract( wp_parse_args( $args, [
@@ -247,6 +279,85 @@ class PT_INPUT {
 	}
 
 	// 
+	public static function get_field_titles_contents(string $input_title_name, array $input_title_value, string $input_content_name, array $input_content_value)
+	{
+		ob_start();
+		?>
+		<div class="field-wraps">
+			<div class="field-content" >
+				<?php if( count( $input_title_value ) > 0 ) :
+					; ?>
+					<?php foreach( $input_title_value as $key => $value_title ) :
+						$editor_id = 'pt_editor_' . uniqid() . '_' . $key;
+						; ?>
+						<div class="card mb-3 input__content !tw-max-w-[unset]">
+							<div class="input-group my-2">
+								<div class="input-group-prepend">
+									<span class="input-group-text">Tiêu đề</span>
+								</div>
+								<input type="text" class="form-control m-0"
+									name="<?php echo esc_attr( $input_title_name . '[' . $key . ']' ); ?>"
+									value="<?php echo esc_attr( $input_title_value[ $key ] ); ?>">
+							</div>
+							<div class="my-2">
+								<label class="form-label">Nội dung</label>
+								<?php
+								wp_editor(
+									$input_content_value[ $key ] ?? '',
+									$editor_id,
+									[
+										'textarea_name' => $input_content_name . '[' . $key . ']',
+										'textarea_rows' => 8,
+										'media_buttons' => true,
+										'teeny'         => false,
+										'quicktags'     => true
+									]
+								);
+								?>
+							</div>
+							<button type="button" class="btn btn-outline-danger my-1" onclick="deleteInputWrap(event)">Xóa item</button>
+						</div>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+			<button type="button" class="btn__add_more button button-secondary"
+				onclick="addCardFieldTitleContent(event, '<?php echo esc_attr( $input_title_name ); ?>','<?php echo esc_attr( $input_content_name ); ?>' )">Thêm
+				item</button>
+			<script>
+				if (typeof addCardFieldTitleContent === 'undefined') {
+					function addCardFieldTitleContent(event, titleName, contentName) {
+						var $ = jQuery;
+						var wrap = $(event.target).closest('.field-wraps');
+						var container = wrap.find('.field-content');
+						var id = new Date().getTime();
+						var editorId = 'pt_editor_' + id;
+
+						var html = `
+                        <div class="card mb-3 input__content !tw-max-w-[unset]">
+                            <div class="input-group my-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Tiêu đề</span>
+                                </div>
+                                <input type="text" class="form-control m-0" name="${titleName}[${id}]" value="">
+                            </div>
+                            <div class="my-2">
+                                <label class="form-label">Nội dung</label>
+                                <textarea id="${editorId}" name="${contentName}[${id}]" class="wp-editor-area" rows="8"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-outline-danger my-1" onclick="deleteInputWrap(event)">Xóa item</button>
+                        </div>
+                    `;
+
+						container.append(html);
+					}
+				}
+			</script>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+	
+	// 
 	public static function get_field_imgs_links_titles(string $input_img_name, array $input_img_value, string $input_link_name, array $input_link_value, $input_title_name, array $input_title_value)
 	{
 		ob_start();
@@ -257,7 +368,7 @@ class PT_INPUT {
 					; ?>
 					<?php foreach( $input_img_value as $key => $value_img ) :
 						; ?>
-						<div class="card mb-3 input__content">
+						<div class="card mb-3 input__content !tw-max-w-[unset]">
 							<?php echo button_upload_image( $input_img_name . '[' . $key . ']', $input_img_value[ $key ] ); ?>
 							<div class="input-group my-2">
 								<div class="input-group-prepend">
