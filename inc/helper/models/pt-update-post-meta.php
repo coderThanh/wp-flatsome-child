@@ -9,6 +9,9 @@ class PT_UPDATE_POST_META {
 		$value = $_POST[ $post_field_name ];
 
 		switch( $type ) {
+			case 'html_raw':
+				update_post_meta( $post_id, $meta_key, $value ); // Allow raw html for iframe
+				break;
 			case 'editor':
 			case 'html':
 				update_post_meta( $post_id, $meta_key, wp_kses_post( $value ) );
