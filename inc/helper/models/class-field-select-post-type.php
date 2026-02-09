@@ -131,12 +131,6 @@ if( !class_exists( 'PT_Field_Select_Post_Type' ) ) {
 						}
 					});
 				</script>
-				<style>
-					/* Basic fix for Select2 in WP Admin if needed */
-					.pt-field-select-wrap .select2-container {
-						margin-bottom: 5px;
-					}
-				</style>
 			</div>
 			<?php
 			return ob_get_clean();

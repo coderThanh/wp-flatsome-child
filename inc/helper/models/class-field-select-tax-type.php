@@ -134,11 +134,6 @@ if( !class_exists( 'PT_Field_Select_TAX_Type' ) ) {
 						}
 					});
 				</script>
-				<style>
-					.pt-field-select-wrap .select2-container {
-						margin-bottom: 5px;
-					}
-				</style>
 			</div>
 			<?php
 			return ob_get_clean();
