@@ -54,6 +54,8 @@ function pt_load_enqueue_scripts()
 	// add css
 	wp_enqueue_style( 'pt-child-theme-fe-toolkit-style', WEBSITE_CHILD_URL . '/styles.global.css', [], time() );
 	wp_enqueue_style( 'pt-child-theme-style', WEBSITE_CHILD_URL . '/style.css', [], time() );
+	wp_enqueue_style( 'pt-child-theme-custom-tailwind-style', WEBSITE_CHILD_URL . '/style-custome-tailwind.css', [], time() );
+		
 	wp_enqueue_style( 'material-icon-outlined', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200', [], '1.1' );
 	wp_enqueue_style( 'material-icon-rounded', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200', [], '1.1' );
 
