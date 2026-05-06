@@ -55,6 +55,13 @@ class PT_INPUT {
 					echo $args['custom_html'];
 					echo '</div>';
 					break;
+				case 'color':
+					?>
+					<div class="tw-flex-1">
+						<?php echo self::get_field_color( $id, $args['value'], $id ); ?>
+					</div>
+					<?php
+					break;
 				default:
 					?>
 					<div class="tw-flex-1">
@@ -67,6 +74,17 @@ class PT_INPUT {
 			}
 			?>
 		</div>
+		<?php
+		return ob_get_clean();
+	}
+
+	public static function get_field_color(string $input_name, string $input_value, string $id = '')
+	{
+		ob_start();
+		?>
+		<input type="color" id="<?php echo esc_attr( $id ); ?>"
+			class="<?php echo esc_attr( 'form-control form-control-color' ); ?>"
+			name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $input_value ); ?>">
 		<?php
 		return ob_get_clean();
 	}
@@ -446,5 +464,4 @@ class PT_INPUT {
 	}
 
 }
-
 
