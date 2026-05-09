@@ -25,11 +25,10 @@ function initSwiperDefault() {
         ? null
         : Number($(this).data('auto-play'))
       let spaceBetween = Number.isNaN(Number($(this).data('space-between')))
-        ? null
+        ? 0
         : Number($(this).data('space-between'))
       let loop = Boolean($(this).data('loop'))
-
-      console.log(swiperEletment)
+      let autoHeight = Boolean($(this).data('auto-height'))
 
       if (!swiperEletment) return
 
@@ -37,9 +36,10 @@ function initSwiperDefault() {
       new Swiper(swiperEletment, {
         spaceBetween: spaceBetween,
         loop: loop,
-        autoPlay: autoPlay
-          ? { delay: autoPlay, pauseOnMouseEnter: true }
-          : null,
+        autoHeight: autoHeight,
+        autoplay: autoPlay
+          ? { delay: autoPlay, pauseOnMouseEnter: true, disableOnInteraction: false }
+          : false,
         breakpoints: {
           0: {
             slidesPerView: sliderPerViewSm,

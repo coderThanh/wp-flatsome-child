@@ -22,6 +22,37 @@ class PT_INPUT {
 		<?php
 		return ob_get_clean();
 	}
+
+	public static function get_field_color(string $name, string $value = '', string $id = '')
+	{
+		$id = $id ?: $name;
+
+		ob_start();
+		?>
+		<input type="color" class="form-control form-control-color" name="<?php echo esc_attr( $name ); ?>"
+			id="<?php echo esc_attr( $id ); ?>" value="<?php echo esc_attr( $value ); ?>">
+		<?php
+		return ob_get_clean();
+	}
+
+	public static function get_field_editor(string $name, string $value = '', array $settings = [])
+	{
+		$defaults = [
+			'textarea_name' => $name,
+			'textarea_rows' => 6,
+			'media_buttons' => true,
+			'teeny'         => false,
+			'quicktags'     => true,
+		];
+
+		$editor_settings = wp_parse_args( $settings, $defaults );
+		$editor_id       = preg_replace( '/[^a-zA-Z0-9_]/', '_', $name ) . '_' . uniqid();
+
+		ob_start();
+		wp_editor( $value, $editor_id, $editor_settings );
+		return ob_get_clean();
+	}
+
 	public static function input_group($label, $type, $args = [])
 	{
 		$defaults = [
@@ -58,7 +89,7 @@ class PT_INPUT {
 				case 'color':
 					?>
 					<div class="tw-flex-1">
-						<?php echo self::get_field_color( $id, $args['value'], $id ); ?>
+						<?php echo self::get_field_color( $args['name'], $args['value'], $id ); ?>
 					</div>
 					<?php
 					break;
@@ -74,17 +105,6 @@ class PT_INPUT {
 			}
 			?>
 		</div>
-		<?php
-		return ob_get_clean();
-	}
-
-	public static function get_field_color(string $input_name, string $input_value, string $id = '')
-	{
-		ob_start();
-		?>
-		<input type="color" id="<?php echo esc_attr( $id ); ?>"
-			class="<?php echo esc_attr( 'form-control form-control-color' ); ?>"
-			name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $input_value ); ?>">
 		<?php
 		return ob_get_clean();
 	}
@@ -464,4 +484,3 @@ class PT_INPUT {
 	}
 
 }
-

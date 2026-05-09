@@ -2,6 +2,8 @@
 class PT_OPTION {
 	public static function update($option_key, $value, $type = 'text')
 	{
+		$value = wp_unslash( $value );
+
 		switch( $type ) {
 			case 'textarea':
 				update_option( $option_key, sanitize_textarea_field( $value ) );
