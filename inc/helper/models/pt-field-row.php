@@ -65,5 +65,27 @@ class PT_FIELD_ROW {
 		<?php
 		return ob_get_clean();
 	}
+
+	public static function get_select(string $label, string $name, string $value = '', array $options = [], string $id = '', string $class = 'form-control')
+	{
+		$id = $id ?: $name;
+
+		ob_start();
+		?>
+		<tr>
+			<th scope="row"><label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $label ); ?></label></th>
+			<td>
+				<select class="<?php echo esc_attr( $class ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>">
+					<?php foreach( $options as $val => $text ) : ?>
+						<option value="<?php echo esc_attr( $val ); ?>" <?php selected( $value, $val ); ?>>
+							<?php echo esc_html( $text ); ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+			</td>
+		</tr>
+		<?php
+		return ob_get_clean();
+	}
 }
 

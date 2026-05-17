@@ -21,7 +21,6 @@ function handleContentViewMore() {
         wrap.append(function () {
           return '<div class="pt_content_btn_loadmore"><div title="Xem thêm" class="btn-loadmore" ><span>Xem thêm</span></div></div>'
         })
-
         $('body').on(
           'click',
           '.pt_content_btn_loadmore .btn-loadmore',
