@@ -10,7 +10,7 @@ add_action( 'wp_enqueue_scripts', 'pt_shortcode_slider_one_change_setup', 1500 )
 
 function pt_shortcode_slider_one_change_setup()
 {
-	wp_enqueue_script( 'pt-slider-one-change-bg-shortcode', get_stylesheet_directory_uri() . '/shortcode/slider-one-change-bg/script.js', [], time(), true );
+	wp_enqueue_script( 'pt-slider-one-change-bg-shortcode', get_stylesheet_directory_uri() . '/shortcode/slider-one-change-bg/script.js', [], THEME_CHILD_QUEUE_VERSION, true );
 }
 
 //

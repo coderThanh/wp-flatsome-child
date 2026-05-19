@@ -6,7 +6,7 @@ add_action( 'wp_enqueue_scripts', 'pt_shortcode_float_nav_current_scroll', 1500 
 
 function pt_shortcode_float_nav_current_scroll()
 {
-	wp_enqueue_script( 'pt-float-nav-current-scroll-shortcode', get_stylesheet_directory_uri() . '/shortcode/float-nav-current-scroll/float-nav-current-scroll.js', [ 'jquery' ], time(), true );
+	wp_enqueue_script( 'pt-float-nav-current-scroll-shortcode', get_stylesheet_directory_uri() . '/shortcode/float-nav-current-scroll/float-nav-current-scroll.js', [ 'jquery' ], THEME_CHILD_QUEUE_VERSION, true );
 }
 
 

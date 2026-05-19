@@ -2,6 +2,7 @@
 // Add custom Theme Functions here
 define( 'WEBSITE_CHILD_URL', get_stylesheet_directory_uri() );
 define( 'THEME_CHILD_ROOT', dirname( __FILE__ ) );
+define( 'THEME_CHILD_QUEUE_VERSION', time() );
 
 // Required file
 require_once( THEME_CHILD_ROOT . '/inc/helper/function.php' );
@@ -52,10 +53,10 @@ function pt_load_enqueue_scripts()
 	wp_dequeue_style( 'flatsome-style-css' );
 
 	// add css
-	wp_enqueue_style( 'pt-child-theme-fe-toolkit-style', WEBSITE_CHILD_URL . '/styles.global.css', [], time() );
-	wp_enqueue_style( 'pt-child-theme-style', WEBSITE_CHILD_URL . '/style.css', [], time() );
-	wp_enqueue_style( 'pt-child-theme-custom-tailwind-style', WEBSITE_CHILD_URL . '/style-custome-tailwind.css', [], time() );
-		
+	wp_enqueue_style( 'pt-child-theme-fe-toolkit-style', WEBSITE_CHILD_URL . '/styles.global.css', [], THEME_CHILD_QUEUE_VERSION );
+	wp_enqueue_style( 'pt-child-theme-style', WEBSITE_CHILD_URL . '/style.css', [], THEME_CHILD_QUEUE_VERSION );
+	wp_enqueue_style( 'pt-child-theme-custom-tailwind-style', WEBSITE_CHILD_URL . '/style-custome-tailwind.css', [], THEME_CHILD_QUEUE_VERSION );
+
 	wp_enqueue_style( 'material-icon-outlined', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200', [], '1.1' );
 	wp_enqueue_style( 'material-icon-rounded', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200', [], '1.1' );
 
@@ -78,7 +79,7 @@ if( !function_exists( 'pt_child_admin_enqueue' ) ) {
 		wp_enqueue_style( 'material-icon-outlined', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200', [], '1.1' );
 		wp_enqueue_style( 'material-icon-rounded', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200', [], '1.1' );
 
-		wp_enqueue_style( 'pt-admin', WEBSITE_CHILD_URL . '/inc/helper/css/admin-flatsome-style.css', [], time() );
+		wp_enqueue_style( 'pt-admin', WEBSITE_CHILD_URL . '/inc/helper/css/admin-flatsome-style.css', [], THEME_CHILD_QUEUE_VERSION );
 
 		// WordPress color picker & media uploader
 		// wp_enqueue_style( 'wp-color-picker' );
@@ -86,9 +87,9 @@ if( !function_exists( 'pt_child_admin_enqueue' ) ) {
 
 		// js
 		// Reuqire if has plugin woocommerce
-		wp_enqueue_script( 'pt-admin-fe', WEBSITE_CHILD_URL . '/js/script.js', [ 'jquery' ], time(), true );
-		wp_enqueue_script( 'pt-admin-helper', WEBSITE_CHILD_URL . '/js/helper.js', [ 'jquery' ], time(), true );
-		// wp_enqueue_script( 'pt-admin', WEBSITE_CHILD_URL . '/inc/helper/js/admin-script.js', [ 'jquery', 'wp-color-picker' ], time(), true );
-		// wp_enqueue_script( 'pt-admin-widget', WEBSITE_CHILD_URL . '/inc/helper/js/admin-widget.js', [ 'jquery' ], time(), true );
+		wp_enqueue_script( 'pt-admin-fe', WEBSITE_CHILD_URL . '/js/script.js', [ 'jquery' ], THEME_CHILD_QUEUE_VERSION, true );
+		wp_enqueue_script( 'pt-admin-helper', WEBSITE_CHILD_URL . '/js/helper.js', [ 'jquery' ], THEME_CHILD_QUEUE_VERSION, true );
+		// wp_enqueue_script( 'pt-admin', WEBSITE_CHILD_URL . '/inc/helper/js/admin-script.js', [ 'jquery', 'wp-color-picker' ], THEME_CHILD_QUEUE_VERSION, true );
+		// wp_enqueue_script( 'pt-admin-widget', WEBSITE_CHILD_URL . '/inc/helper/js/admin-widget.js', [ 'jquery' ], THEME_CHILD_QUEUE_VERSION, true );
 	}
 }
